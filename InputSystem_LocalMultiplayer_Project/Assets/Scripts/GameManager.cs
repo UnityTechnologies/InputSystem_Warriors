@@ -6,6 +6,7 @@ public class GameManager : Singleton<GameManager>
 {
 
     [Header("Spawn Player Settings")]
+    public bool spawnMultiplePlayers = false;
     public GameObject playerPrefab;
     public int numberOfPlayers;
     public Vector3 spawnArea;
@@ -18,8 +19,13 @@ public class GameManager : Singleton<GameManager>
 
     void Start()
     {
+        
         TogglePauseMenu(false);
-        SpawnPlayers();
+
+        if(spawnMultiplePlayers)
+        {
+            SpawnPlayers();
+        }
     }
 
     void SpawnPlayers()
