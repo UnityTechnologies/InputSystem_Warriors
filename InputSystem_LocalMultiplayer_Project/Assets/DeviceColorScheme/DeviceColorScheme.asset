@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: DeviceColorScheme
+  m_EditorClassIdentifier: Assembly-CSharp::DeviceColorScheme
+  keyboard: {r: 1, g: 1, b: 1, a: 1}
+  xboxController: {r: 0.12386139, g: 0.7169812, b: 0.11836952, a: 1}
+  playstationController: {r: 0.16042183, g: 0.59969825, b: 0.9716981, a: 1}
+  nintendoSwitchController: {r: 1, g: 0.2971698, b: 0.35804483, a: 1}
+  iOSDevice: {r: 0.65882355, g: 0.69411767, b: 0.72156864, a: 1}
+  androidDevice: {r: 0.64705884, g: 0.79215693, b: 0.22352943, a: 1}
+  fallbackController: {r: 1, g: 1, b: 1, a: 1}
