@@ -230,7 +230,7 @@ PrefabInstance:
     - target: {fileID: 8145840457835730771, guid: 7040c04d00ad25e4cad0ba1b7d40c3c0,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7040c04d00ad25e4cad0ba1b7d40c3c0, type: 3}
@@ -737,10 +737,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad331c3afd647a044a6343361e5401a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnMultiplePlayers: 1
+  spawnMultiplePlayers: 0
   playerPrefab: {fileID: 8145840457835730771, guid: 7040c04d00ad25e4cad0ba1b7d40c3c0,
     type: 3}
-  numberOfPlayers: 1
+  numberOfPlayers: 2
   spawnArea: {x: 4, y: 0, z: 4}
   pauseMenu: {fileID: 1854239559}
 --- !u!4 &1134540116

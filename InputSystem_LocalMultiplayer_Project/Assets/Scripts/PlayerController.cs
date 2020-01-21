@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     [Header("Input")]
     public PlayerInput playerInput;
     private string actionMapGameplay = "Player Controls";
-    private string actionMapMenu = "Menu";
+    private string actionMapMenu = "Menu Controls";
     
     private Vector3 inputDirection;
     private Vector2 movementInput;
@@ -136,9 +136,6 @@ public class PlayerController : MonoBehaviour
         if(value.isPressed)
         {
             GameManager.Instance.TogglePauseMenu(true);
-
-            //Switch this Player Input's Action Map
-            playerInput.SwitchCurrentActionMap(actionMapMenu);
         }
     }
 
@@ -147,11 +144,17 @@ public class PlayerController : MonoBehaviour
         if(value.isPressed)
         {
             GameManager.Instance.TogglePauseMenu(false);
-
-            //Switch this PlayerInput's Action Map
-            playerInput.SwitchCurrentActionMap(actionMapGameplay);
         }
     }
+    
+    public void EnableGameplayControls()
+    {
+        playerInput.SwitchCurrentActionMap(actionMapGameplay);  
+    }
 
+    public void EnablePauseMenuControls()
+    {
+        playerInput.SwitchCurrentActionMap(actionMapMenu);
+    }
 
 }

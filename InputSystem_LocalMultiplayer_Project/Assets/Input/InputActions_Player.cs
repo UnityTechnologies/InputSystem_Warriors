@@ -157,7 +157,7 @@ public class @InputActions_Player : IInputActionCollection, IDisposable
             ]
         },
         {
-            ""name"": ""Menu"",
+            ""name"": ""Menu Controls"",
             ""id"": ""0914fb5b-51f6-4b26-9ed7-a3e72d065118"",
             ""actions"": [
                 {
@@ -241,9 +241,9 @@ public class @InputActions_Player : IInputActionCollection, IDisposable
         m_PlayerControls_Movement = m_PlayerControls.FindAction("Movement", throwIfNotFound: true);
         m_PlayerControls_Attack = m_PlayerControls.FindAction("Attack", throwIfNotFound: true);
         m_PlayerControls_OpenPauseMenu = m_PlayerControls.FindAction("OpenPauseMenu", throwIfNotFound: true);
-        // Menu
-        m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
-        m_Menu_ClosePauseMenu = m_Menu.FindAction("ClosePauseMenu", throwIfNotFound: true);
+        // Menu Controls
+        m_MenuControls = asset.FindActionMap("Menu Controls", throwIfNotFound: true);
+        m_MenuControls_ClosePauseMenu = m_MenuControls.FindAction("ClosePauseMenu", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -339,29 +339,29 @@ public class @InputActions_Player : IInputActionCollection, IDisposable
     }
     public PlayerControlsActions @PlayerControls => new PlayerControlsActions(this);
 
-    // Menu
-    private readonly InputActionMap m_Menu;
-    private IMenuActions m_MenuActionsCallbackInterface;
-    private readonly InputAction m_Menu_ClosePauseMenu;
-    public struct MenuActions
+    // Menu Controls
+    private readonly InputActionMap m_MenuControls;
+    private IMenuControlsActions m_MenuControlsActionsCallbackInterface;
+    private readonly InputAction m_MenuControls_ClosePauseMenu;
+    public struct MenuControlsActions
     {
         private @InputActions_Player m_Wrapper;
-        public MenuActions(@InputActions_Player wrapper) { m_Wrapper = wrapper; }
-        public InputAction @ClosePauseMenu => m_Wrapper.m_Menu_ClosePauseMenu;
-        public InputActionMap Get() { return m_Wrapper.m_Menu; }
+        public MenuControlsActions(@InputActions_Player wrapper) { m_Wrapper = wrapper; }
+        public InputAction @ClosePauseMenu => m_Wrapper.m_MenuControls_ClosePauseMenu;
+        public InputActionMap Get() { return m_Wrapper.m_MenuControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(MenuActions set) { return set.Get(); }
-        public void SetCallbacks(IMenuActions instance)
+        public static implicit operator InputActionMap(MenuControlsActions set) { return set.Get(); }
+        public void SetCallbacks(IMenuControlsActions instance)
         {
-            if (m_Wrapper.m_MenuActionsCallbackInterface != null)
+            if (m_Wrapper.m_MenuControlsActionsCallbackInterface != null)
             {
-                @ClosePauseMenu.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnClosePauseMenu;
-                @ClosePauseMenu.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnClosePauseMenu;
-                @ClosePauseMenu.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnClosePauseMenu;
+                @ClosePauseMenu.started -= m_Wrapper.m_MenuControlsActionsCallbackInterface.OnClosePauseMenu;
+                @ClosePauseMenu.performed -= m_Wrapper.m_MenuControlsActionsCallbackInterface.OnClosePauseMenu;
+                @ClosePauseMenu.canceled -= m_Wrapper.m_MenuControlsActionsCallbackInterface.OnClosePauseMenu;
             }
-            m_Wrapper.m_MenuActionsCallbackInterface = instance;
+            m_Wrapper.m_MenuControlsActionsCallbackInterface = instance;
             if (instance != null)
             {
                 @ClosePauseMenu.started += instance.OnClosePauseMenu;
@@ -370,7 +370,7 @@ public class @InputActions_Player : IInputActionCollection, IDisposable
             }
         }
     }
-    public MenuActions @Menu => new MenuActions(this);
+    public MenuControlsActions @MenuControls => new MenuControlsActions(this);
     private int m_GamepadSchemeIndex = -1;
     public InputControlScheme GamepadScheme
     {
@@ -404,7 +404,7 @@ public class @InputActions_Player : IInputActionCollection, IDisposable
         void OnAttack(InputAction.CallbackContext context);
         void OnOpenPauseMenu(InputAction.CallbackContext context);
     }
-    public interface IMenuActions
+    public interface IMenuControlsActions
     {
         void OnClosePauseMenu(InputAction.CallbackContext context);
     }

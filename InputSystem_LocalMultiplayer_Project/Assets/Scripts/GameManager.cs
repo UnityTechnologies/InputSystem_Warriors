@@ -19,8 +19,8 @@ public class GameManager : Singleton<GameManager>
 
     void Start()
     {
-        
-        TogglePauseMenu(false);
+
+        pauseMenu.SetActive(false);
 
         if(spawnMultiplePlayers)
         {
@@ -50,8 +50,23 @@ public class GameManager : Singleton<GameManager>
 
     public void TogglePauseMenu(bool newState)
     {
-        pauseMenu.SetActive(newState);
 
+        pauseMenu.SetActive(newState);
+        
+        for(int i = 0; i < spawnedPlayerControllers.Count; i++)
+        {
+            //Pause Menu Is On -> Switch from Player Controls to Menu Controls
+            if(newState == true)
+            {
+                spawnedPlayerControllers[i].EnablePauseMenuControls();
+            }
+            //Pause Menu Is Off -> Switch from Menu Controls to Player Controls
+            else if(newState == false)
+            {
+                spawnedPlayerControllers[i].EnableGameplayControls();
+            }
+
+        }
         
     }
 
