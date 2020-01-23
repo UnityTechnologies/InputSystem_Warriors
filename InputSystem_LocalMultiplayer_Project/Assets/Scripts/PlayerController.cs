@@ -42,9 +42,14 @@ public class PlayerController : MonoBehaviour
         mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
     }
 
-    void FixedUpdate()
+    void Update()
     {
         CalculateMovementInput();
+        CalculateAttackInput();
+    }
+
+    void FixedUpdate()
+    {
         CalculateDesiredDirection();
         ConvertDirectionFromRawToSmooth();
         MoveThePlayer();
@@ -55,6 +60,12 @@ public class PlayerController : MonoBehaviour
     void CalculateMovementInput()
     {
 
+        
+        var v = Input.GetAxisRaw("Vertical");
+        var h = Input.GetAxisRaw("Horizontal");
+        inputDirection = new Vector3(h, 0, v);
+        
+
         if(inputDirection == Vector3.zero)
         {
             currentInput = false;
@@ -63,6 +74,16 @@ public class PlayerController : MonoBehaviour
         {
             currentInput = true;
         }
+    }
+
+    void CalculateAttackInput()
+    {
+        
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            playerAnimator.SetTrigger("Attack");
+        }
+        
     }
 
     void CalculateDesiredDirection()
@@ -114,7 +135,11 @@ public class PlayerController : MonoBehaviour
         playerAnimator.SetFloat("Movement", inputDirection.sqrMagnitude);
     }
 
-    //Callback from the new Input System
+
+
+
+    //Callbacks from the new Input System ----
+
     private void OnMovement(InputValue value)
     {
         Vector2 inputMovement = value.Get<Vector2>();
@@ -129,7 +154,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //Callback from the new Input System
     private void OnOpenPauseMenu(InputValue value)
     {
 
@@ -146,6 +170,12 @@ public class PlayerController : MonoBehaviour
             GameManager.Instance.TogglePauseMenu(false);
         }
     }
+
+
+
+
+
+    //Switching Action Maps ----
     
     public void EnableGameplayControls()
     {
