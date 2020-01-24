@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     public Animator playerAnimator;
 
     [Header("Input")]
+    public bool useOldInputManager = false;
     public PlayerInput playerInput;
     private string actionMapGameplay = "Player Controls";
     private string actionMapMenu = "Menu Controls";
@@ -60,12 +61,13 @@ public class PlayerController : MonoBehaviour
     void CalculateMovementInput()
     {
 
+        if(useOldInputManager)
+        {
+            var v = Input.GetAxisRaw("Vertical");
+            var h = Input.GetAxisRaw("Horizontal");
+            inputDirection = new Vector3(h, 0, v);
+        }
         
-        var v = Input.GetAxisRaw("Vertical");
-        var h = Input.GetAxisRaw("Horizontal");
-        inputDirection = new Vector3(h, 0, v);
-        
-
         if(inputDirection == Vector3.zero)
         {
             currentInput = false;
@@ -79,9 +81,12 @@ public class PlayerController : MonoBehaviour
     void CalculateAttackInput()
     {
         
-        if(Input.GetKeyDown(KeyCode.E))
+        if(useOldInputManager)
         {
-            playerAnimator.SetTrigger("Attack");
+            if(Input.GetKeyDown(KeyCode.E))
+            {
+                playerAnimator.SetTrigger("Attack");
+            }
         }
         
     }

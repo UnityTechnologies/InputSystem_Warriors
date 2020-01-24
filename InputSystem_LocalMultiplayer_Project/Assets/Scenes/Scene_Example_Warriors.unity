@@ -152,6 +152,11 @@ PrefabInstance:
       propertyPath: m_Actions
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4244790990042693115, guid: 7040c04d00ad25e4cad0ba1b7d40c3c0,
+        type: 3}
+      propertyPath: useOldInputManager
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5587485868546598810, guid: 7040c04d00ad25e4cad0ba1b7d40c3c0,
         type: 3}
       propertyPath: m_textInfo.characterCount
