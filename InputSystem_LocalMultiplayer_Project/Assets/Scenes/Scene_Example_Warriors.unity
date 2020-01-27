@@ -135,7 +135,7 @@ PrefabInstance:
     - target: {fileID: 3528249008770642978, guid: 7040c04d00ad25e4cad0ba1b7d40c3c0,
         type: 3}
       propertyPath: m_DefaultControlScheme
-      value: Gamepads
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3528249008770642978, guid: 7040c04d00ad25e4cad0ba1b7d40c3c0,
         type: 3}
@@ -151,7 +151,8 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Actions
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: -944628639613478452, guid: aa45cad44afd790488f6540bc766db91,
+        type: 3}
     - target: {fileID: 4244790990042693115, guid: 7040c04d00ad25e4cad0ba1b7d40c3c0,
         type: 3}
       propertyPath: useOldInputManager
@@ -547,7 +548,8 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 10, z: 10, w: -11}
+  m_BoundingSphereOverride: {x: 0.00000020990123, y: 2.1887701e+23, z: 1.3592422e+22,
+    w: 0.000000002622607}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0

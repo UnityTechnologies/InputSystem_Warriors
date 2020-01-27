@@ -83,7 +83,7 @@ public class PlayerController : MonoBehaviour
         
         if(useOldInputManager)
         {
-            if(Input.GetKeyDown(KeyCode.E))
+            if(Input.GetKeyDown(KeyCode.Space))
             {
                 playerAnimator.SetTrigger("Attack");
             }
