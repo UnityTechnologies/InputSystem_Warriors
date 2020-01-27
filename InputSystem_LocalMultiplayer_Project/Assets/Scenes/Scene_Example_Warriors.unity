@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -251,7 +251,7 @@ PrefabInstance:
     - target: {fileID: 8145840457835730771, guid: 7040c04d00ad25e4cad0ba1b7d40c3c0,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7040c04d00ad25e4cad0ba1b7d40c3c0, type: 3}
@@ -759,10 +759,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad331c3afd647a044a6343361e5401a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnMultiplePlayers: 0
+  spawnMultiplePlayers: 1
   playerPrefab: {fileID: 8145840457835730771, guid: 7040c04d00ad25e4cad0ba1b7d40c3c0,
     type: 3}
-  numberOfPlayers: 2
+  numberOfPlayers: 3
   spawnArea: {x: 4, y: 0, z: 4}
   pauseMenu: {fileID: 1854239559}
 --- !u!4 &1134540116
@@ -1106,14 +1106,13 @@ GameObject:
   - component: {fileID: 1854239562}
   - component: {fileID: 1854239561}
   - component: {fileID: 1854239560}
-  - component: {fileID: 1854239564}
   m_Layer: 5
   m_Name: Canvas_Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1854239560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1195,18 +1194,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1854239564
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1854239559}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10f0ba7d3030aff448369045717bc085, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1854560536
 GameObject:
   m_ObjectHideFlags: 0
