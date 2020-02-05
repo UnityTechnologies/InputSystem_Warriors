@@ -18,10 +18,10 @@ MonoBehaviour:
     deviceDisplayColor: {r: 0.7830189, g: 0.7830189, b: 0.7830189, a: 1}
   - deviceRawPath: XInputControllerWindows:/XInputControllerWindows
     deviceDisplayName: Xbox Controller
-    deviceDisplayColor: {r: 0.080098376, g: 0.698, b: 0.074377045, a: 1}
+    deviceDisplayColor: {r: 0.17647122, g: 0.8490566, b: 0.17221431, a: 1}
   - deviceRawPath: DualShock4GamepadHID:/DualShock4GamepadHID
     deviceDisplayName: Playstation Controller
-    deviceDisplayColor: {r: 0.20485054, g: 0.25336775, b: 0.938, a: 1}
+    deviceDisplayColor: {r: 0.40396938, g: 0.44278136, b: 0.9622642, a: 1}
   - deviceRawPath: SwitchProControllerHID:/SwitchProControllerHID
     deviceDisplayName: Nintendo Switch Pro Controller
-    deviceDisplayColor: {r: 1, g: 0, b: 0.080357075, a: 1}
+    deviceDisplayColor: {r: 0.9528302, g: 0.24719654, b: 0.30254018, a: 1}

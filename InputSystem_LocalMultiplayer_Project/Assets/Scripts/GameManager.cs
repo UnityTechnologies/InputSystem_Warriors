@@ -1,9 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class GameManager : Singleton<GameManager>
 {
+
+    [Header("Camera")]
+    public Camera mainCamera;
+    private UniversalAdditionalCameraData additionalCameraData;
 
     [Header("In-Scene Player Settings")]
     public GameObject inScenePlayer;
@@ -23,12 +28,18 @@ public class GameManager : Singleton<GameManager>
     void Start()
     {
         SetupMenuUI();
+        SetupAdditionalCameraData();
         SetupActivePlayers();
     }
 
     void SetupMenuUI()
     {
         MenuUIManager.Instance.ToggleMenu(false);
+    }
+
+    void SetupAdditionalCameraData()
+    {
+        mainCamera.TryGetComponent<UniversalAdditionalCameraData>(out additionalCameraData);
     }
 
     void SetupActivePlayers()
@@ -85,6 +96,11 @@ public class GameManager : Singleton<GameManager>
     {
 
         MenuUIManager.Instance.ToggleMenu(newState);
+
+        if(additionalCameraData != null)
+        {
+            additionalCameraData.SetRenderer(newState? 1 : 0);
+        }
         
         for(int i = 0; i < activePlayerControllers.Count; i++)
         {

@@ -152,7 +152,7 @@ public class PlayerController : MonoBehaviour
 
 
 
-    //Callbacks from the new Input System ----
+    //Action Callbacks from the new Input System ----
 
     private void OnMovement(InputValue value)
     {
@@ -185,6 +185,18 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //Device Callbacks from the new Input System ----
+
+    private void OnDeviceLost()
+    {
+        Debug.Log("Goodbye");
+    }
+
+    private void OnDeviceRegained()
+    {
+        Debug.Log("Hello Again");
+    }
+
 
 
 
@@ -206,15 +218,5 @@ public class PlayerController : MonoBehaviour
     {
         return playerInput;
     } 
-
-    public int GetPlayerIndex()
-    {
-        return playerInput.playerIndex;
-    }
-
-    public void GetPlayerDevice()
-    {
-        Debug.Log("" + playerInput.actions.FindAction("Attack"));
-    }
 
 }

@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de640fe3d0db1804a85f9fc8f5cadab6, type: 3}
-  m_Name: UniversalRenderPipelineAsset_Renderer
+  m_Name: UniversalRenderPipeline_Renderer_MenuBlur
   m_EditorClassIdentifier: 
   m_RendererFeatures:
-  - {fileID: 5171513015435837265}
+  - {fileID: 1219297600775061884}
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   shaders:
     blitPS: {fileID: 4800000, guid: c17132b1f77d20942aa75f8429c0f8bc, type: 3}
@@ -35,7 +35,7 @@ MonoBehaviour:
     passOperation: 0
     failOperation: 0
     zFailOperation: 0
---- !u!114 &5171513015435837265
+--- !u!114 &1219297600775061884
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -44,9 +44,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43d83498b82628041bf0499ab0ec3a45, type: 3}
-  m_Name: Scene Blur Render Pass
+  m_Script: {fileID: 11500000, guid: 25edb37215037d4479c7d82f30c1eba5, type: 3}
+  m_Name: Kawase Blur Pass
   m_EditorClassIdentifier: 
   settings:
-    m_renderPassEvent: 500
-    m_BlurAmount: {x: 3.2, y: 3.2}
+    renderPassEvent: 500
+    blurMaterial: {fileID: 2100000, guid: 6356e7fdfba4594419a42f024df505a9, type: 2}
+    blurPasses: 4
+    downsample: 2
+    copyToFramebuffer: 1
+    targetName: _blurTexture
