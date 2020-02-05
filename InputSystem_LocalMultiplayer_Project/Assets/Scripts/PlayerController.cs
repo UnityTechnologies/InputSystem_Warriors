@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
 
     [Header("Animation")]
     public Animator playerAnimator;
+    private int playerMovementID;
+    private int playerAttackID;
 
     [Header("Input")]
     public bool useOldInputManager = false;
@@ -36,11 +38,18 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         FindCamera();
+        SetupAnimationIDs();
     }
 
     void FindCamera()
     {
         mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
+    }
+
+    void SetupAnimationIDs()
+    {
+        playerMovementID = Animator.StringToHash("Movement");
+        playerAttackID = Animator.StringToHash("Attack");
     }
 
     void Update()
@@ -85,7 +94,7 @@ public class PlayerController : MonoBehaviour
         {
             if(Input.GetKeyDown(KeyCode.Space))
             {
-                playerAnimator.SetTrigger("Attack");
+                playerAnimator.SetTrigger(playerAttackID);
             }
         }
         
@@ -137,7 +146,7 @@ public class PlayerController : MonoBehaviour
 
     void AnimatePlayerMovement()
     {
-        playerAnimator.SetFloat("Movement", inputDirection.sqrMagnitude);
+        playerAnimator.SetFloat(playerMovementID, inputDirection.sqrMagnitude);
     }
 
 
@@ -190,6 +199,22 @@ public class PlayerController : MonoBehaviour
     public void EnablePauseMenuControls()
     {
         playerInput.SwitchCurrentActionMap(actionMapMenu);
+    }
+
+
+    public PlayerInput GetPlayerInput()
+    {
+        return playerInput;
+    } 
+
+    public int GetPlayerIndex()
+    {
+        return playerInput.playerIndex;
+    }
+
+    public void GetPlayerDevice()
+    {
+        Debug.Log("" + playerInput.actions.FindAction("Attack"));
     }
 
 }

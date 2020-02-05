@@ -5,6 +5,9 @@ using UnityEngine;
 public class GameManager : Singleton<GameManager>
 {
 
+    [Header("In-Scene Player Settings")]
+    public GameObject inScenePlayer;
+
     [Header("Spawn Player Settings")]
     public bool spawnMultiplePlayers = false;
     public GameObject playerPrefab;
@@ -12,32 +15,54 @@ public class GameManager : Singleton<GameManager>
     public Vector3 spawnArea;
 
     //Spawned Players
-    private List<PlayerController> spawnedPlayerControllers;
+    private List<PlayerController> activePlayerControllers;
 
     [Header("UI")]
     public GameObject pauseMenu;
 
     void Start()
     {
+        SetupMenuUI();
+        SetupActivePlayers();
+    }
 
-        pauseMenu.SetActive(false);
+    void SetupMenuUI()
+    {
+        MenuUIManager.Instance.ToggleMenu(false);
+    }
+
+    void SetupActivePlayers()
+    {
+
+        activePlayerControllers = new List<PlayerController>(numberOfPlayers);
 
         if(spawnMultiplePlayers)
         {
+
+            Destroy(inScenePlayer);
             SpawnPlayers();
+
+        }
+        else if(!spawnMultiplePlayers)
+        {
+
+            PlayerController inScenePlayerController = inScenePlayer.GetComponent<PlayerController>();
+            activePlayerControllers.Add(inScenePlayerController);
+
+            UpdateMenuUIPlayerList();
+
         }
     }
 
     void SpawnPlayers()
     {
-        spawnedPlayerControllers = new List<PlayerController>(numberOfPlayers);
 
         for(int i = 0; i < numberOfPlayers; i++)
         {
 
             GameObject spawnedPlayer = Instantiate(playerPrefab, transform.position, transform.rotation);
             
-            spawnedPlayerControllers.Insert(i, spawnedPlayer.GetComponent<PlayerController>());
+            activePlayerControllers.Insert(i, spawnedPlayer.GetComponent<PlayerController>());
 
             Vector3 randomSpawnPosition = new Vector3(Random.Range(-spawnArea.x, spawnArea.x), 0, Random.Range(-spawnArea.z, spawnArea.z));
             spawnedPlayer.transform.position = randomSpawnPosition;
@@ -46,28 +71,41 @@ public class GameManager : Singleton<GameManager>
             spawnedPlayer.transform.rotation = randomSpawnRotation;
 
         }
+
+        UpdateMenuUIPlayerList();
     }
+
+    void UpdateMenuUIPlayerList()
+    {
+        MenuUIManager.Instance.UpdateRebindPlayerPanelList();
+    }
+
 
     public void TogglePauseMenu(bool newState)
     {
 
-        pauseMenu.SetActive(newState);
+        MenuUIManager.Instance.ToggleMenu(newState);
         
-        for(int i = 0; i < spawnedPlayerControllers.Count; i++)
+        for(int i = 0; i < activePlayerControllers.Count; i++)
         {
             //Pause Menu Is On -> Switch from Player Controls to Menu Controls
             if(newState == true)
             {
-                spawnedPlayerControllers[i].EnablePauseMenuControls();
+                activePlayerControllers[i].EnablePauseMenuControls();
             }
             //Pause Menu Is Off -> Switch from Menu Controls to Player Controls
             else if(newState == false)
             {
-                spawnedPlayerControllers[i].EnableGameplayControls();
+                activePlayerControllers[i].EnableGameplayControls();
             }
 
         }
         
+    }
+
+    public List<PlayerController> GetActivePlayerControllers()
+    {
+        return activePlayerControllers;
     }
 
 }

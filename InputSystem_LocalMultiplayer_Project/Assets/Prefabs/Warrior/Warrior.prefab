@@ -29,7 +29,7 @@ Transform:
   m_Children:
   - {fileID: 6265031668641214316}
   m_Father: {fileID: 8145840457835498163}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2859122664508458294
 MonoBehaviour:
@@ -44,7 +44,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInput: {fileID: 3528249008770642978}
-  deviceColorScheme: {fileID: 11400000, guid: 5d513570725678c4eb2de4da43a17e7b, type: 2}
+  deviceDisplayConfigurator: {fileID: 11400000, guid: 1ae90af367a37dc47b0ecc2b81a75099,
+    type: 2}
   playerDisplayText: {fileID: 5587485868546598810}
 --- !u!1001 &1908672398
 PrefabInstance:
@@ -224,6 +225,11 @@ PrefabInstance:
       propertyPath: playerInput
       value: 
       objectReference: {fileID: 3528249008770642978}
+    - target: {fileID: 4386547555022103130, guid: d4bd9dc1cd45f804f84ad90735c2d05f,
+        type: 3}
+      propertyPath: movementSpeed
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7172747186723065525, guid: d4bd9dc1cd45f804f84ad90735c2d05f,
         type: 3}
       propertyPath: m_Constraints

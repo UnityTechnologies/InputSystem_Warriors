@@ -10,8 +10,8 @@ public class PlayerUIManager : MonoBehaviour
     [Header("Input")]
     public PlayerInput playerInput;
 
-    [Header("Color Schemes")]
-    public DeviceColorScheme deviceColorScheme;
+    [Header("Device Display")]
+    public DeviceDisplayConfigurator deviceDisplayConfigurator;
 
     [Header("UI")]
     public TextMeshProUGUI playerDisplayText;
@@ -23,7 +23,8 @@ public class PlayerUIManager : MonoBehaviour
     void Start()
     {
         GetPlayerInputID();
-        GetPlayerInputDevice();
+        GetPlayerDeviceDisplayName();
+        GetPlayerDeviceDisplayColor();
         SetDisplayText();
     }
 
@@ -32,52 +33,20 @@ public class PlayerUIManager : MonoBehaviour
         currentPlayerID = playerInput.playerIndex;
     }
 
-    void GetPlayerInputDevice()
+    void GetPlayerDeviceDisplayName()
     {
-        currentPlayerDevice = ConfigureDevice(playerInput.devices[0].ToString());
+        currentPlayerDevice = deviceDisplayConfigurator.GetDeviceDisplayName(playerInput.devices[0].ToString());
     }
 
-    string ConfigureDevice(string currentDevice)
+    void GetPlayerDeviceDisplayColor()
     {
-
-        switch(currentDevice)
-        {
-            case "Keyboard:/Keyboard":
-                currentDeviceColor = deviceColorScheme.keyboard;
-                return "Keyboard";
-                break;
-
-            case "XInputControllerWindows:/XInputControllerWindows":
-                currentDeviceColor = deviceColorScheme.xboxController;
-                return "Xbox Controller";
-                break;
-
-            case "DualShock4GamepadHID:/DualShock4GamepadHID":
-                currentDeviceColor = deviceColorScheme.playstationController;
-                return "PlayStation Controller";
-                break;
-
-            case "SwitchProControllerHID:/SwitchProControllerHID":
-                currentDeviceColor = deviceColorScheme.nintendoSwitchController;
-                return "Nintendo Switch Controller";
-                break;
-
-            default:
-
-                currentDeviceColor = deviceColorScheme.fallbackController;
-                return currentDevice;
-
-                break;
-
-        }
+        currentDeviceColor = deviceDisplayConfigurator.GetDeviceDisplayColor(playerInput.devices[0].ToString());
     }
 
     void SetDisplayText()
     {
-
         playerDisplayText.SetText("Player: " + (currentPlayerID + 1) + "\n" + currentPlayerDevice);
         playerDisplayText.color = currentDeviceColor;
-
     }
 
 }
