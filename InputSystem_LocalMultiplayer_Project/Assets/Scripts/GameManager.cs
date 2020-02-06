@@ -96,7 +96,7 @@ public class GameManager : Singleton<GameManager>
     {
 
         MenuUIManager.Instance.ToggleMenu(newState);
-
+    
         if(additionalCameraData != null)
         {
             additionalCameraData.SetRenderer(newState? 1 : 0);

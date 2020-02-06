@@ -25,7 +25,7 @@ public class PlayerUIManager : MonoBehaviour
         GetPlayerInputID();
         GetPlayerDeviceDisplayName();
         GetPlayerDeviceDisplayColor();
-        SetDisplayText();
+        SetDeviceDisplayText();
     }
 
     void GetPlayerInputID()
@@ -43,10 +43,28 @@ public class PlayerUIManager : MonoBehaviour
         currentDeviceColor = deviceDisplayConfigurator.GetDeviceDisplayColor(playerInput.devices[0].ToString());
     }
 
-    void SetDisplayText()
+    void SetDeviceDisplayText()
     {
         playerDisplayText.SetText("Player: " + (currentPlayerID + 1) + "\n" + currentPlayerDevice);
         playerDisplayText.color = currentDeviceColor;
+    }
+
+    void SetDisconnectedDisplayText()
+    {
+        playerDisplayText.SetText("Player: " + (currentPlayerID + 1) + "\n" + "Device Disconnected!");
+        playerDisplayText.color = new Color(1,1,1,1);
+    }
+
+    //Device Callbacks from the new Input System ----
+
+    private void OnDeviceLost()
+    {
+        SetDisconnectedDisplayText();
+    }
+
+    private void OnDeviceRegained()
+    {
+        SetDeviceDisplayText();
     }
 
 }

@@ -59,4 +59,8 @@ public class DeviceDisplayConfigurator : ScriptableObject
         
     }
     
+    public Color GetFallbackDisplayColor()
+    {
+        return fallbackDisplayColor;
+    }
 }
