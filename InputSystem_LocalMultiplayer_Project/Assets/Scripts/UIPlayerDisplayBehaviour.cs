@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
 
-public class PlayerUIManager : MonoBehaviour
+public class UIPlayerDisplayBehaviour : MonoBehaviour
 {
 
     [Header("Input")]

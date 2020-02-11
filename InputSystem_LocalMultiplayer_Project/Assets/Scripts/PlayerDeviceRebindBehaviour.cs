@@ -14,7 +14,7 @@ using TMPro;
 
 
 
-    public class CustomRebindUIBehaviour : MonoBehaviour
+    public class PlayerDeviceRebindBehaviour : MonoBehaviour
     {
 
         public InputActionReference actionReference
@@ -296,7 +296,7 @@ using TMPro;
         protected void OnEnable()
         {
             if (s_RebindActionUIs == null)
-                s_RebindActionUIs = new List<CustomRebindUIBehaviour>();
+                s_RebindActionUIs = new List<PlayerDeviceRebindBehaviour>();
             s_RebindActionUIs.Add(this);
             if (s_RebindActionUIs.Count == 1)
                 InputSystem.onActionChange += OnActionChange;
@@ -382,7 +382,7 @@ using TMPro;
 
         private InputActionRebindingExtensions.RebindingOperation m_RebindOperation;
 
-        private static List<CustomRebindUIBehaviour> s_RebindActionUIs;
+        private static List<PlayerDeviceRebindBehaviour> s_RebindActionUIs;
 
         // We want the label for the action name to update in edit mode, too, so
         // we kick that off from here.
@@ -405,12 +405,12 @@ using TMPro;
         }
 
         [Serializable]
-        public class UpdateBindingUIEvent : UnityEvent<CustomRebindUIBehaviour, string, string, string>
+        public class UpdateBindingUIEvent : UnityEvent<PlayerDeviceRebindBehaviour, string, string, string>
         {
         }
 
         [Serializable]
-        public class InteractiveRebindEvent : UnityEvent<CustomRebindUIBehaviour, InputActionRebindingExtensions.RebindingOperation>
+        public class InteractiveRebindEvent : UnityEvent<PlayerDeviceRebindBehaviour, InputActionRebindingExtensions.RebindingOperation>
         {
         }
     }

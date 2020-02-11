@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class PlayerRebindUIDeviceDisplayBehaviour : MonoBehaviour
+public class UIPlayerRebindDisplayBehaviour : MonoBehaviour
 {
 
     [Header("Device Display")]

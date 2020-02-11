@@ -2,7 +2,7 @@
 using System.Collections;
  
 [ExecuteAlways]
-public class CameraFacingBillboard : MonoBehaviour
+public class UIBillboardBehaviour : MonoBehaviour
 {
     public Camera camera;
 

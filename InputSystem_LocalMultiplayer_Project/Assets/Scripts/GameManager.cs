@@ -26,13 +26,13 @@ public class GameManager : Singleton<GameManager>
 
     void Start()
     {
-        SetupMenuUI();
+        SetupUIMenu();
         SetupActivePlayers();
     }
 
-    void SetupMenuUI()
+    void SetupUIMenu()
     {
-        MenuUIManager.Instance.ToggleMenu(false);
+        UIMenuManager.Instance.ToggleMenu(false);
     }
 
     void SetupActivePlayers()
@@ -53,7 +53,7 @@ public class GameManager : Singleton<GameManager>
             PlayerController inScenePlayerController = inScenePlayer.GetComponent<PlayerController>();
             activePlayerControllers.Add(inScenePlayerController);
 
-            UpdateMenuUIPlayerList();
+            UpdateUIMenuPlayerList();
 
         }
     }
@@ -76,12 +76,12 @@ public class GameManager : Singleton<GameManager>
 
         }
 
-        UpdateMenuUIPlayerList();
+        UpdateUIMenuPlayerList();
     }
 
-    void UpdateMenuUIPlayerList()
+    void UpdateUIMenuPlayerList()
     {
-        MenuUIManager.Instance.UpdateRebindPlayerPanelList();
+        UIMenuManager.Instance.UpdateRebindPlayerPanelList();
     }
 
 
@@ -89,7 +89,7 @@ public class GameManager : Singleton<GameManager>
     {
 
         
-        MenuUIManager.Instance.ToggleMenu(newState);
+        UIMenuManager.Instance.ToggleMenu(newState);
 
         
         for(int i = 0; i < activePlayerControllers.Count; i++)

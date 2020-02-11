@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
-public class MenuUIManager : Singleton<MenuUIManager>
+public class UIMenuManager : Singleton<UIMenuManager>
 {
     [Header("References")]
     public GameObject UIMenuCameraObject;
@@ -35,7 +35,7 @@ public class MenuUIManager : Singleton<MenuUIManager>
             int spawnedPlayerIndex = spawnedPlayerInput.playerIndex;
             string spawnedPlayerDevicePath = spawnedPlayerInput.devices[0].ToString();
 
-            spawnedPlayerRebindPanel.GetComponent<PlayerRebindUIDeviceDisplayBehaviour>().SetupPanelDisplays(spawnedPlayerIndex, spawnedPlayerDevicePath);
+            spawnedPlayerRebindPanel.GetComponent<UIPlayerRebindDisplayBehaviour>().SetupPanelDisplays(spawnedPlayerIndex, spawnedPlayerDevicePath);
 
         }
         
