@@ -35,6 +35,7 @@ MonoBehaviour:
     passOperation: 0
     failOperation: 0
     zFailOperation: 0
+  m_ShadowTransparentReceive: 1
 --- !u!114 &1219297600775061884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48,9 +49,9 @@ MonoBehaviour:
   m_Name: Kawase Blur Pass
   m_EditorClassIdentifier: 
   settings:
-    renderPassEvent: 500
+    renderPassEvent: 250
     blurMaterial: {fileID: 2100000, guid: 6356e7fdfba4594419a42f024df505a9, type: 2}
-    blurPasses: 4
-    downsample: 2
+    blurPasses: 8
+    downsample: 1
     copyToFramebuffer: 1
     targetName: _blurTexture

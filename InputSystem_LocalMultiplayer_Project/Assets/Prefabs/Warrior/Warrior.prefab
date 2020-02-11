@@ -58,10 +58,20 @@ PrefabInstance:
       propertyPath: camera
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1917260981829865166, guid: 63726dc7d2cb37d4a8b414560f2fcf1f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 5548200517043333964, guid: 63726dc7d2cb37d4a8b414560f2fcf1f,
         type: 3}
       propertyPath: m_Name
       value: Canvas_PlayerDisplay
+      objectReference: {fileID: 0}
+    - target: {fileID: 5548200517043333964, guid: 63726dc7d2cb37d4a8b414560f2fcf1f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5587485869381001236, guid: 63726dc7d2cb37d4a8b414560f2fcf1f,
         type: 3}

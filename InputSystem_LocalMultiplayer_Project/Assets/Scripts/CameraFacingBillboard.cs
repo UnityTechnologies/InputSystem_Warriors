@@ -8,7 +8,7 @@ public class CameraFacingBillboard : MonoBehaviour
 
     void OnEnable()
     {
-        camera = GameObject.Find("Main Camera").GetComponent<Camera>();
+        camera = GameManager.Instance.mainCamera;
     }
 
     void OnDisable()

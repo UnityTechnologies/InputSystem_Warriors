@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
 
     void FindCamera()
     {
-        mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
+        mainCamera = GameManager.Instance.mainCamera;
     }
 
     void SetupAnimationIDs()
@@ -65,7 +65,6 @@ public class PlayerController : MonoBehaviour
         MoveThePlayer();
         AnimatePlayerMovement();
         TurnThePlayer();
-        
     }
 
     void CalculateMovementInput()
@@ -184,45 +183,6 @@ public class PlayerController : MonoBehaviour
         {
             GameManager.Instance.TogglePauseMenu(false);
         }
-    }
-
-    private Vector3 swipeStartPosition;
-    private Vector3 swipeEndPosition;
-    private Vector3 swipeCurrentPosition;
-    private Vector3 directionOfSwipe;
-    private bool swipeActive = false;
-    
-    private void OnSwipePosition(InputValue value)
-    {
-        swipeCurrentPosition = value.Get<Vector2>();
-        
-    }
-
-    private void OnSwipeEvent(InputValue value)
-    {
-        if(value.isPressed)
-        {
-            swipeActive = true;
-            swipeStartPosition = new Vector3(swipeCurrentPosition.x, 0, swipeCurrentPosition.y);
-            Debug.Log("Start");
-        } else {
-            swipeActive = false;
-            swipeEndPosition = new Vector3(swipeCurrentPosition.x, 0, swipeCurrentPosition.y);
-            CalculateSwipeLogic();
-        }
-    }
-
-    void CalculateSwipeLogic()
-    {
-        //Debug.Log("Swipe --- Start: " + swipeStartPosition + " End: " + swipeEndPosition);
-        
-
-        //Destination - Origin --> Normalized
-        Debug.Log("Swipe --- Direction: " + (swipeStartPosition-swipeEndPosition).normalized);
-
-        //directionOfSwipe = -(swipeStartPosition-swipeEndPosition).normalized;
-
-        //Debug.Log("Swipe --- Distance: " + (Vector2.Distance(swipeStartPosition, swipeEndPosition)));
     }
     
 
