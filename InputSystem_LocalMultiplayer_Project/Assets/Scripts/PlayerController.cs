@@ -65,6 +65,7 @@ public class PlayerController : MonoBehaviour
         MoveThePlayer();
         AnimatePlayerMovement();
         TurnThePlayer();
+        
     }
 
     void CalculateMovementInput()
@@ -185,17 +186,45 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //Device Callbacks from the new Input System ----
-
-    private void OnDeviceLost()
+    private Vector3 swipeStartPosition;
+    private Vector3 swipeEndPosition;
+    private Vector3 swipeCurrentPosition;
+    private Vector3 directionOfSwipe;
+    private bool swipeActive = false;
+    
+    private void OnSwipePosition(InputValue value)
     {
-        Debug.Log("Goodbye");
+        swipeCurrentPosition = value.Get<Vector2>();
+        
     }
 
-    private void OnDeviceRegained()
+    private void OnSwipeEvent(InputValue value)
     {
-        Debug.Log("Hello Again");
+        if(value.isPressed)
+        {
+            swipeActive = true;
+            swipeStartPosition = new Vector3(swipeCurrentPosition.x, 0, swipeCurrentPosition.y);
+            Debug.Log("Start");
+        } else {
+            swipeActive = false;
+            swipeEndPosition = new Vector3(swipeCurrentPosition.x, 0, swipeCurrentPosition.y);
+            CalculateSwipeLogic();
+        }
     }
+
+    void CalculateSwipeLogic()
+    {
+        //Debug.Log("Swipe --- Start: " + swipeStartPosition + " End: " + swipeEndPosition);
+        
+
+        //Destination - Origin --> Normalized
+        Debug.Log("Swipe --- Direction: " + (swipeStartPosition-swipeEndPosition).normalized);
+
+        //directionOfSwipe = -(swipeStartPosition-swipeEndPosition).normalized;
+
+        //Debug.Log("Swipe --- Distance: " + (Vector2.Distance(swipeStartPosition, swipeEndPosition)));
+    }
+    
 
 
 

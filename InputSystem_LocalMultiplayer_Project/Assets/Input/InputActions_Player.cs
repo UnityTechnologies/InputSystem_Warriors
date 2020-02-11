@@ -41,6 +41,22 @@ public class @InputActions_Player : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""SwipePosition"",
+                    ""type"": ""Value"",
+                    ""id"": ""840b80c7-bc6a-4e66-95cd-c42297731b3d"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""SwipeEvent"",
+                    ""type"": ""Value"",
+                    ""id"": ""f69a88db-b2f5-44ea-a16c-0fba04697410"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=2)""
                 }
             ],
             ""bindings"": [
@@ -153,6 +169,28 @@ public class @InputActions_Player : IInputActionCollection, IDisposable
                     ""action"": ""Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""67874717-4feb-488c-9042-8fbd28e61a67"",
+                    ""path"": ""<Pointer>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse;Touchscreen"",
+                    ""action"": ""SwipePosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4fa2fc10-e314-475c-b919-42646b691646"",
+                    ""path"": ""<Pointer>/press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse;Touchscreen"",
+                    ""action"": ""SwipeEvent"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -241,6 +279,8 @@ public class @InputActions_Player : IInputActionCollection, IDisposable
         m_PlayerControls_Movement = m_PlayerControls.FindAction("Movement", throwIfNotFound: true);
         m_PlayerControls_Attack = m_PlayerControls.FindAction("Attack", throwIfNotFound: true);
         m_PlayerControls_OpenPauseMenu = m_PlayerControls.FindAction("OpenPauseMenu", throwIfNotFound: true);
+        m_PlayerControls_SwipePosition = m_PlayerControls.FindAction("SwipePosition", throwIfNotFound: true);
+        m_PlayerControls_SwipeEvent = m_PlayerControls.FindAction("SwipeEvent", throwIfNotFound: true);
         // Menu Controls
         m_MenuControls = asset.FindActionMap("Menu Controls", throwIfNotFound: true);
         m_MenuControls_ClosePauseMenu = m_MenuControls.FindAction("ClosePauseMenu", throwIfNotFound: true);
@@ -296,6 +336,8 @@ public class @InputActions_Player : IInputActionCollection, IDisposable
     private readonly InputAction m_PlayerControls_Movement;
     private readonly InputAction m_PlayerControls_Attack;
     private readonly InputAction m_PlayerControls_OpenPauseMenu;
+    private readonly InputAction m_PlayerControls_SwipePosition;
+    private readonly InputAction m_PlayerControls_SwipeEvent;
     public struct PlayerControlsActions
     {
         private @InputActions_Player m_Wrapper;
@@ -303,6 +345,8 @@ public class @InputActions_Player : IInputActionCollection, IDisposable
         public InputAction @Movement => m_Wrapper.m_PlayerControls_Movement;
         public InputAction @Attack => m_Wrapper.m_PlayerControls_Attack;
         public InputAction @OpenPauseMenu => m_Wrapper.m_PlayerControls_OpenPauseMenu;
+        public InputAction @SwipePosition => m_Wrapper.m_PlayerControls_SwipePosition;
+        public InputAction @SwipeEvent => m_Wrapper.m_PlayerControls_SwipeEvent;
         public InputActionMap Get() { return m_Wrapper.m_PlayerControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -321,6 +365,12 @@ public class @InputActions_Player : IInputActionCollection, IDisposable
                 @OpenPauseMenu.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnOpenPauseMenu;
                 @OpenPauseMenu.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnOpenPauseMenu;
                 @OpenPauseMenu.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnOpenPauseMenu;
+                @SwipePosition.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSwipePosition;
+                @SwipePosition.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSwipePosition;
+                @SwipePosition.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSwipePosition;
+                @SwipeEvent.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSwipeEvent;
+                @SwipeEvent.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSwipeEvent;
+                @SwipeEvent.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSwipeEvent;
             }
             m_Wrapper.m_PlayerControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -334,6 +384,12 @@ public class @InputActions_Player : IInputActionCollection, IDisposable
                 @OpenPauseMenu.started += instance.OnOpenPauseMenu;
                 @OpenPauseMenu.performed += instance.OnOpenPauseMenu;
                 @OpenPauseMenu.canceled += instance.OnOpenPauseMenu;
+                @SwipePosition.started += instance.OnSwipePosition;
+                @SwipePosition.performed += instance.OnSwipePosition;
+                @SwipePosition.canceled += instance.OnSwipePosition;
+                @SwipeEvent.started += instance.OnSwipeEvent;
+                @SwipeEvent.performed += instance.OnSwipeEvent;
+                @SwipeEvent.canceled += instance.OnSwipeEvent;
             }
         }
     }
@@ -403,6 +459,8 @@ public class @InputActions_Player : IInputActionCollection, IDisposable
         void OnMovement(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnOpenPauseMenu(InputAction.CallbackContext context);
+        void OnSwipePosition(InputAction.CallbackContext context);
+        void OnSwipeEvent(InputAction.CallbackContext context);
     }
     public interface IMenuControlsActions
     {

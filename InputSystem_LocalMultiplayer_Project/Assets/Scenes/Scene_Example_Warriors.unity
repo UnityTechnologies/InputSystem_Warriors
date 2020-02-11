@@ -135,7 +135,7 @@ PrefabInstance:
     - target: {fileID: 3528249008770642978, guid: 7040c04d00ad25e4cad0ba1b7d40c3c0,
         type: 3}
       propertyPath: m_DefaultControlScheme
-      value: Gamepad
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3528249008770642978, guid: 7040c04d00ad25e4cad0ba1b7d40c3c0,
         type: 3}
@@ -895,7 +895,7 @@ MonoBehaviour:
   spawnMultiplePlayers: 1
   playerPrefab: {fileID: 8145840457835730771, guid: 7040c04d00ad25e4cad0ba1b7d40c3c0,
     type: 3}
-  numberOfPlayers: 3
+  numberOfPlayers: 1
   spawnArea: {x: 4, y: 0, z: 4}
   pauseMenu: {fileID: 1854239559}
 --- !u!4 &1134540116
@@ -1541,7 +1541,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1912423614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1791,6 +1791,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 782418257}
     m_Modifications:
+    - target: {fileID: 189306772, guid: 1ff0ff9fe1f589244aee9d67ce1c6e58, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1864481344318969274, guid: 1ff0ff9fe1f589244aee9d67ce1c6e58,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1895,6 +1899,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2481451024144240066, guid: 1ff0ff9fe1f589244aee9d67ce1c6e58,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4047100248330977748, guid: 1ff0ff9fe1f589244aee9d67ce1c6e58,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4771699827640259325, guid: 1ff0ff9fe1f589244aee9d67ce1c6e58,
         type: 3}

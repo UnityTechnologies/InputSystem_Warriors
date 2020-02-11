@@ -28,6 +28,22 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Press"
+                },
+                {
+                    "name": "SwipePosition",
+                    "type": "Value",
+                    "id": "840b80c7-bc6a-4e66-95cd-c42297731b3d",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "SwipeEvent",
+                    "type": "Value",
+                    "id": "f69a88db-b2f5-44ea-a16c-0fba04697410",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press(behavior=2)"
                 }
             ],
             "bindings": [
@@ -138,6 +154,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "67874717-4feb-488c-9042-8fbd28e61a67",
+                    "path": "<Pointer>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse;Touchscreen",
+                    "action": "SwipePosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4fa2fc10-e314-475c-b919-42646b691646",
+                    "path": "<Pointer>/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse;Touchscreen",
+                    "action": "SwipeEvent",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
