@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class UIPlayerRebindDisplayBehaviour : MonoBehaviour
 {
@@ -12,13 +13,14 @@ public class UIPlayerRebindDisplayBehaviour : MonoBehaviour
     [Header("Display References")]
     public TextMeshProUGUI playerIDDisplay;
     public TextMeshProUGUI playerDeviceDisplay;
+    public Image playerDeviceDisplayIcon;
 
     public void SetupPanelDisplays(int playerID, string playerDevicePath)
     {
-        playerIDDisplay.SetText("Player " + (playerID + 1));
+        playerIDDisplay.SetText((playerID + 1).ToString());
 
         playerDeviceDisplay.SetText(deviceDisplayConfigurator.GetDeviceDisplayName(playerDevicePath));
-        playerDeviceDisplay.color = deviceDisplayConfigurator.GetDeviceDisplayColor(playerDevicePath);
+        playerDeviceDisplayIcon.color = deviceDisplayConfigurator.GetDeviceDisplayColor(playerDevicePath);
 
     }
 }
