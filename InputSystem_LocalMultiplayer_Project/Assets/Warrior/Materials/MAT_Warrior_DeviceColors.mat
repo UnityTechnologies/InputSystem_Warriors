@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: MAT_Warrior_DeviceColors
+  m_Shader: {fileID: -6465566751694194690, guid: ccc5c4d18d6b03f44968e6f5c8908320,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_401CB464:
+        m_Texture: {fileID: 2800000, guid: 0a7d84e58b845bf4b952019b7fa03f88, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_4AC11AD4:
+        m_Texture: {fileID: 2800000, guid: 2b6a69fd13305b34b83b9f32d76b26b9, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_581D086C:
+        m_Texture: {fileID: 2800000, guid: 566f33cd31108a94d922aaf4849073c1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_DF5D95C5:
+        m_Texture: {fileID: 2800000, guid: 67a2fcb5836f03849a84ff6974b6cb0f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_4D974E3E: 3.51
+    - Vector1_98DEE937: 1
+    - Vector1_9F3F032: 0.2
+    - Vector1_D6624383: 1
+    m_Colors:
+    - Color_2EC3A9D4: {r: 1, g: 0.34757447, b: 0, a: 1}
+    - Color_326CE7D1: {r: 0.8207547, g: 0.509624, b: 0.019357419, a: 1}
+    - Color_41AB6E49: {r: 0.3873129, g: 1, b: 0, a: 1}
+    - _ArmorTint: {r: 1, g: 0, b: 0, a: 1}
+    - _Tint_Armor: {r: 1, g: 0.39664525, b: 0, a: 1}
+    - _Tint_Beard: {r: 1, g: 0.92189616, b: 0.051886797, a: 1}
+    - _Tint_Fur: {r: 0.4716981, g: 0.17758048, b: 0, a: 1}

@@ -40,13 +40,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 8145840457835730771}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9be81a2f1b1e9143aaabe35ebda5270, type: 3}
+  m_Script: {fileID: 11500000, guid: 22f60998fed7e6347be0522621b18b5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerInput: {fileID: 3528249008770642978}
   deviceDisplayConfigurator: {fileID: 11400000, guid: 1ae90af367a37dc47b0ecc2b81a75099,
     type: 2}
   playerDisplayText: {fileID: 5587485868546598810}
+  playerSkinnedMeshRenderer: {fileID: 8145840457840942059}
 --- !u!1001 &1908672398
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -76,13 +77,25 @@ PrefabInstance:
     - target: {fileID: 5587485869381001236, guid: 63726dc7d2cb37d4a8b414560f2fcf1f,
         type: 3}
       propertyPath: m_fontColor.a
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5587485869381001236, guid: 63726dc7d2cb37d4a8b414560f2fcf1f,
         type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 16777215
+      value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 5587485869381001236, guid: 63726dc7d2cb37d4a8b414560f2fcf1f,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 77a54eba8bd72b04babb01fc6f9d031b,
+        type: 2}
+    - target: {fileID: 5587485869381001236, guid: 63726dc7d2cb37d4a8b414560f2fcf1f,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 6952953652584977494, guid: 77a54eba8bd72b04babb01fc6f9d031b,
+        type: 2}
     - target: {fileID: 6265031667269413090, guid: 63726dc7d2cb37d4a8b414560f2fcf1f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -314,7 +327,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 75803c1c5a43b06428b2975fe0d7fc48, type: 2}
+      objectReference: {fileID: 2100000, guid: 731650be44c05f8459778c3726da7e7f, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4bd9dc1cd45f804f84ad90735c2d05f, type: 3}
 --- !u!1 &8145840457835730771 stripped
@@ -341,3 +354,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!137 &8145840457840942059 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8575827394540848202, guid: d4bd9dc1cd45f804f84ad90735c2d05f,
+    type: 3}
+  m_PrefabInstance: {fileID: 434776759527186337}
+  m_PrefabAsset: {fileID: 0}
