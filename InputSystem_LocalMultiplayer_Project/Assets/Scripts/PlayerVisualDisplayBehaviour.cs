@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using UnityEngine.UI;
 
 public class PlayerVisualDisplayBehaviour : MonoBehaviour
 {
@@ -14,7 +15,10 @@ public class PlayerVisualDisplayBehaviour : MonoBehaviour
     public DeviceDisplayConfigurator deviceDisplayConfigurator;
 
     [Header("UI")]
-    public TextMeshProUGUI playerDisplayText;
+    public GameObject playerDisplay;
+    public TextMeshProUGUI playerIDDisplayText;
+    public TextMeshProUGUI playerDeviceDisplayText;
+    public Image playerDeviceDisplayIcon;
 
     [Header("Material")]
     public SkinnedMeshRenderer playerSkinnedMeshRenderer;
@@ -25,7 +29,7 @@ public class PlayerVisualDisplayBehaviour : MonoBehaviour
     private Color currentDeviceColor;
     
     //Shader IDs
-    private string armorTintString = "_ArmorTint";
+    private string armorTintString = "_Tint_Armor";
     private int armorTintShaderID;
 
     void Start()
@@ -47,7 +51,7 @@ public class PlayerVisualDisplayBehaviour : MonoBehaviour
 
     void SetupShaderIDs()
     {
-        armorTintShaderID = Shader.PropertyToID("_Tint_Armor");
+        armorTintShaderID = Shader.PropertyToID(armorTintString);
     }
 
     void GetPlayerInputID()
@@ -76,12 +80,14 @@ public class PlayerVisualDisplayBehaviour : MonoBehaviour
 
     void SetPlayerDisplayText()
     {
-        playerDisplayText.SetText("Player: " + (currentPlayerID + 1) + "\n" + currentPlayerDevice);
+        playerIDDisplayText.SetText((currentPlayerID + 1).ToString());
+        playerDeviceDisplayText.SetText(currentPlayerDevice);
     }
 
     void SetPlayerDisplayColor()
     {
         playerSkinnedMeshRenderer.material.SetColor(armorTintShaderID, currentDeviceColor);
+        playerDeviceDisplayIcon.color = currentDeviceColor;
     }
 
     //Device Callbacks from the new Input System ----
@@ -103,19 +109,21 @@ public class PlayerVisualDisplayBehaviour : MonoBehaviour
 
     void SetDisconnectedPlayerText()
     {
-        playerDisplayText.SetText("Player: " + (currentPlayerID + 1) + "\n" + "Device Disconnected!");
+        playerIDDisplayText.SetText("X");
+        playerDeviceDisplayText.SetText("Controller Disconnected!");
     }
 
     void SetDisconnectedPlayerColor()
     {
         playerSkinnedMeshRenderer.material.SetColor(armorTintShaderID, new Color(1, 1, 1));
+        playerDeviceDisplayIcon.color = new Color(0,0,0);
     }
 
     //Utilities
 
     void HidePlayerVisualDisplay()
     {
-        playerDisplayText.enabled = false;
+        playerDisplay.SetActive(false);
     }
 
 }

@@ -17,11 +17,11 @@ MonoBehaviour:
     deviceDisplayName: Keyboard
     deviceDisplayColor: {r: 1, g: 0.57594675, b: 0, a: 1}
   - deviceRawPath: XInputControllerWindows:/XInputControllerWindows
-    deviceDisplayName: Xbox Controller
+    deviceDisplayName: Xbox
     deviceDisplayColor: {r: 0.5118305, g: 0.9056604, b: 0.31185475, a: 1}
   - deviceRawPath: DualShock4GamepadHID:/DualShock4GamepadHID
-    deviceDisplayName: Playstation Controller
+    deviceDisplayName: Playstation
     deviceDisplayColor: {r: 0, g: 0.44719267, b: 1, a: 1}
   - deviceRawPath: SwitchProControllerHID:/SwitchProControllerHID
-    deviceDisplayName: Nintendo Switch Pro Controller
+    deviceDisplayName: Nintendo Switch
     deviceDisplayColor: {r: 1, g: 0.12588629, b: 0, a: 1}

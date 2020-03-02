@@ -132,25 +132,45 @@ PrefabInstance:
       propertyPath: camera
       value: 
       objectReference: {fileID: 963194227}
-    - target: {fileID: 1917260979929581888, guid: 7040c04d00ad25e4cad0ba1b7d40c3c0,
+    - target: {fileID: 7256949956698076820, guid: 7040c04d00ad25e4cad0ba1b7d40c3c0,
         type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3528249008770642978, guid: 7040c04d00ad25e4cad0ba1b7d40c3c0,
-        type: 3}
-      propertyPath: m_DefaultControlScheme
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3528249008770642978, guid: 7040c04d00ad25e4cad0ba1b7d40c3c0,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4244790990042693115, guid: 7040c04d00ad25e4cad0ba1b7d40c3c0,
-        type: 3}
-      propertyPath: useOldInputManager
+      propertyPath: m_text
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7256949956698076820, guid: 7040c04d00ad25e4cad0ba1b7d40c3c0,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7256949956698076820, guid: 7040c04d00ad25e4cad0ba1b7d40c3c0,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7256949956698076820, guid: 7040c04d00ad25e4cad0ba1b7d40c3c0,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7256949956698076820, guid: 7040c04d00ad25e4cad0ba1b7d40c3c0,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7983236508970974568, guid: 7040c04d00ad25e4cad0ba1b7d40c3c0,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.35686275
+      objectReference: {fileID: 0}
+    - target: {fileID: 7983236508970974568, guid: 7040c04d00ad25e4cad0ba1b7d40c3c0,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.35686275
+      objectReference: {fileID: 0}
+    - target: {fileID: 7983236508970974568, guid: 7040c04d00ad25e4cad0ba1b7d40c3c0,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.35686275
       objectReference: {fileID: 0}
     - target: {fileID: 8145840457835498163, guid: 7040c04d00ad25e4cad0ba1b7d40c3c0,
         type: 3}
@@ -1005,10 +1025,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 963194227}
   inScenePlayer: {fileID: 2028948613}
-  spawnMultiplePlayers: 0
+  spawnMultiplePlayers: 1
   playerPrefab: {fileID: 8145840457835730771, guid: 7040c04d00ad25e4cad0ba1b7d40c3c0,
     type: 3}
-  numberOfPlayers: 1
+  numberOfPlayers: 5
   spawnArea: {x: 4, y: 0, z: 4}
   pauseMenu: {fileID: 1854239559}
 --- !u!4 &1134540116
