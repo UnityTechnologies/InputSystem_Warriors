@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -219,17 +219,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 122292729}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: -0, z: 0.9999132, w: -0.013176837}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.16199, y: 0.16199, z: 0.16199}
   m_Children: []
   m_Father: {fileID: 1854560537}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 181.51}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0.000005722, y: 0.0000038147}
-  m_SizeDelta: {x: 68, y: 74}
+  m_SizeDelta: {x: 512, y: 512}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &122292731
 MonoBehaviour:
@@ -249,7 +249,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 045a2230b6d9fe848aa4ba9e833b48c7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b2ef08c2c31a9e441a0e49e70b8e502f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -444,7 +444,7 @@ RectTransform:
   m_GameObject: {fileID: 506061763}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.76935, y: 0.76935, z: 0.76935}
   m_Children: []
   m_Father: {fileID: 1874093066}
   m_RootOrder: 0
@@ -985,7 +985,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 963194227}
   inScenePlayer: {fileID: 2028948613}
-  spawnMultiplePlayers: 0
+  spawnMultiplePlayers: 1
   playerPrefab: {fileID: 8145840457835730771, guid: 7040c04d00ad25e4cad0ba1b7d40c3c0,
     type: 3}
   numberOfPlayers: 1

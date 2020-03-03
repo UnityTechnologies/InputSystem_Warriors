@@ -27,4 +27,4 @@ MonoBehaviour:
     deviceDisplayColor: {r: 1, g: 0.12588629, b: 0, a: 1}
   - deviceRawPath: Gamepad:/Gamepad
     deviceDisplayName: Gamepad
-    deviceDisplayColor: {r: 0.41509432, g: 0.41509432, b: 0.41509432, a: 1}
+    deviceDisplayColor: {r: 0.51540035, g: 0, b: 1, a: 1}
