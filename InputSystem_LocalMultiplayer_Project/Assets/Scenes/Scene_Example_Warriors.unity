@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -360,7 +360,7 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 246201654}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
@@ -1581,7 +1581,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfad211f8c6ebe348bfc0d302db7da52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UIMenuCameraObject: {fileID: 246201654}
+  UICamera: {fileID: 246201657}
   inScenePlayerRebindPanel: {fileID: 1063851080}
   playerRebindPanelPrefab: {fileID: 4771699827640259325, guid: 1ff0ff9fe1f589244aee9d67ce1c6e58,
     type: 3}

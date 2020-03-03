@@ -8,7 +8,7 @@ using UnityEngine.InputSystem.Utilities;
 public class UIMenuManager : Singleton<UIMenuManager>
 {
     [Header("References")]
-    public GameObject UIMenuCameraObject;
+    public Camera UICamera;
 
     [Header("In-Scene Player Panel")]
     public GameObject inScenePlayerRebindPanel;
@@ -44,6 +44,6 @@ public class UIMenuManager : Singleton<UIMenuManager>
 
     public void ToggleMenu(bool newState)
     {
-        UIMenuCameraObject.SetActive(newState);
+        UICamera.enabled = newState;
     }
 }
