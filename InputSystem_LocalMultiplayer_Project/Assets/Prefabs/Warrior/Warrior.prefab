@@ -172,6 +172,26 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 7256949955326275866, guid: 63726dc7d2cb37d4a8b414560f2fcf1f,
+        type: 3}
+      propertyPath: m_text
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7983236508161211110, guid: 63726dc7d2cb37d4a8b414560f2fcf1f,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.35686275
+      objectReference: {fileID: 0}
+    - target: {fileID: 7983236508161211110, guid: 63726dc7d2cb37d4a8b414560f2fcf1f,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.35686275
+      objectReference: {fileID: 0}
+    - target: {fileID: 7983236508161211110, guid: 63726dc7d2cb37d4a8b414560f2fcf1f,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.35686275
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63726dc7d2cb37d4a8b414560f2fcf1f, type: 3}
 --- !u!1 &5548200518918450370 stripped
@@ -242,7 +262,7 @@ PrefabInstance:
     - target: {fileID: 3962737691817372547, guid: d4bd9dc1cd45f804f84ad90735c2d05f,
         type: 3}
       propertyPath: m_DefaultControlScheme
-      value: 
+      value: Gamepad
       objectReference: {fileID: 0}
     - target: {fileID: 4386547555022103130, guid: d4bd9dc1cd45f804f84ad90735c2d05f,
         type: 3}

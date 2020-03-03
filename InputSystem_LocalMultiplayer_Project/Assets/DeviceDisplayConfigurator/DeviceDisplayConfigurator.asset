@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fa6f1fbaea804c34cab896669f1e362b, type: 3}
-  m_Name: Device Display Configurator
+  m_Name: DeviceDisplayConfigurator
   m_EditorClassIdentifier: 
   deviceSettings:
   - deviceRawPath: Keyboard:/Keyboard
@@ -25,3 +25,6 @@ MonoBehaviour:
   - deviceRawPath: SwitchProControllerHID:/SwitchProControllerHID
     deviceDisplayName: Nintendo Switch
     deviceDisplayColor: {r: 1, g: 0.12588629, b: 0, a: 1}
+  - deviceRawPath: Gamepad:/Gamepad
+    deviceDisplayName: Gamepad
+    deviceDisplayColor: {r: 0.41509432, g: 0.41509432, b: 0.41509432, a: 1}

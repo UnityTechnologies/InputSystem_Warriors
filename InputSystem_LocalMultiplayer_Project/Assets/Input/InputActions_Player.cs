@@ -217,17 +217,6 @@ public class @InputActions_Player : IInputActionCollection, IDisposable
                     ""isOR"": false
                 }
             ]
-        },
-        {
-            ""name"": ""Touchscreen"",
-            ""bindingGroup"": ""Touchscreen"",
-            ""devices"": [
-                {
-                    ""devicePath"": ""<Touchscreen>"",
-                    ""isOptional"": false,
-                    ""isOR"": false
-                }
-            ]
         }
     ]
 }");
@@ -382,15 +371,6 @@ public class @InputActions_Player : IInputActionCollection, IDisposable
         {
             if (m_KeyboardSchemeIndex == -1) m_KeyboardSchemeIndex = asset.FindControlSchemeIndex("Keyboard");
             return asset.controlSchemes[m_KeyboardSchemeIndex];
-        }
-    }
-    private int m_TouchscreenSchemeIndex = -1;
-    public InputControlScheme TouchscreenScheme
-    {
-        get
-        {
-            if (m_TouchscreenSchemeIndex == -1) m_TouchscreenSchemeIndex = asset.FindControlSchemeIndex("Touchscreen");
-            return asset.controlSchemes[m_TouchscreenSchemeIndex];
         }
     }
     public interface IPlayerControlsActions
