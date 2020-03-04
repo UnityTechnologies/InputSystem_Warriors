@@ -168,6 +168,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
+
+
+
+
+    
+
     private void OnOpenPauseMenu(InputValue value)
     {
 

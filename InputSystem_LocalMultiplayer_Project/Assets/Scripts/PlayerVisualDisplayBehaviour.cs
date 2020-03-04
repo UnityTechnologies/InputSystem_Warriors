@@ -38,13 +38,13 @@ public class PlayerVisualDisplayBehaviour : MonoBehaviour
 
         if(playerInput.enabled)
         {
-
+            TogglePlayerVisualDisplay(true);
             SetPlayerVisualDisplay();
 
         } else if(!playerInput.enabled)
         {
 
-            HidePlayerVisualDisplay();
+            TogglePlayerVisualDisplay(false);
             
         }
     }
@@ -61,6 +61,7 @@ public class PlayerVisualDisplayBehaviour : MonoBehaviour
 
     void SetPlayerVisualDisplay()
     {
+
         GetPlayerInputID();
         GetPlayerDeviceDisplayName();
         GetPlayerDeviceDisplayColor();
@@ -121,9 +122,9 @@ public class PlayerVisualDisplayBehaviour : MonoBehaviour
 
     //Utilities
 
-    void HidePlayerVisualDisplay()
+    void TogglePlayerVisualDisplay(bool newState)
     {
-        playerDisplay.SetActive(false);
+        playerDisplay.SetActive(newState);
     }
 
 }
