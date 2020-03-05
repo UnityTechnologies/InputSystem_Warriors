@@ -595,8 +595,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0.00000020990123, y: 2.1887701e+23, z: 1.3592422e+22,
-    w: 0.000000002622607}
+  m_BoundingSphereOverride: {x: 7.74e-43, y: -0.0010197749, z: 7.72e-43, w: 2.2987735e+9}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -1972,7 +1971,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 0
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -2034,6 +2033,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 782418257}
     m_Modifications:
+    - target: {fileID: 1063851081, guid: 1ff0ff9fe1f589244aee9d67ce1c6e58, type: 3}
+      propertyPath: m_BindingId
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1864481344318969274, guid: 1ff0ff9fe1f589244aee9d67ce1c6e58,
         type: 3}
       propertyPath: m_LocalPosition.x

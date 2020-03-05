@@ -127,4 +127,9 @@ public class PlayerVisualDisplayBehaviour : MonoBehaviour
         playerDisplay.SetActive(newState);
     }
 
+
+    void OnControlsChanged()
+    {
+        SetPlayerVisualDisplay();
+    }
 }

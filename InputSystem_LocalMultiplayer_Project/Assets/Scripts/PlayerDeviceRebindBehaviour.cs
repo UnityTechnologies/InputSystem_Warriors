@@ -42,6 +42,28 @@ using TMPro;
             }
         }
 
+        /// <summary>
+        /// Index of of the <see cref="PlayerInput"/> (see <see cref="PlayerInput.playerIndex"/>) on which to rebind
+        /// the action referenced by <see cref="actionReference"/>.
+        /// </summary>
+        /// <remarks>
+        /// This is -1 by default which deactivated the feature. If this is set to a number >= 0, the <see cref="PlayerInput"/>
+        /// with a matching <see cref="PlayerInput.playerIndex"/> will be looked up and the ID of the action referenced by
+        /// <see cref="actionReference"/> will be looked up in the <see cref="PlayerInput.actions"/> of the player. This
+        /// allows targeting rebinds to a specific player.
+        /// </remarks>
+        /// <seealso cref="PlayerInput.playerIndex"/>
+        /// <seealso cref="PlayerInput.all"/>
+        public int playerIndex
+        {
+            get => m_PlayerIndex;
+            set
+            {
+                m_PlayerIndex = value;
+                UpdateBindingDisplay();
+            }
+        }
+        
         public InputBinding.DisplayStringOptions displayStringOptions
         {
             get => m_DisplayStringOptions;
@@ -146,9 +168,9 @@ using TMPro;
         /// Return the action and binding index for the binding that is targeted by the component
         /// according to
         /// </summary>
-        /// <param name="action"></param>
-        /// <param name="bindingIndex"></param>
-        /// <returns></returns>
+        /// <param name="action">Receives the action that is to be rebound.</param>
+        /// <param name="bindingIndex">Receives the index of the binding to rebind.</param>
+        /// <returns>True if a valid action and binding index has been selected.</returns>
         public bool ResolveActionAndBinding(out InputAction action, out int bindingIndex)
         {
             bindingIndex = -1;
@@ -157,8 +179,38 @@ using TMPro;
             if (action == null)
                 return false;
 
+            if (m_PlayerIndex >= 0)
+            {
+                var player = PlayerInput.GetPlayerByIndex(m_PlayerIndex);
+                if (player == null || player.actions == null)
+                    return false; // Fail the lookup if the specified player does not exist or it has no actions.
+
+                action = player.actions.FindAction(action.id);
+                if (action == null)
+                    return false;
+            }
+
             if (string.IsNullOrEmpty(m_BindingId))
+            {
+                var controls = action.controls;
+                if (controls.Count > 0)
+                {
+                    var index = action.GetBindingIndexForControl(controls[0]);
+                    if (index != -1)
+                    {
+                        while (action.bindings[index].isPartOfComposite)
+                        {
+                            --index;
+                            if (index < 0)
+                                return false;
+                        }
+                        bindingIndex = index;
+                        return true;
+                    }
+                }
+                
                 return false;
+            }
 
             // Look up binding index.
             var bindingId = new Guid(m_BindingId);
@@ -182,17 +234,12 @@ using TMPro;
             var controlPath = default(string);
 
             // Get display string from action.
-            var action = m_Action?.action;
-            if (action != null)
-            {
-                var bindingIndex = action.bindings.IndexOf(x => x.id.ToString() == m_BindingId);
-                if (bindingIndex != -1)
-                    displayString = action.GetBindingDisplayString(bindingIndex, out deviceLayoutName, out controlPath, displayStringOptions);
-            }
+            if (ResolveActionAndBinding(out var action, out var bindingIndex))
+                displayString = action.GetBindingDisplayString(bindingIndex, out deviceLayoutName, out controlPath, displayStringOptions);
 
             // Set on label (if any).
             if (m_BindingText != null)
-                m_BindingText.SetText(displayString);
+                m_BindingText.text = displayString;
 
             // Give listeners a chance to configure UI in response.
             m_UpdateBindingUIEvent?.Invoke(this, displayString, deviceLayoutName, controlPath);
@@ -348,6 +395,11 @@ using TMPro;
 
         [SerializeField]
         private string m_BindingId;
+
+        [Tooltip("Optional index of the player (see PlayerInput.playerIndex) to rebind the action on. If this is set, the action referenced by the rebind UI component "
+            + "will be looked up dynamically on the set of actions found on the player.")]
+        [SerializeField]
+        private int m_PlayerIndex = -1;
 
         [SerializeField]
         private InputBinding.DisplayStringOptions m_DisplayStringOptions;

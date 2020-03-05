@@ -1,9 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Utilities;
 
 public class UIMenuManager : Singleton<UIMenuManager>
 {
@@ -31,6 +28,7 @@ public class UIMenuManager : Singleton<UIMenuManager>
             spawnedPlayerRebindPanel.transform.SetParent(playerRebindListRoot, false);
 
             PlayerInput spawnedPlayerInput = activePlayerControllers[i].GetPlayerInput();
+            spawnedPlayerRebindPanel.GetComponent<PlayerDeviceRebindBehaviour>().playerIndex = spawnedPlayerInput.playerIndex;
             
             int spawnedPlayerIndex = spawnedPlayerInput.playerIndex;
             string spawnedPlayerDevicePath = spawnedPlayerInput.devices[0].ToString();

@@ -1099,7 +1099,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Action: {fileID: -3670508557925037996, guid: aa45cad44afd790488f6540bc766db91,
     type: 3}
-  m_BindingId: 3e6d6425-a990-4434-b58d-57464db363d4
+  m_BindingId: 
+  m_PlayerIndex: -1
   m_DisplayStringOptions: 0
   m_ActionLabel: {fileID: 21393434}
   m_BindingText: {fileID: 8401327930207755889}
