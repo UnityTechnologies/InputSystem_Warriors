@@ -1,49 +1,82 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Utilities;
 
 public class UIMenuManager : Singleton<UIMenuManager>
 {
     [Header("References")]
     public Camera UICamera;
+    private List<PlayerController> activePlayerControllers;
+    private List<UIMenuPlayerDeviceDisplayBehaviour> spawnedUIPlayerDeviceDisplayBehaviours;
 
-    [Header("In-Scene Player Panel")]
-    public GameObject inScenePlayerRebindPanel;
+    [Header("Placeholder GameObjects")]
+    public GameObject[] placeholderGameObjects;
 
     [Header("Player Panel Settings")]
-    public GameObject playerRebindPanelPrefab;
-    public Transform playerRebindListRoot;
+    public GameObject UIPlayerDeviceDisplayPrefab;
+    public Transform UIPlayerDeviceDisplayRoot;
 
-    public void UpdateRebindPlayerPanelList()
+    public void SetupUIMenuPlayerPanelList()
+    {
+        DestroyPlaceholderObjects();
+        GetCurrentPlayerDatas();
+        SetupCurrentPlayerUIMenuPanels();
+    }
+
+    void DestroyPlaceholderObjects()
+    {
+        for(int i = 0; i < placeholderGameObjects.Length; i++)
+        {
+            Destroy(placeholderGameObjects[i]);
+        }
+    }
+
+    void GetCurrentPlayerDatas()
+    {
+        activePlayerControllers = GameManager.Instance.GetActivePlayerControllers();
+    }
+
+    void SetupCurrentPlayerUIMenuPanels()
     {
 
-        Destroy(inScenePlayerRebindPanel);
-
-        
-        List<PlayerController> activePlayerControllers = GameManager.Instance.GetActivePlayerControllers();
+        spawnedUIPlayerDeviceDisplayBehaviours = new List<UIMenuPlayerDeviceDisplayBehaviour>();
 
         for(int i = 0; i < activePlayerControllers.Count; i++)
         {
-            GameObject spawnedPlayerRebindPanel = Instantiate(playerRebindPanelPrefab, playerRebindListRoot.position, playerRebindListRoot.rotation) as GameObject;
-            spawnedPlayerRebindPanel.transform.SetParent(playerRebindListRoot, false);
+            GameObject spawnedUIPlayerDeviceDisplayPanel = Instantiate(UIPlayerDeviceDisplayPrefab, UIPlayerDeviceDisplayRoot.position, UIPlayerDeviceDisplayRoot.rotation) as GameObject;
+            spawnedUIPlayerDeviceDisplayPanel.transform.SetParent(UIPlayerDeviceDisplayRoot, false);
 
             PlayerInput spawnedPlayerInput = activePlayerControllers[i].GetPlayerInput();
-            
+
             int spawnedPlayerIndex = spawnedPlayerInput.playerIndex;
             string spawnedPlayerDevicePath = spawnedPlayerInput.devices[0].ToString();
 
-            spawnedPlayerRebindPanel.GetComponent<UIPlayerRebindDisplayBehaviour>().SetupPanelDisplays(spawnedPlayerIndex, spawnedPlayerDevicePath);
 
+
+            spawnedUIPlayerDeviceDisplayPanel.GetComponent<PlayerDeviceRebindBehaviour>().playerIndex = spawnedPlayerIndex;
+            spawnedUIPlayerDeviceDisplayBehaviours.Add(spawnedUIPlayerDeviceDisplayPanel.GetComponent<UIMenuPlayerDeviceDisplayBehaviour>());
+            spawnedUIPlayerDeviceDisplayBehaviours[i].SetPlayerDeviceDisplay(spawnedPlayerIndex, spawnedPlayerDevicePath);
         }
-        
-        
+    }
+
+    void UpdateCurrentPlayerUIMenuPanels()
+    {
+        for(int i = 0; i < spawnedUIPlayerDeviceDisplayBehaviours.Count; i++)
+        {
+            PlayerInput spawnedPlayerInput = activePlayerControllers[i].GetPlayerInput();
+            string spawnedPlayerDevicePath = spawnedPlayerInput.devices[0].ToString();
+
+            spawnedUIPlayerDeviceDisplayBehaviours[i].UpdatePlayerDeviceDisplay(spawnedPlayerDevicePath);
+        }
     }
 
     public void ToggleMenu(bool newState)
     {
+        if(newState == true)
+        {
+            UpdateCurrentPlayerUIMenuPanels();
+        }
+        
         UICamera.enabled = newState;
     }
 }

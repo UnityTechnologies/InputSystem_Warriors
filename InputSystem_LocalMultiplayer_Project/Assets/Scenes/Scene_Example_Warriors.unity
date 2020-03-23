@@ -168,6 +168,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5548200518918450370, guid: 7040c04d00ad25e4cad0ba1b7d40c3c0,
+        type: 3}
+      propertyPath: m_Name
+      value: UI_Canvas_World_PlayerDisplay
+      objectReference: {fileID: 0}
     - target: {fileID: 8145840457835498163, guid: 7040c04d00ad25e4cad0ba1b7d40c3c0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -313,7 +318,7 @@ GameObject:
   m_Component:
   - component: {fileID: 144661832}
   m_Layer: 8
-  m_Name: Panel_Rebind
+  m_Name: Panel_PlayerSettings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -600,8 +605,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0.00000020990123, y: 2.1887701e+23, z: 1.3592422e+22,
-    w: 0.000000002622607}
+  m_BoundingSphereOverride: {x: 7.74e-43, y: -0.0010197749, z: 7.72e-43, w: 2.2987735e+9}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -630,7 +634,7 @@ GameObject:
   - component: {fileID: 782418257}
   - component: {fileID: 782418258}
   m_Layer: 8
-  m_Name: List_RebindOptions
+  m_Name: List_PlayerDeviceDisplays
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -653,7 +657,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -32.013176}
+  m_AnchoredPosition: {x: 0, y: -32.013214}
   m_SizeDelta: {x: -1, y: -64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &782418258
@@ -846,7 +850,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1038025468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -885,7 +889,7 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1038025467}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
@@ -1618,10 +1622,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UICamera: {fileID: 246201657}
-  inScenePlayerRebindPanel: {fileID: 1063851080}
-  playerRebindPanelPrefab: {fileID: 4771699827640259325, guid: 1ff0ff9fe1f589244aee9d67ce1c6e58,
+  placeholderGameObjects:
+  - {fileID: 1063851080}
+  UIPlayerDeviceDisplayPrefab: {fileID: 4771699827640259325, guid: 1ff0ff9fe1f589244aee9d67ce1c6e58,
     type: 3}
-  playerRebindListRoot: {fileID: 782418257}
+  UIPlayerDeviceDisplayRoot: {fileID: 782418257}
 --- !u!1 &1854560536
 GameObject:
   m_ObjectHideFlags: 0
@@ -1633,7 +1638,6 @@ GameObject:
   - component: {fileID: 1854560537}
   - component: {fileID: 1854560540}
   - component: {fileID: 1854560539}
-  - component: {fileID: 1854560538}
   m_Layer: 10
   m_Name: Button_Attack
   m_TagString: Untagged
@@ -1661,19 +1665,6 @@ RectTransform:
   m_AnchoredPosition: {x: -200, y: 200}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1854560538
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1854560536}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ControlPath: <Gamepad>/buttonSouth
 --- !u!114 &1854560539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1721,7 +1712,6 @@ GameObject:
   - component: {fileID: 1874093066}
   - component: {fileID: 1874093068}
   - component: {fileID: 1874093067}
-  - component: {fileID: 1874093069}
   m_Layer: 10
   m_Name: Joystick_Movement
   m_TagString: Untagged
@@ -1785,20 +1775,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1874093065}
   m_CullTransparentMesh: 0
---- !u!114 &1874093069
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1874093065}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9d677f1681015749b15c436eec6d880, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_MovementRange: 50
-  m_ControlPath: <Gamepad>/leftStick
 --- !u!1 &1912423613
 GameObject:
   m_ObjectHideFlags: 0
@@ -1917,7 +1893,7 @@ GameObject:
   - component: {fileID: 2137092838}
   - component: {fileID: 2137092837}
   m_Layer: 8
-  m_Name: Title_ControllerSettings
+  m_Name: Title_PlayerSettings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1960,7 +1936,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Controller Settings
+  m_text: Player Settings
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 77a54eba8bd72b04babb01fc6f9d031b, type: 2}
   m_sharedMaterial: {fileID: 6952953652584977494, guid: 77a54eba8bd72b04babb01fc6f9d031b,
@@ -2030,7 +2006,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 2137092837}
-    characterCount: 19
+    characterCount: 15
     spriteCount: 0
     spaceCount: 1
     wordCount: 2
@@ -2068,6 +2044,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 782418257}
     m_Modifications:
+    - target: {fileID: 1063851081, guid: 1ff0ff9fe1f589244aee9d67ce1c6e58, type: 3}
+      propertyPath: m_BindingId
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1864481344318969274, guid: 1ff0ff9fe1f589244aee9d67ce1c6e58,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2176,7 +2156,7 @@ PrefabInstance:
     - target: {fileID: 4771699827640259325, guid: 1ff0ff9fe1f589244aee9d67ce1c6e58,
         type: 3}
       propertyPath: m_Name
-      value: Panel_RebindPlayerInput
+      value: UI_Panel_Menu_PlayerDeviceDisplay
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ff0ff9fe1f589244aee9d67ce1c6e58, type: 3}
