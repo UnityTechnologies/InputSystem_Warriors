@@ -1251,7 +1251,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press A
+  m_text: Press Triangle
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 03579131436451b468aa4aa9a06e80cd, type: 2}
   m_sharedMaterial: {fileID: -549880065730588403, guid: 03579131436451b468aa4aa9a06e80cd,
@@ -1321,7 +1321,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 8401327930207755889}
-    characterCount: 7
+    characterCount: 14
     spriteCount: 0
     spaceCount: 1
     wordCount: 2
@@ -1519,7 +1519,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4047100248330977748
 RectTransform:
   m_ObjectHideFlags: 0
