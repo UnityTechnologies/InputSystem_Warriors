@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class UIPlayerRebindDisplayBehaviour : MonoBehaviour
+public class UIMenuPlayerDeviceDisplayBehaviour : MonoBehaviour
 {
 
     [Header("Device Display")]
@@ -15,12 +15,16 @@ public class UIPlayerRebindDisplayBehaviour : MonoBehaviour
     public TextMeshProUGUI playerDeviceDisplay;
     public Image playerDeviceDisplayIcon;
 
-    public void SetupPanelDisplays(int playerID, string playerDevicePath)
+    public void SetPlayerDeviceDisplay(int playerID, string playerDevicePath)
     {
         playerIDDisplay.SetText((playerID + 1).ToString());
-
-        playerDeviceDisplay.SetText(deviceDisplayConfigurator.GetDeviceDisplayName(playerDevicePath));
-        playerDeviceDisplayIcon.color = deviceDisplayConfigurator.GetDeviceDisplayColor(playerDevicePath);
-
+        UpdatePlayerDeviceDisplay(playerDevicePath);
     }
+
+    public void UpdatePlayerDeviceDisplay(string playerDevicePath)
+    {
+        playerDeviceDisplay.SetText(deviceDisplayConfigurator.GetDeviceDisplayName(playerDevicePath));
+        playerDeviceDisplayIcon.color = deviceDisplayConfigurator.GetDeviceDisplayColor(playerDevicePath);  
+    }
+
 }

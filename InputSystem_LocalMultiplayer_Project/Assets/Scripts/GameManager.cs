@@ -53,7 +53,7 @@ public class GameManager : Singleton<GameManager>
             PlayerController inScenePlayerController = inScenePlayer.GetComponent<PlayerController>();
             activePlayerControllers.Add(inScenePlayerController);
 
-            UpdateUIMenuPlayerList();
+            SetupUIMenuPlayerList();
 
         }
     }
@@ -76,12 +76,12 @@ public class GameManager : Singleton<GameManager>
 
         }
 
-        UpdateUIMenuPlayerList();
+        SetupUIMenuPlayerList();
     }
 
-    void UpdateUIMenuPlayerList()
+    void SetupUIMenuPlayerList()
     {
-        UIMenuManager.Instance.UpdateRebindPlayerPanelList();
+        UIMenuManager.Instance.SetupUIMenuPlayerPanelList();
     }
 
 

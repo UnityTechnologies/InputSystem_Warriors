@@ -999,7 +999,7 @@ GameObject:
   - component: {fileID: -3121183537027587683}
   - component: {fileID: 1063851081}
   m_Layer: 8
-  m_Name: Panel_PlayerRebindPanel
+  m_Name: UI_Panel_Menu_PlayerDeviceDisplay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1077,7 +1077,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4771699827640259325}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f18ceab1bac8124c8f055b165452183, type: 3}
+  m_Script: {fileID: 11500000, guid: fb9fa96d7e2cd5d429bb276c06a46c72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   deviceDisplayConfigurator: {fileID: 11400000, guid: 1ae90af367a37dc47b0ecc2b81a75099,
