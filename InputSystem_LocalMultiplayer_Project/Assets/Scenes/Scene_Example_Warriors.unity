@@ -1028,7 +1028,7 @@ MonoBehaviour:
   spawnMultiplePlayers: 0
   playerPrefab: {fileID: 8145840457835730771, guid: 7040c04d00ad25e4cad0ba1b7d40c3c0,
     type: 3}
-  numberOfPlayers: 4
+  numberOfPlayers: 5
   spawnArea: {x: 4, y: 0, z: 4}
   pauseMenu: {fileID: 1854239559}
 --- !u!4 &1134540116
@@ -1638,6 +1638,7 @@ GameObject:
   - component: {fileID: 1854560537}
   - component: {fileID: 1854560540}
   - component: {fileID: 1854560539}
+  - component: {fileID: 1854560538}
   m_Layer: 10
   m_Name: Button_Attack
   m_TagString: Untagged
@@ -1665,6 +1666,19 @@ RectTransform:
   m_AnchoredPosition: {x: -200, y: 200}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1854560538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1854560536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ControlPath: <Gamepad>/buttonSouth
 --- !u!114 &1854560539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1712,6 +1726,7 @@ GameObject:
   - component: {fileID: 1874093066}
   - component: {fileID: 1874093068}
   - component: {fileID: 1874093067}
+  - component: {fileID: 1874093069}
   m_Layer: 10
   m_Name: Joystick_Movement
   m_TagString: Untagged
@@ -1775,6 +1790,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1874093065}
   m_CullTransparentMesh: 0
+--- !u!114 &1874093069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1874093065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9d677f1681015749b15c436eec6d880, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MovementRange: 50
+  m_ControlPath: <Gamepad>/leftStick
 --- !u!1 &1912423613
 GameObject:
   m_ObjectHideFlags: 0
