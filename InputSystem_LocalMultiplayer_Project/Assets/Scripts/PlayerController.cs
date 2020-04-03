@@ -162,10 +162,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnAttack(InputValue value)
     {
-        if(value.isPressed)
-        {
-            playerAnimator.SetTrigger("Attack");
-        }
+        playerAnimator.SetTrigger("Attack");
     }
 
 

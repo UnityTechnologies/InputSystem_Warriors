@@ -20,7 +20,7 @@ MonoBehaviour:
     deviceDisplayName: Xbox
     deviceDisplayColor: {r: 0.5118305, g: 0.9056604, b: 0.31185475, a: 1}
   - deviceRawPath: DualShock4GamepadHID:/DualShock4GamepadHID
-    deviceDisplayName: Playstation
+    deviceDisplayName: PlayStation
     deviceDisplayColor: {r: 0, g: 0.44719267, b: 1, a: 1}
   - deviceRawPath: SwitchProControllerHID:/SwitchProControllerHID
     deviceDisplayName: Nintendo Switch
