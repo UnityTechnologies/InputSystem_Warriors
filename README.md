@@ -1,6 +1,6 @@
 # Unity Input System - 'Warriors' Example Project
 
-![warriors.png](https://i.imgur.com/0Z24DRj.png)
+![warriors.png](https://i.imgur.com/m4cuul3.png)
 
 
 ## Overview
