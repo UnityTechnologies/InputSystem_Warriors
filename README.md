@@ -12,7 +12,7 @@ This Unity example project has been created to demonstrate a variety of tools an
 You can learn more about the new Input System in this overview blogpost: https://blogs.unity3d.com/2019/10/14/introducing-the-new-input-system/
 
 
-**Input System Demonstrated Features**
+**Input System Demonstrated Scenarios**
 - Input Action Control Scheme for basic Player Controls (Directional Axis for Movement, Button press for Attack)
 - Setting up Keyboard and Generic Gamepad bindings to the Control Scheme
   - Tested with the follwing controllers: PlayStation Dualshock 4, Xbox One and Nintendo Switch Pro
@@ -21,8 +21,9 @@ You can learn more about the new Input System in this overview blogpost: https:/
 - Runtime switching between Player Control and Menu Control Action Maps
 - UI for rebdining action controls to new buttons and joysticks
 - Displaying connected device data in both Screen Space and World Space UI
+- Callbacks for an Input Device runtime disconnecting and reconnecting
 
-**Other Demonstrated Features**
+**Other Demonstrated Scenarios**
 - Universal Render Pipeline's Camera Stacking for Overlay UI
 - Universal Render Pipeline's Scriptable Render Pass for Scene Blur UI Overlay
 - Universal Render Pipeline's Integrated Post-Processing for Tonemapping
