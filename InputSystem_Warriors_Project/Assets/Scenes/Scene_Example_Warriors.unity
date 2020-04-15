@@ -1117,7 +1117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 963194227}
   inScenePlayer: {fileID: 2028948613}
-  spawnMultiplePlayers: 1
+  spawnMultiplePlayers: 0
   playerPrefab: {fileID: 8145840457835730771, guid: 7040c04d00ad25e4cad0ba1b7d40c3c0,
     type: 3}
   numberOfPlayers: 5
