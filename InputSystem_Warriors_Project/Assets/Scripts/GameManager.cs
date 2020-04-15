@@ -16,7 +16,10 @@ public class GameManager : Singleton<GameManager>
     public bool spawnMultiplePlayers = false;
     public GameObject playerPrefab;
     public int numberOfPlayers;
-    public Vector3 spawnArea;
+
+    [Header("Spawn Ring Settings")]
+    public Transform spawnRingCenter;
+    public float spawnRingRadius;
 
     //Spawned Players
     private List<PlayerController> activePlayerControllers;
@@ -68,8 +71,10 @@ public class GameManager : Singleton<GameManager>
             
             activePlayerControllers.Insert(i, spawnedPlayer.GetComponent<PlayerController>());
 
-            Vector3 randomSpawnPosition = new Vector3(Random.Range(-spawnArea.x, spawnArea.x), 0, Random.Range(-spawnArea.z, spawnArea.z));
-            spawnedPlayer.transform.position = randomSpawnPosition;
+            Vector3 spawnPosition = PositionInRing(i);
+            //Vector3 randomSpawnPosition = new Vector3(Random.Range(-spawnArea.x, spawnArea.x), 0, Random.Range(-spawnArea.z, spawnArea.z));
+            //spawnedPlayer.transform.position = randomSpawnPosition;
+            spawnedPlayer.transform.position = spawnPosition;
 
             Quaternion randomSpawnRotation = Quaternion.Euler(new Vector3(0, Random.Range(0, 360), 0));
             spawnedPlayer.transform.rotation = randomSpawnRotation;
@@ -112,6 +117,18 @@ public class GameManager : Singleton<GameManager>
     public List<PlayerController> GetActivePlayerControllers()
     {
         return activePlayerControllers;
+    }
+
+    Vector3 PositionInRing(int positionID)
+    {
+
+        if(numberOfPlayers == 1)
+            return spawnRingCenter.position;
+
+        float angle = (positionID) * Mathf.PI * 2 / numberOfPlayers;
+        float x = Mathf.Cos(angle) * spawnRingRadius;
+        float z = Mathf.Sin(angle) * spawnRingRadius;
+        return spawnRingCenter.position +  new Vector3(x, 0, z);
     }
 
 }

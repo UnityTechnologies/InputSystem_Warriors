@@ -211,7 +211,7 @@ PrefabInstance:
     - target: {fileID: 8145840457835498163, guid: 7040c04d00ad25e4cad0ba1b7d40c3c0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.22
+      value: -2.65
       objectReference: {fileID: 0}
     - target: {fileID: 8145840457835498163, guid: 7040c04d00ad25e4cad0ba1b7d40c3c0,
         type: 3}
@@ -694,7 +694,7 @@ ReflectionProbe:
   m_TimeSlicingMode: 0
   m_Resolution: 128
   m_UpdateFrequency: 0
-  m_BoxSize: {x: 10, y: 10, z: 10}
+  m_BoxSize: {x: 100, y: 100, z: 100}
   m_BoxOffset: {x: 0, y: 0, z: 0}
   m_NearClip: 0.3
   m_FarClip: 1000
@@ -746,7 +746,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -32.013214}
+  m_AnchoredPosition: {x: 0, y: -32.013206}
   m_SizeDelta: {x: -1, y: -64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &782418258
@@ -1120,8 +1120,9 @@ MonoBehaviour:
   spawnMultiplePlayers: 1
   playerPrefab: {fileID: 8145840457835730771, guid: 7040c04d00ad25e4cad0ba1b7d40c3c0,
     type: 3}
-  numberOfPlayers: 4
-  spawnArea: {x: 4, y: 0, z: 4}
+  numberOfPlayers: 10
+  spawnRingCenter: {fileID: 1568669756}
+  spawnRingRadius: 1.7
   pauseMenu: {fileID: 1854239559}
 --- !u!4 &1134540116
 Transform:
@@ -1553,7 +1554,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1568669755}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.12, y: 0, z: -2.65}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1134540116}
