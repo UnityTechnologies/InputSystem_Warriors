@@ -61,7 +61,7 @@ This example project was developed and tested on Windows 10.
 
 This example project is publicly available for you to:
 - Use as a learning resource for the new Input System or any other implemented feature & tool
-- use as a foundation for building your own projects
+- Use as a foundation for building your own projects
 - Extract code, assets and information for your own projects
 
 If you do use this example project in some form, please feel free to contact Andy Touch (andyt[at]unity3d.com); he'd love to hear from you about your your experience with it!
