@@ -17,7 +17,7 @@ MonoBehaviour:
     deviceDisplayName: Keyboard
     deviceDisplayColor: {r: 1, g: 0.57594675, b: 0, a: 1}
   - deviceRawPath: XInputControllerWindows:/XInputControllerWindows
-    deviceDisplayName: Xbox
+    deviceDisplayName: Xbox One
     deviceDisplayColor: {r: 0.5118305, g: 0.9056604, b: 0.31185475, a: 1}
   - deviceRawPath: DualShock4GamepadHID:/DualShock4GamepadHID
     deviceDisplayName: PlayStation
