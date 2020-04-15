@@ -1120,7 +1120,7 @@ MonoBehaviour:
   spawnMultiplePlayers: 1
   playerPrefab: {fileID: 8145840457835730771, guid: 7040c04d00ad25e4cad0ba1b7d40c3c0,
     type: 3}
-  numberOfPlayers: 10
+  numberOfPlayers: 5
   spawnRingCenter: {fileID: 1568669756}
   spawnRingRadius: 1.7
   pauseMenu: {fileID: 1854239559}
