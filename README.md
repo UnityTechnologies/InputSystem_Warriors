@@ -67,7 +67,7 @@ This example project is publicly available for you to:
 
 If you do use this example project in some form, please feel free to contact Andy Touch (andyt[at]unity3d.com); he'd love to hear from you about your your experience with it!
 
-## Credits
+## Credits & Feedback
 
 This example project is developed by Unity Technologies and has involvement from R&D, Product Management, Product Marketing and Evangelism.
 
