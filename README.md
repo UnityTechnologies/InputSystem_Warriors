@@ -9,7 +9,7 @@
 
 This Unity example project has been created to demonstrate a variety of tools and functionality with the new Input System.
 
-You can learn more about the new Input System in this overview blogpost: https://blogs.unity3d.com/2019/10/14/introducing-the-new-input-system/
+You can learn more about the new Input System here: https://unity.com/features/input-system
 
 
 **Input System Demonstrated Scenarios**
@@ -36,12 +36,12 @@ You can learn more about the new Input System in this overview blogpost: https:/
 ## Requirements
 
 **Unity Version**
-- Current: [2019.3.4.7](https://blogs.unity3d.com/2020/01/28/unity-2019-3-is-now-available/)
+- Current: [2019.4.6f1](https://unity.com/releases/2019-lts)
 
 **Packages**
-- com.unity.inputsystem: 1.0.0-preview.6
+- com.unity.inputsystem: 1.0.0
 - com.unity.textmeshpro: 2.0.1
-- com.unity.render-pipelines.universal: 7.2.0
+- com.unity.render-pipelines.universal: 7.3.1
 
 **Hardware**
 
