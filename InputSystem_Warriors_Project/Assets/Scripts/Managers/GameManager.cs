@@ -72,8 +72,6 @@ public class GameManager : Singleton<GameManager>
             activePlayerControllers.Insert(i, spawnedPlayer.GetComponent<PlayerController>());
 
             Vector3 spawnPosition = PositionInRing(i);
-            //Vector3 randomSpawnPosition = new Vector3(Random.Range(-spawnArea.x, spawnArea.x), 0, Random.Range(-spawnArea.z, spawnArea.z));
-            //spawnedPlayer.transform.position = randomSpawnPosition;
             spawnedPlayer.transform.position = spawnPosition;
 
             Quaternion randomSpawnRotation = Quaternion.Euler(new Vector3(0, Random.Range(0, 360), 0));
@@ -95,8 +93,7 @@ public class GameManager : Singleton<GameManager>
 
         
         UIMenuManager.Instance.ToggleMenu(newState);
-
-        
+   
         for(int i = 0; i < activePlayerControllers.Count; i++)
         {
             //Pause Menu Is On -> Switch from Player Controls to Menu Controls
