@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_RendererFeatures:
   - {fileID: 1219297600775061884}
+  m_RendererFeatureMap: 7c01af31b5d0eb10
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   shaders:
     blitPS: {fileID: 4800000, guid: c17132b1f77d20942aa75f8429c0f8bc, type: 3}
@@ -48,6 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25edb37215037d4479c7d82f30c1eba5, type: 3}
   m_Name: Kawase Blur Pass
   m_EditorClassIdentifier: 
+  m_Active: 1
   settings:
     renderPassEvent: 250
     blurMaterial: {fileID: 2100000, guid: 6356e7fdfba4594419a42f024df505a9, type: 2}
