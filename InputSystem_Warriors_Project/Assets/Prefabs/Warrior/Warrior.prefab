@@ -65,7 +65,22 @@ PrefabInstance:
     - target: {fileID: 5548200517043333964, guid: 63726dc7d2cb37d4a8b414560f2fcf1f,
         type: 3}
       propertyPath: m_Name
-      value: Canvas_PlayerDisplay
+      value: UI_Canvas_World_PlayerDisplay
+      objectReference: {fileID: 0}
+    - target: {fileID: 5587485869381001236, guid: 63726dc7d2cb37d4a8b414560f2fcf1f,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5587485869381001236, guid: 63726dc7d2cb37d4a8b414560f2fcf1f,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5587485869381001236, guid: 63726dc7d2cb37d4a8b414560f2fcf1f,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6265031667269413090, guid: 63726dc7d2cb37d4a8b414560f2fcf1f,
         type: 3}
@@ -162,6 +177,16 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 7256949955326275866, guid: 63726dc7d2cb37d4a8b414560f2fcf1f,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7256949955326275866, guid: 63726dc7d2cb37d4a8b414560f2fcf1f,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63726dc7d2cb37d4a8b414560f2fcf1f, type: 3}
 --- !u!1 &5548200518918450370 stripped
@@ -222,7 +247,7 @@ PrefabInstance:
     - target: {fileID: 3962737691817372547, guid: d4bd9dc1cd45f804f84ad90735c2d05f,
         type: 3}
       propertyPath: m_ActionEvents.Array.size
-      value: 1
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 3962737691817372547, guid: d4bd9dc1cd45f804f84ad90735c2d05f,
         type: 3}
@@ -232,7 +257,87 @@ PrefabInstance:
     - target: {fileID: 3962737691817372547, guid: d4bd9dc1cd45f804f84ad90735c2d05f,
         type: 3}
       propertyPath: m_DefaultControlScheme
-      value: Gamepad
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3962737691817372547, guid: d4bd9dc1cd45f804f84ad90735c2d05f,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_ActionId
+      value: 10fecf58-9483-40e0-ae20-15c8d01a4288
+      objectReference: {fileID: 0}
+    - target: {fileID: 3962737691817372547, guid: d4bd9dc1cd45f804f84ad90735c2d05f,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_ActionName
+      value: Player Controls/Attack[/Keyboard/e]
+      objectReference: {fileID: 0}
+    - target: {fileID: 3962737691817372547, guid: d4bd9dc1cd45f804f84ad90735c2d05f,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_ActionId
+      value: a70a208e-b491-4921-b460-a0144030ef2a
+      objectReference: {fileID: 0}
+    - target: {fileID: 3962737691817372547, guid: d4bd9dc1cd45f804f84ad90735c2d05f,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_ActionName
+      value: Player Controls/OpenPauseMenu[/Keyboard/m]
+      objectReference: {fileID: 0}
+    - target: {fileID: 3962737691817372547, guid: d4bd9dc1cd45f804f84ad90735c2d05f,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_ActionId
+      value: e773b1f9-ce5b-4fa2-9c1f-d194202c43b7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3962737691817372547, guid: d4bd9dc1cd45f804f84ad90735c2d05f,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_ActionName
+      value: Menu Controls/ClosePauseMenu[/Keyboard/m]
+      objectReference: {fileID: 0}
+    - target: {fileID: 3962737691817372547, guid: d4bd9dc1cd45f804f84ad90735c2d05f,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_ActionId
+      value: 538ffe95-ba92-4acb-84f7-314f6ac8e0a5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3962737691817372547, guid: d4bd9dc1cd45f804f84ad90735c2d05f,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_ActionName
+      value: Menu Controls/Navigate[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
+      objectReference: {fileID: 0}
+    - target: {fileID: 3962737691817372547, guid: d4bd9dc1cd45f804f84ad90735c2d05f,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_ActionId
+      value: 5f571f6a-e9e7-4120-ae3c-79f846bdd202
+      objectReference: {fileID: 0}
+    - target: {fileID: 3962737691817372547, guid: d4bd9dc1cd45f804f84ad90735c2d05f,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_ActionName
+      value: Menu Controls/Submit[/Keyboard/enter]
+      objectReference: {fileID: 0}
+    - target: {fileID: 3962737691817372547, guid: d4bd9dc1cd45f804f84ad90735c2d05f,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[6].m_ActionId
+      value: 146e681c-77dd-4ff0-9ad5-f4351fea14cc
+      objectReference: {fileID: 0}
+    - target: {fileID: 3962737691817372547, guid: d4bd9dc1cd45f804f84ad90735c2d05f,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[6].m_ActionName
+      value: Menu Controls/Cancel[/Keyboard/escape]
+      objectReference: {fileID: 0}
+    - target: {fileID: 3962737691817372547, guid: d4bd9dc1cd45f804f84ad90735c2d05f,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[7].m_ActionId
+      value: d54e5ff5-4f35-4d2f-a745-95d14aef8c43
+      objectReference: {fileID: 0}
+    - target: {fileID: 3962737691817372547, guid: d4bd9dc1cd45f804f84ad90735c2d05f,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[7].m_ActionName
+      value: Menu Controls/Point[/Mouse/position]
+      objectReference: {fileID: 0}
+    - target: {fileID: 3962737691817372547, guid: d4bd9dc1cd45f804f84ad90735c2d05f,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[8].m_ActionId
+      value: 96c8be88-a7bb-4861-b5e9-956b4208d043
+      objectReference: {fileID: 0}
+    - target: {fileID: 3962737691817372547, guid: d4bd9dc1cd45f804f84ad90735c2d05f,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[8].m_ActionName
+      value: Menu Controls/Left Click[/Mouse/leftButton]
       objectReference: {fileID: 0}
     - target: {fileID: 4386547555022103130, guid: d4bd9dc1cd45f804f84ad90735c2d05f,
         type: 3}
@@ -272,7 +377,7 @@ PrefabInstance:
     - target: {fileID: 8575827394537772306, guid: d4bd9dc1cd45f804f84ad90735c2d05f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.22
+      value: -2.65
       objectReference: {fileID: 0}
     - target: {fileID: 8575827394537772306, guid: d4bd9dc1cd45f804f84ad90735c2d05f,
         type: 3}
