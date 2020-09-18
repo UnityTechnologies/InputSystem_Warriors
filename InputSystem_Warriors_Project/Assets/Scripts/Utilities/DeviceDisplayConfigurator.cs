@@ -13,21 +13,30 @@ public class DeviceDisplayConfigurator : ScriptableObject
         public Color deviceDisplayColor;
     }
 
-    public List<DeviceSettings> deviceSettings = new List<DeviceSettings>();
+    [System.Serializable]
+    public struct DisconnectedSettings
+    {
+        public string disconnectedDisplayName;
+        public Color disconnectedDisplayColor;
+    }
+
+    public List<DeviceSettings> listDeviceSettings = new List<DeviceSettings>();
+
+    public DisconnectedSettings disconnectedDeviceSettings;
 
     private Color fallbackDisplayColor = Color.white;
 
 
-    public string GetDeviceDisplayName(string playerInputDeviceRawPath)
+    public string GetDeviceName(string playerInputDeviceRawPath)
     {
         string newDisplayName = null;
 
-        for(int i = 0; i < deviceSettings.Count; i++)
+        for(int i = 0; i < listDeviceSettings.Count; i++)
         {
 
-            if(deviceSettings[i].deviceRawPath == playerInputDeviceRawPath)
+            if(listDeviceSettings[i].deviceRawPath == playerInputDeviceRawPath)
             {   
-                newDisplayName = deviceSettings[i].deviceDisplayName;
+                newDisplayName = listDeviceSettings[i].deviceDisplayName;
             }
         }
 
@@ -41,26 +50,33 @@ public class DeviceDisplayConfigurator : ScriptableObject
     }
 
     
-    public Color GetDeviceDisplayColor(string playerInputDeviceRawPath)
+    public Color GetDeviceColor(string playerInputDeviceRawPath)
     {
         
         Color newDisplayColor = fallbackDisplayColor;
 
-        for(int i = 0; i < deviceSettings.Count; i++)
+        for(int i = 0; i < listDeviceSettings.Count; i++)
         {
 
-            if(deviceSettings[i].deviceRawPath == playerInputDeviceRawPath)
+            if(listDeviceSettings[i].deviceRawPath == playerInputDeviceRawPath)
             {   
-                newDisplayColor = deviceSettings[i].deviceDisplayColor;
+                newDisplayColor = listDeviceSettings[i].deviceDisplayColor;
             }
         }
 
         return newDisplayColor;
         
     }
-    
-    public Color GetFallbackDisplayColor()
+
+    public string GetDisconnectedName()
     {
-        return fallbackDisplayColor;
+        return disconnectedDeviceSettings.disconnectedDisplayName;
     }
+
+    public Color GetDisconnectedColor()
+    {
+        return disconnectedDeviceSettings.disconnectedDisplayColor;
+    }
+    
+    
 }

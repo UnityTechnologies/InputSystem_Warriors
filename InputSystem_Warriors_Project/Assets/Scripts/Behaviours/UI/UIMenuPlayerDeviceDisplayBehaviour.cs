@@ -22,9 +22,11 @@ public class UIMenuPlayerDeviceDisplayBehaviour : MonoBehaviour
     }
 
     public void UpdatePlayerDeviceDisplay(string playerDevicePath)
-    {
+    {   
+        /*
         playerDeviceDisplay.SetText(deviceDisplayConfigurator.GetDeviceDisplayName(playerDevicePath));
-        playerDeviceDisplayIcon.color = deviceDisplayConfigurator.GetDeviceDisplayColor(playerDevicePath);  
+        playerDeviceDisplayIcon.color = deviceDisplayConfigurator.GetDeviceDisplayColor(playerDevicePath);
+        */  
     }
 
 }

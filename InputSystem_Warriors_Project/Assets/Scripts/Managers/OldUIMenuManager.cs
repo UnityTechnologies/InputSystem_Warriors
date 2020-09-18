@@ -2,8 +2,10 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class UIMenuManager : Singleton<UIMenuManager>
+public class OldUIMenuBehaviour : MonoBehaviour
 {
+
+    /*
     [Header("References")]
     public Camera UICamera;
     private List<PlayerController> activePlayerControllers;
@@ -79,4 +81,5 @@ public class UIMenuManager : Singleton<UIMenuManager>
         
         UICamera.enabled = newState;
     }
+    */
 }

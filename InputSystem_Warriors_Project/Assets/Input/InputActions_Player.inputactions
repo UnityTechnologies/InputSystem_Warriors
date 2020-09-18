@@ -22,7 +22,7 @@
                     "interactions": "Press"
                 },
                 {
-                    "name": "OpenPauseMenu",
+                    "name": "TogglePause",
                     "type": "Button",
                     "id": "a70a208e-b491-4921-b460-a0144030ef2a",
                     "expectedControlType": "Button",
@@ -104,7 +104,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard And Mouse",
-                    "action": "OpenPauseMenu",
+                    "action": "TogglePause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -115,7 +115,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "OpenPauseMenu",
+                    "action": "TogglePause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -148,7 +148,7 @@
             "id": "0914fb5b-51f6-4b26-9ed7-a3e72d065118",
             "actions": [
                 {
-                    "name": "ClosePauseMenu",
+                    "name": "TogglePause",
                     "type": "Button",
                     "id": "e773b1f9-ce5b-4fa2-9c1f-d194202c43b7",
                     "expectedControlType": "",
@@ -157,7 +157,7 @@
                 },
                 {
                     "name": "Navigate",
-                    "type": "Value",
+                    "type": "PassThrough",
                     "id": "538ffe95-ba92-4acb-84f7-314f6ac8e0a5",
                     "expectedControlType": "Vector2",
                     "processors": "",
@@ -165,7 +165,7 @@
                 },
                 {
                     "name": "Submit",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "5f571f6a-e9e7-4120-ae3c-79f846bdd202",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -173,7 +173,7 @@
                 },
                 {
                     "name": "Cancel",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "146e681c-77dd-4ff0-9ad5-f4351fea14cc",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -204,7 +204,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard And Mouse",
-                    "action": "ClosePauseMenu",
+                    "action": "TogglePause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -215,7 +215,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "ClosePauseMenu",
+                    "action": "TogglePause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

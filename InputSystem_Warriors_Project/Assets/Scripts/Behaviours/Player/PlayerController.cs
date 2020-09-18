@@ -2,20 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 public class PlayerController : MonoBehaviour
 {
 
-    //Camera
-    private Camera mainCamera;
+    //Player ID
+    private int playerID;
+
+    [Header("Sub Behaviours")]
+    public PlayerAnimationBehaviour playerAnimationBehaviour;
+    public PlayerVisualsBehaviour playerVisualsBehaviour;
 
     [Header("Physics")]
     public Rigidbody playerRigidbody;
-
-    [Header("Animation")]
-    public Animator playerAnimator;
-    private int playerMovementID;
-    private int playerAttackID;
 
     [Header("Input")]
     public bool useOldInputManager = false;
@@ -27,6 +27,9 @@ public class PlayerController : MonoBehaviour
     private Vector2 movementInput;
     private bool currentInput = false;
 
+    //Camera
+    private Camera mainCamera;
+
     [Header("Movement Settings")]
     public float movementSpeed = 3;
     public float smoothingSpeed = 1;
@@ -35,22 +38,21 @@ public class PlayerController : MonoBehaviour
     private Vector3 smoothDirection;
     private Vector3 movement;
 
-    void Start()
+    //This is called from the GameManager; after the player has been spawned
+    public void SetupPlayer(int newPlayerID)
     {
-        FindCamera();
-        SetupAnimationIDs();
+        playerID = newPlayerID;
+        playerAnimationBehaviour.SetupBehaviour();
+        playerVisualsBehaviour.SetupBehaviour(playerID, playerInput.devices[0].ToString());
+        FindGameplayCamera();
+
     }
 
-    void FindCamera()
+    void FindGameplayCamera()
     {
-        mainCamera = GameManager.Instance.mainCamera;
+        mainCamera = CameraManager.Instance.GetGameplayCamera();
     }
 
-    void SetupAnimationIDs()
-    {
-        playerMovementID = Animator.StringToHash("Movement");
-        playerAttackID = Animator.StringToHash("Attack");
-    }
 
     void Update()
     {
@@ -94,7 +96,7 @@ public class PlayerController : MonoBehaviour
         {
             if(Input.GetKeyDown(KeyCode.Space))
             {
-                playerAnimator.SetTrigger(playerAttackID);
+                playerAnimationBehaviour.PlayAttackAnimation();
             }
         }
         
@@ -121,7 +123,6 @@ public class PlayerController : MonoBehaviour
         {
             smoothDirection = Vector3.zero;
         }
-        
     }
 
     void MoveThePlayer()
@@ -132,21 +133,20 @@ public class PlayerController : MonoBehaviour
             movement = movement.normalized * movementSpeed * Time.deltaTime;
             playerRigidbody.MovePosition(transform.position + movement);
         }
-
     }
 
     void TurnThePlayer()
     {
         if(currentInput == true)
         {
-            Quaternion newRotation = Quaternion.LookRotation(smoothDirection);
+            Quaternion newRotation = Quaternion.LookRotation(-smoothDirection);
             playerRigidbody.MoveRotation(newRotation);
         }
     }
 
     void AnimatePlayerMovement()
     {
-        playerAnimator.SetFloat(playerMovementID, inputDirection.sqrMagnitude);
+        playerAnimationBehaviour.UpdateMovementAnimation(inputDirection.sqrMagnitude);
     }
 
 
@@ -162,7 +162,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnAttack(InputValue value)
     {
-        playerAnimator.SetTrigger("Attack");
+        playerAnimationBehaviour.PlayAttackAnimation();
     }
 
 
@@ -170,28 +170,48 @@ public class PlayerController : MonoBehaviour
 
 
 
-    
-
-    private void OnOpenPauseMenu(InputValue value)
+    private void OnTogglePause(InputValue value)
     {
-
-        if(value.isPressed)
-        {
-            GameManager.Instance.TogglePauseMenu(true);
-        }
-    }
-
-    private void OnClosePauseMenu(InputValue value)
-    {
-        if(value.isPressed)
-        {
-            GameManager.Instance.TogglePauseMenu(false);
-        }
+        GameManager.Instance.TogglePauseState(this);
     }
     
 
+    public void OnControlsChanged()
+    {
+        playerVisualsBehaviour.UpdatePlayerVisuals(playerInput.devices[0].ToString());
+    }
+
+    public void OnDeviceLost()
+    {
+        playerVisualsBehaviour.SetDisconnectedDeviceVisuals();
+    }
+
+    public void OnDeviceRegained()
+    {
+        StartCoroutine(WaitForDeviceToBeRegained());
+       
+    }
+
+    IEnumerator WaitForDeviceToBeRegained()
+    {
+        yield return new WaitForSeconds(0.1f);
+        playerVisualsBehaviour.UpdatePlayerVisuals(playerInput.devices[0].ToString());
+    }
 
 
+    public void SetInputActiveState(bool gameIsPaused)
+    {
+        switch (gameIsPaused)
+        {
+            case true:
+                playerInput.DeactivateInput();
+                break;
+
+            case false:
+                playerInput.ActivateInput();
+                break;
+        }
+    }
 
 
     //Switching Action Maps ----
@@ -206,10 +226,22 @@ public class PlayerController : MonoBehaviour
         playerInput.SwitchCurrentActionMap(actionMapMenu);
     }
 
+    //Get Data ----
 
-    public PlayerInput GetPlayerInput()
+    public int GetPlayerID()
     {
-        return playerInput;
-    } 
+        return playerID;
+    }
+
+    public string GetRawDevicePath()
+    {
+        return playerInput.devices[0].ToString();
+    }
+
+    public InputActionAsset GetActionAsset()
+    {
+        return playerInput.actions;
+    }
+
 
 }
