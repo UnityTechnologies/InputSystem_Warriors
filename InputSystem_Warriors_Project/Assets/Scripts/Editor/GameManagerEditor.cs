@@ -15,6 +15,7 @@ public class GameManagerEditor : Editor
 
     //Single Player
     private SerializedProperty inScenePlayerProperty;
+    private SerializedProperty singlePlayerCameraModeProperty;
 
     //Local Multiplayer
     private SerializedProperty playerPrefabProperty;
@@ -30,6 +31,7 @@ public class GameManagerEditor : Editor
 
         //Single Player
         inScenePlayerProperty = serializedObject.FindProperty("inScenePlayer");
+        singlePlayerCameraModeProperty = serializedObject.FindProperty("singlePlayerCameraMode");
 
         //Local Multiplayer
         playerPrefabProperty = serializedObject.FindProperty("playerPrefab");
@@ -51,7 +53,7 @@ public class GameManagerEditor : Editor
         
         DrawSpaceGUI(3);
 
-        EditorGUILayout.LabelField("Mode Settings", EditorStyles.boldLabel);
+        EditorGUILayout.LabelField("Initialization Mode Settings", EditorStyles.boldLabel);
 
         if(gameManager.currentGameMode == GameMode.SinglePlayer)
         {
@@ -74,7 +76,8 @@ public class GameManagerEditor : Editor
 
     void DrawSinglePlayerGUI()
     {
-         EditorGUILayout.PropertyField(inScenePlayerProperty);
+        EditorGUILayout.PropertyField(inScenePlayerProperty);
+        EditorGUILayout.PropertyField(singlePlayerCameraModeProperty);
     }
 
     void DrawLocalMultiplayerGUI()

@@ -243,5 +243,10 @@ public class PlayerController : MonoBehaviour
         return playerInput.actions;
     }
 
+    public PlayerInput GetPlayerInput()
+    {
+        return playerInput;
+    }
+
 
 }

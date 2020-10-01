@@ -17,6 +17,7 @@ public class GameManager : Singleton<GameManager>
 
     //Single Player
     public GameObject inScenePlayer;
+    public SinglePlayerCameraMode singlePlayerCameraMode;
 
     //Local Multiplayer
     public GameObject playerPrefab;
@@ -63,6 +64,7 @@ public class GameManager : Singleton<GameManager>
         }
 
         SetupActivePlayers();
+        SetupSinglePlayerCamera();
     }
 
     void SetupLocalMultiplayer()
@@ -109,6 +111,11 @@ public class GameManager : Singleton<GameManager>
     void SetupUI()
     {
         UIManager.Instance.SetupManager();
+    }
+
+    void SetupSinglePlayerCamera()
+    {
+        CameraManager.Instance.SetupSinglePlayerCamera(singlePlayerCameraMode);
     }
 
     public void TogglePauseState(PlayerController newFocusedPlayerController)

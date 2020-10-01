@@ -48,10 +48,15 @@ public class DeviceDisplayConfiguratorEditor : Editor
 
             CalculateColumnSizes(rect);
 
+            
 	        EditorGUI.PropertyField(rawPathColumn, element.FindPropertyRelative("deviceRawPath"), GUIContent.none);
             EditorGUI.PropertyField(displayNameColumn, element.FindPropertyRelative("deviceDisplayName"), GUIContent.none);
             EditorGUI.PropertyField(displayColorColumn, element.FindPropertyRelative("deviceDisplayColor"), GUIContent.none);
+            
         };
+
+        //listDevices.elementHeight = EditorGUIUtility.singleLineHeight;
+        
 
     }
 

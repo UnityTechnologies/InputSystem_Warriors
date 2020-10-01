@@ -8,6 +8,7 @@ using UnityEngine.EventSystems;
 
 public class EventSystemManager : Singleton<EventSystemManager>
 {
+    [Header("Component References")]
     public EventSystem eventSystem;
     public InputSystemUIInputModule inputSystemUIInputModule;
 
