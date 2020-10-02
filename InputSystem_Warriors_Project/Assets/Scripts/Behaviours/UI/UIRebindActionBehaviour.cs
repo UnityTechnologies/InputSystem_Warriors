@@ -7,7 +7,7 @@ using TMPro;
 
 public class UIRebindActionBehaviour : MonoBehaviour
 {   
-
+    //Input System Stored Data
     private InputActionAsset focusedInputActionAsset;
     private PlayerInput focusedPlayerInput;
     private InputAction focusedInputAction;
@@ -16,9 +16,15 @@ public class UIRebindActionBehaviour : MonoBehaviour
     [Header("Rebind Settings")]
     public string actionName;
 
-    [Header("UI Display - Action and Binding Text")]
+    [Header("Device Display Settings")]
+    public DeviceDisplayConfigurator deviceDisplaySettings;
+
+    [Header("UI Display - Action Text")]
     public TextMeshProUGUI actionNameDisplayText;
+
+    [Header("UI Display - Binding Text or Icon")]
     public TextMeshProUGUI bindingNameDisplayText;
+    public Image bindingIconDisplayImage;
 
     [Header("UI Display - Rebind Button")]
     public GameObject rebindButtonObject;
@@ -31,7 +37,8 @@ public class UIRebindActionBehaviour : MonoBehaviour
     {   
         GetFocusedPlayerInput();
         SetupFocusedInputAction();
-        UpdateActionAndBindingDisplayUI();
+        UpdateActionDisplayUI();
+        UpdateBindingDisplayUI();
     }
 
     void GetFocusedPlayerInput()
@@ -45,7 +52,7 @@ public class UIRebindActionBehaviour : MonoBehaviour
         focusedInputAction = focusedPlayerInput.actions.FindAction(actionName);
     }
 
-    public void RebindButtonPressed()
+    public void ButtonPressedStartRebind()
     {
         StartRebindProcess();
     }
@@ -77,19 +84,40 @@ public class UIRebindActionBehaviour : MonoBehaviour
         ToggleGameObjectState(rebindButtonObject, true);
         ToggleGameObjectState(listeningForInputObject, false);
 
-        UpdateActionAndBindingDisplayUI();
+        UpdateActionDisplayUI();
+        UpdateBindingDisplayUI();
     }
 
 
 
-    void UpdateActionAndBindingDisplayUI()
+    void UpdateActionDisplayUI()
     {
         actionNameDisplayText.SetText(actionName);
+    }
+
+    void UpdateBindingDisplayUI()
+    {
+
+        PlayerController focusedPlayerController = GameManager.Instance.GetFocusedPlayerController();
+        string currentRawDevicePath = focusedPlayerController.GetRawDevicePath();
 
         int controlBindingIndex = focusedInputAction.GetBindingIndexForControl(focusedInputAction.controls[0]);
         string currentBindingInput = InputControlPath.ToHumanReadableString(focusedInputAction.bindings[controlBindingIndex].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice);
+        
+        Sprite currentDisplayIcon = deviceDisplaySettings.GetDeviceBindingIcon(currentRawDevicePath, currentBindingInput);
 
-        bindingNameDisplayText.SetText(currentBindingInput);
+        if(currentDisplayIcon)
+        {
+            ToggleGameObjectState(bindingNameDisplayText.gameObject, false);
+            ToggleGameObjectState(bindingIconDisplayImage.gameObject, true);
+            bindingIconDisplayImage.sprite = currentDisplayIcon;
+        } else if(currentDisplayIcon == null)
+        {
+            ToggleGameObjectState(bindingNameDisplayText.gameObject, true);
+            ToggleGameObjectState(bindingIconDisplayImage.gameObject, false);
+            bindingNameDisplayText.SetText(currentBindingInput);
+        }
+
     }
 
 

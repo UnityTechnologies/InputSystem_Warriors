@@ -11,6 +11,7 @@ public class DeviceDisplayConfigurator : ScriptableObject
         public string deviceRawPath;
         public string deviceDisplayName;
         public Color deviceDisplayColor;
+        public DeviceDisplayIconSet deviceDisplayIconSet;
     }
 
     [System.Serializable]
@@ -66,6 +67,76 @@ public class DeviceDisplayConfigurator : ScriptableObject
 
         return newDisplayColor;
         
+    }
+
+    public Sprite GetDeviceBindingIcon(string playerInputDeviceRawPath, string playerInputDeviceInputBinding)
+    {
+
+        Sprite displaySpriteIcon = null;
+
+        for(int i = 0; i < listDeviceSettings.Count; i++)
+        {
+            if(listDeviceSettings[i].deviceRawPath == playerInputDeviceRawPath)
+            {
+                if(listDeviceSettings[i].deviceDisplayIconSet != null)
+                {
+                    displaySpriteIcon = FilterForDeviceInputBinding(listDeviceSettings[i], playerInputDeviceInputBinding);
+                }
+            }
+        }
+
+        return displaySpriteIcon;
+    }
+
+    Sprite FilterForDeviceInputBinding(DeviceSettings targetDeviceSetting, string inputBinding)
+    {
+        Sprite selectedSpriteIcon = null;
+
+        switch(inputBinding)
+        {
+            case "Button North":
+                selectedSpriteIcon = targetDeviceSetting.deviceDisplayIconSet.buttonNorthIcon;  
+                break;
+
+            case "Button South":
+                selectedSpriteIcon = targetDeviceSetting.deviceDisplayIconSet.buttonSouthIcon;
+                break;
+
+            case "Button West":
+                selectedSpriteIcon = targetDeviceSetting.deviceDisplayIconSet.buttonWestIcon;
+                break;
+
+            case "Button East":
+                selectedSpriteIcon = targetDeviceSetting.deviceDisplayIconSet.buttonEastIcon;
+                break;
+
+            case "Right Shoulder":
+                selectedSpriteIcon = targetDeviceSetting.deviceDisplayIconSet.triggerRightFrontIcon;
+                break;
+
+            case "Right Trigger":
+                selectedSpriteIcon = targetDeviceSetting.deviceDisplayIconSet.triggerRightBackIcon;
+                break;
+
+            case "rightTriggerButton":
+                selectedSpriteIcon = targetDeviceSetting.deviceDisplayIconSet.triggerRightBackIcon;
+                break;
+
+            case "Left Shoulder":
+                selectedSpriteIcon = targetDeviceSetting.deviceDisplayIconSet.triggerLeftFrontIcon;
+                break;
+
+            case "Left Trigger":
+                selectedSpriteIcon = targetDeviceSetting.deviceDisplayIconSet.triggerLeftBackIcon;
+                break;
+
+            case "leftTriggerButton":
+                selectedSpriteIcon = targetDeviceSetting.deviceDisplayIconSet.triggerLeftBackIcon;
+                break;
+
+        }
+
+        return selectedSpriteIcon;
     }
 
     public string GetDisconnectedName()
