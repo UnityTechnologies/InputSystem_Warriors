@@ -157,7 +157,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 31590763}
-  m_LocalRotation: {x: 0.08378541, y: -0.002174518, z: 0.00018283624, w: 0.9964814}
+  m_LocalRotation: {x: 0.08378541, y: -0.0021745143, z: 0.00018283591, w: 0.9964814}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -380,7 +380,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 124915044}
-  m_LocalRotation: {x: 0.05312623, y: -0.0021791102, z: 0.0001159319, w: 0.99858546}
+  m_LocalRotation: {x: 0.05312623, y: -0.0021791148, z: 0.00011593214, w: 0.99858546}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2512,7 +2512,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 979771481}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.025054941, y: 2.188531, z: -8.310723}
+  m_LocalPosition: {x: 0.025054898, y: 2.188531, z: -8.310723}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1833978499}
@@ -2929,7 +2929,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentGameMode: 0
   inScenePlayer: {fileID: 16277595}
-  singlePlayerCameraMode: 1
+  singlePlayerCameraMode: 0
   playerPrefab: {fileID: 1743518200311987069, guid: ca9ee4e0ea2b85646be0b08bab27e559,
     type: 3}
   numberOfPlayers: 3
@@ -4655,7 +4655,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1833978498}
-  m_LocalRotation: {x: 0.18110338, y: -0.0021461297, z: 0.00039520732, w: 0.9834617}
+  m_LocalRotation: {x: 0.18110336, y: -0.0021460743, z: 0.00039519716, w: 0.9834617}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

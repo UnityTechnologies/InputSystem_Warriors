@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
     {
         playerID = newPlayerID;
         playerAnimationBehaviour.SetupBehaviour();
-        playerVisualsBehaviour.SetupBehaviour(playerID, playerInput.devices[0].ToString());
+        playerVisualsBehaviour.SetupBehaviour(playerID, GetRawDevicePath());
         FindGameplayCamera();
 
     }
