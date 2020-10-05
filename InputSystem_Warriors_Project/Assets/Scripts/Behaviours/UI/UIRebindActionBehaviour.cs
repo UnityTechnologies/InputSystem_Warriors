@@ -26,8 +26,9 @@ public class UIRebindActionBehaviour : MonoBehaviour
     public TextMeshProUGUI bindingNameDisplayText;
     public Image bindingIconDisplayImage;
 
-    [Header("UI Display - Rebind Button")]
+    [Header("UI Display - Buttons")]
     public GameObject rebindButtonObject;
+    public GameObject resetButtonObject;
 
     [Header("UI Display - Listening Text")]
     public GameObject listeningForInputObject;
@@ -61,6 +62,7 @@ public class UIRebindActionBehaviour : MonoBehaviour
     {
         
         ToggleGameObjectState(rebindButtonObject, false);
+        ToggleGameObjectState(resetButtonObject, false);
         ToggleGameObjectState(listeningForInputObject, true);
 
         rebindOperation?.Dispose();
@@ -70,21 +72,33 @@ public class UIRebindActionBehaviour : MonoBehaviour
             .WithControlsExcluding("<Gamepad>/Start")
             .WithControlsExcluding("<Keyboard>/p")
             .OnMatchWaitForAnother(0.1f)
-            .OnComplete(operation => ButtonRebindCompleted());
+            .OnComplete(operation => RebindCompleted());
 
         rebindOperation.Start();
     }
 
 
-    void ButtonRebindCompleted()
+    void RebindCompleted()
     {
         rebindOperation.Dispose();
         rebindOperation = null;
 
         ToggleGameObjectState(rebindButtonObject, true);
+        ToggleGameObjectState(resetButtonObject, true);
         ToggleGameObjectState(listeningForInputObject, false);
 
         UpdateActionDisplayUI();
+        UpdateBindingDisplayUI();
+    }
+
+    public void ButtonPressedResetBinding()
+    {
+        ResetBinding();
+    }
+
+    void ResetBinding()
+    {
+        InputActionRebindingExtensions.RemoveAllBindingOverrides(focusedInputAction);
         UpdateBindingDisplayUI();
     }
 
@@ -93,18 +107,20 @@ public class UIRebindActionBehaviour : MonoBehaviour
     void UpdateActionDisplayUI()
     {
         actionNameDisplayText.SetText(actionName);
+
+        UpdateBindingDisplayUI();
     }
 
     void UpdateBindingDisplayUI()
     {
 
         PlayerController focusedPlayerController = GameManager.Instance.GetFocusedPlayerController();
-        string currentRawDevicePath = focusedPlayerController.GetRawDevicePath();
+        string currentRawDevicePath = focusedPlayerController.GetPlayerInput().ToString();
 
         int controlBindingIndex = focusedInputAction.GetBindingIndexForControl(focusedInputAction.controls[0]);
         string currentBindingInput = InputControlPath.ToHumanReadableString(focusedInputAction.bindings[controlBindingIndex].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice);
         
-        Sprite currentDisplayIcon = deviceDisplaySettings.GetDeviceBindingIcon(currentRawDevicePath, currentBindingInput);
+        Sprite currentDisplayIcon = deviceDisplaySettings.GetDeviceBindingIcon(focusedPlayerInput, currentBindingInput);
 
         if(currentDisplayIcon)
         {

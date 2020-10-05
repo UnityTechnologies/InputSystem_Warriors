@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
     {
         playerID = newPlayerID;
         playerAnimationBehaviour.SetupBehaviour();
-        playerVisualsBehaviour.SetupBehaviour(playerID, GetRawDevicePath());
+        playerVisualsBehaviour.SetupBehaviour(playerID, playerInput);
         FindGameplayCamera();
 
     }
@@ -178,7 +178,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnControlsChanged()
     {
-        playerVisualsBehaviour.UpdatePlayerVisuals(playerInput.devices[0].ToString());
+        playerVisualsBehaviour.UpdatePlayerVisuals();
     }
 
     public void OnDeviceLost()
@@ -195,7 +195,7 @@ public class PlayerController : MonoBehaviour
     IEnumerator WaitForDeviceToBeRegained()
     {
         yield return new WaitForSeconds(0.1f);
-        playerVisualsBehaviour.UpdatePlayerVisuals(playerInput.devices[0].ToString());
+        playerVisualsBehaviour.UpdatePlayerVisuals();
     }
 
 
@@ -231,11 +231,6 @@ public class PlayerController : MonoBehaviour
     public int GetPlayerID()
     {
         return playerID;
-    }
-
-    public string GetRawDevicePath()
-    {
-        return playerInput.devices[0].ToString();
     }
 
     public InputActionAsset GetActionAsset()

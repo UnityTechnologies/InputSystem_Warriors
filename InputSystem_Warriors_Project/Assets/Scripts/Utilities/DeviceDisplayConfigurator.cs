@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.InputSystem;
 
 [CreateAssetMenu(fileName = "Device Display Configurator", menuName = "Scriptable Objects/Device Display Configurator", order = 1)]
 public class DeviceDisplayConfigurator : ScriptableObject
@@ -26,14 +27,17 @@ public class DeviceDisplayConfigurator : ScriptableObject
     private Color fallbackDisplayColor = Color.white;
 
 
-    public string GetDeviceName(string playerInputDeviceRawPath)
+    public string GetDeviceName(PlayerInput playerInput)
     {
+
+        string currentDeviceRawPath = playerInput.devices[0].ToString();
+
         string newDisplayName = null;
 
         for(int i = 0; i < listDeviceSets.Count; i++)
         {
 
-            if(listDeviceSets[i].deviceRawPath == playerInputDeviceRawPath)
+            if(listDeviceSets[i].deviceRawPath == currentDeviceRawPath)
             {   
                 newDisplayName = listDeviceSets[i].deviceDisplaySettings.deviceDisplayName;
             }
@@ -41,7 +45,7 @@ public class DeviceDisplayConfigurator : ScriptableObject
 
         if(newDisplayName == null)
         {
-            newDisplayName = playerInputDeviceRawPath;
+            newDisplayName = currentDeviceRawPath;
         }
 
         return newDisplayName;
@@ -49,15 +53,17 @@ public class DeviceDisplayConfigurator : ScriptableObject
     }
 
     
-    public Color GetDeviceColor(string playerInputDeviceRawPath)
-    {
+    public Color GetDeviceColor(PlayerInput playerInput)
+    {  
+
+        string currentDeviceRawPath = playerInput.devices[0].ToString();
         
         Color newDisplayColor = fallbackDisplayColor;
 
         for(int i = 0; i < listDeviceSets.Count; i++)
         {
 
-            if(listDeviceSets[i].deviceRawPath == playerInputDeviceRawPath)
+            if(listDeviceSets[i].deviceRawPath == currentDeviceRawPath)
             {   
                 newDisplayColor = listDeviceSets[i].deviceDisplaySettings.deviceDisplayColor;
             }
@@ -67,14 +73,16 @@ public class DeviceDisplayConfigurator : ScriptableObject
         
     }
 
-    public Sprite GetDeviceBindingIcon(string playerInputDeviceRawPath, string playerInputDeviceInputBinding)
+    public Sprite GetDeviceBindingIcon(PlayerInput playerInput, string playerInputDeviceInputBinding)
     {
+
+        string currentDeviceRawPath = playerInput.devices[0].ToString();
 
         Sprite displaySpriteIcon = null;
 
         for(int i = 0; i < listDeviceSets.Count; i++)
         {
-            if(listDeviceSets[i].deviceRawPath == playerInputDeviceRawPath)
+            if(listDeviceSets[i].deviceRawPath == currentDeviceRawPath)
             {
                 if(listDeviceSets[i].deviceDisplaySettings.deviceHasContextIcons != null)
                 {

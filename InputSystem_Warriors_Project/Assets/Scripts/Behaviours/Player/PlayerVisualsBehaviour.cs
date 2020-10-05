@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerVisualsBehaviour : MonoBehaviour
 {
 
     //Player ID
     private int playerID;
+    private PlayerInput playerInput;
 
     [Header("Device Display Settings")]
     public DeviceDisplayConfigurator deviceDisplaySettings;
@@ -19,13 +21,14 @@ public class PlayerVisualsBehaviour : MonoBehaviour
 
     private int clothingTintShaderID;
 
-    public void SetupBehaviour(int newPlayerID, string newDeviceRawPath)
+    public void SetupBehaviour(int newPlayerID, PlayerInput newPlayerInput)
     {
         playerID = newPlayerID;
+        playerInput = newPlayerInput;
 
         SetupShaderIDs();
 
-        UpdatePlayerVisuals(newDeviceRawPath);
+        UpdatePlayerVisuals();
     }
 
     void SetupShaderIDs()
@@ -33,26 +36,26 @@ public class PlayerVisualsBehaviour : MonoBehaviour
         clothingTintShaderID = Shader.PropertyToID("_Clothing_Tint");
     }
 
-    public void UpdatePlayerVisuals(string deviceRawPath)
+    public void UpdatePlayerVisuals()
     {
-        UpdateUIDisplay(deviceRawPath);
-        UpdateCharacterShader(deviceRawPath);
+        UpdateUIDisplay();
+        UpdateCharacterShader();
     }
 
-    void UpdateUIDisplay(string deviceRawPath)
+    void UpdateUIDisplay()
     {
         playerUIDisplayBehaviour.UpdatePlayerIDDisplayText(playerID);
         
-        string deviceName = deviceDisplaySettings.GetDeviceName(deviceRawPath);
+        string deviceName = deviceDisplaySettings.GetDeviceName(playerInput);
         playerUIDisplayBehaviour.UpdatePlayerDeviceNameDisplayText(deviceName);
 
-        Color deviceColor = deviceDisplaySettings.GetDeviceColor(deviceRawPath);
+        Color deviceColor = deviceDisplaySettings.GetDeviceColor(playerInput);
         playerUIDisplayBehaviour.UpdatePlayerIconDisplayColor(deviceColor);
     }
 
-    void UpdateCharacterShader(string deviceRawPath)
+    void UpdateCharacterShader()
     {
-        Color deviceColor = deviceDisplaySettings.GetDeviceColor(deviceRawPath);
+        Color deviceColor = deviceDisplaySettings.GetDeviceColor(playerInput);
         playerSkinnedMeshRenderer.material.SetColor(clothingTintShaderID, deviceColor);
     }
 
