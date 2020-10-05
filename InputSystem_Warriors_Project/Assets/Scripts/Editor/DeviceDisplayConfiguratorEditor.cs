@@ -6,13 +6,8 @@ using UnityEditorInternal;
 public class DeviceDisplayConfiguratorEditor : Editor
 {
 
-    private ReorderableList listDevices;
+    private ReorderableList listDeviceSets;
     private SerializedProperty disconnectedDeviceProperty;
-
-    private Rect rawPathColumn;
-    private Rect displayNameColumn;
-    private Rect displayColorColumn;
-    private Rect displayIconSetColumn;
 
     private void OnEnable()
     {
@@ -24,8 +19,8 @@ public class DeviceDisplayConfiguratorEditor : Editor
     {
         serializedObject.Update();
 
-        EditorGUILayout.LabelField("Device Settings", EditorStyles.boldLabel);
-        listDevices.DoLayoutList();
+        EditorGUILayout.LabelField("Device Sets", EditorStyles.boldLabel);
+        listDeviceSets.DoLayoutList();
 
         EditorGUILayout.PropertyField(disconnectedDeviceProperty);
 
@@ -34,61 +29,55 @@ public class DeviceDisplayConfiguratorEditor : Editor
 
     void DrawListOfDevices()
     {
-        listDevices = new ReorderableList(serializedObject, serializedObject.FindProperty("listDeviceSettings"), true, true, true, true);
+        listDeviceSets = new ReorderableList(serializedObject, serializedObject.FindProperty("listDeviceSets"), true, true, true, true);
 
-        listDevices.drawHeaderCallback = (Rect rect) => {
+        listDeviceSets.drawHeaderCallback = (Rect rect) => {
 
-            DrawColumnHeaders(rect, 10);
+            EditorGUI.LabelField(CalculateColumn(rect, 1, 15, 0), "Raw Path Name");
+            EditorGUI.LabelField(CalculateColumn(rect, 2, 15, 0), "Device Display Settings");
         };
 
-        listDevices.drawElementCallback = (Rect rect, int index, bool isActive, bool isFocused) => {
+        listDeviceSets.drawElementCallback = (Rect rect, int index, bool isActive, bool isFocused) => {
 
-	        var element = listDevices.serializedProperty.GetArrayElementAtIndex(index);
+	        var element = listDeviceSets.serializedProperty.GetArrayElementAtIndex(index);
 
 	        rect.y += 2;
-
-            CalculateColumnSizes(rect, 0);
-
             
-	        EditorGUI.PropertyField(rawPathColumn, element.FindPropertyRelative("deviceRawPath"), GUIContent.none);
-            EditorGUI.PropertyField(displayNameColumn, element.FindPropertyRelative("deviceDisplayName"), GUIContent.none);
-            EditorGUI.PropertyField(displayIconSetColumn, element.FindPropertyRelative("deviceDisplayIconSet"), GUIContent.none);
-            EditorGUI.PropertyField(displayColorColumn, element.FindPropertyRelative("deviceDisplayColor"), GUIContent.none);
-            
-        };
-
-        //listDevices.elementHeight = EditorGUIUtility.singleLineHeight;
+	        EditorGUI.PropertyField(CalculateColumn(rect, 1, 0, 0), element.FindPropertyRelative("deviceRawPath"), GUIContent.none);
+            EditorGUI.PropertyField(CalculateColumn(rect, 2, 10, 10), element.FindPropertyRelative("deviceDisplaySettings"), GUIContent.none);
         
+            
+        };   
 
     }
 
-    void DrawColumnHeaders(Rect rect, int extraPadding)
+    Rect CalculateColumn(Rect rect, int columnNumber, float xPadding, float xWidth)
     {
+        float xPosition = rect.x; 
+        switch (columnNumber)
+        {
+            case 1:
+                xPosition = rect.x + xPadding;
+                break;
 
-        CalculateColumnSizes(rect, extraPadding);
+            case 2:
+                xPosition = rect.x + rect.width/2 + xPadding;
+                break;
+        }
 
-        EditorGUI.LabelField(rawPathColumn, "Raw Path Name");
-        EditorGUI.LabelField(displayNameColumn, "Display Name");
-        EditorGUI.LabelField(displayIconSetColumn, "Display Icon Set");
-        EditorGUI.LabelField(displayColorColumn, "Display Color");
+
+        return new Rect(xPosition, rect.y, rect.width / 2 - xWidth, EditorGUIUtility.singleLineHeight);
     }
 
+    /*
     void CalculateColumnSizes(Rect rect, int extraPadding)
     {
-        /*
-        rawPathColumn = new Rect(rect.x, rect.y, rect.width/2 - 50 - 10, EditorGUIUtility.singleLineHeight);
-        displayNameColumn = new Rect(rect.x + rect.width/2 - 50, rect.y, rect.width/2 - 60, EditorGUIUtility.singleLineHeight);
-        displayColorColumn = new Rect(rect.x + rect.width - 100, rect.y, 100, EditorGUIUtility.singleLineHeight);
-        */
 
-        int gap = 10;
-        float thirdOfRect = rect.width/3;
+        rawPathColumn = new Rect(rect.x + extraPadding, rect.y, rect.width / 2 - 10, EditorGUIUtility.singleLineHeight);
+        deviceDisplaySettingsColumn = new Rect(rect.x + rect.width / 2 + extraPadding, rect.y, rect.width/2, EditorGUIUtility.singleLineHeight);
 
-        rawPathColumn = new Rect(rect.x, rect.y, thirdOfRect, EditorGUIUtility.singleLineHeight);
-        displayNameColumn = new Rect(rect.x + thirdOfRect + gap, rect.y, thirdOfRect - gap - gap, EditorGUIUtility.singleLineHeight);
-        displayIconSetColumn = new Rect(rect.x + thirdOfRect*2, rect.y, thirdOfRect / 2, EditorGUIUtility.singleLineHeight);
-        displayColorColumn  = new Rect(rect.x + rect.width - thirdOfRect /2 + gap, rect.y, (thirdOfRect / 2) - gap, EditorGUIUtility.singleLineHeight);
     }
+    */
 
    
 }

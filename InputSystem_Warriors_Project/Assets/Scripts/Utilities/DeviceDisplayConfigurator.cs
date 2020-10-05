@@ -4,14 +4,12 @@ using System.Collections.Generic;
 [CreateAssetMenu(fileName = "Device Display Configurator", menuName = "Scriptable Objects/Device Display Configurator", order = 1)]
 public class DeviceDisplayConfigurator : ScriptableObject
 {
-
+    
     [System.Serializable]
-    public struct DeviceSettings
+    public struct DeviceSet
     {
         public string deviceRawPath;
-        public string deviceDisplayName;
-        public Color deviceDisplayColor;
-        public DeviceDisplayIconSet deviceDisplayIconSet;
+        public DeviceDisplaySettings deviceDisplaySettings;
     }
 
     [System.Serializable]
@@ -21,7 +19,7 @@ public class DeviceDisplayConfigurator : ScriptableObject
         public Color disconnectedDisplayColor;
     }
 
-    public List<DeviceSettings> listDeviceSettings = new List<DeviceSettings>();
+    public List<DeviceSet> listDeviceSets = new List<DeviceSet>();
 
     public DisconnectedSettings disconnectedDeviceSettings;
 
@@ -32,12 +30,12 @@ public class DeviceDisplayConfigurator : ScriptableObject
     {
         string newDisplayName = null;
 
-        for(int i = 0; i < listDeviceSettings.Count; i++)
+        for(int i = 0; i < listDeviceSets.Count; i++)
         {
 
-            if(listDeviceSettings[i].deviceRawPath == playerInputDeviceRawPath)
+            if(listDeviceSets[i].deviceRawPath == playerInputDeviceRawPath)
             {   
-                newDisplayName = listDeviceSettings[i].deviceDisplayName;
+                newDisplayName = listDeviceSets[i].deviceDisplaySettings.deviceDisplayName;
             }
         }
 
@@ -56,12 +54,12 @@ public class DeviceDisplayConfigurator : ScriptableObject
         
         Color newDisplayColor = fallbackDisplayColor;
 
-        for(int i = 0; i < listDeviceSettings.Count; i++)
+        for(int i = 0; i < listDeviceSets.Count; i++)
         {
 
-            if(listDeviceSettings[i].deviceRawPath == playerInputDeviceRawPath)
+            if(listDeviceSets[i].deviceRawPath == playerInputDeviceRawPath)
             {   
-                newDisplayColor = listDeviceSettings[i].deviceDisplayColor;
+                newDisplayColor = listDeviceSets[i].deviceDisplaySettings.deviceDisplayColor;
             }
         }
 
@@ -74,13 +72,13 @@ public class DeviceDisplayConfigurator : ScriptableObject
 
         Sprite displaySpriteIcon = null;
 
-        for(int i = 0; i < listDeviceSettings.Count; i++)
+        for(int i = 0; i < listDeviceSets.Count; i++)
         {
-            if(listDeviceSettings[i].deviceRawPath == playerInputDeviceRawPath)
+            if(listDeviceSets[i].deviceRawPath == playerInputDeviceRawPath)
             {
-                if(listDeviceSettings[i].deviceDisplayIconSet != null)
+                if(listDeviceSets[i].deviceDisplaySettings.deviceHasContextIcons != null)
                 {
-                    displaySpriteIcon = FilterForDeviceInputBinding(listDeviceSettings[i], playerInputDeviceInputBinding);
+                    displaySpriteIcon = FilterForDeviceInputBinding(listDeviceSets[i], playerInputDeviceInputBinding);
                 }
             }
         }
@@ -88,50 +86,50 @@ public class DeviceDisplayConfigurator : ScriptableObject
         return displaySpriteIcon;
     }
 
-    Sprite FilterForDeviceInputBinding(DeviceSettings targetDeviceSetting, string inputBinding)
+    Sprite FilterForDeviceInputBinding(DeviceSet targetDeviceSet, string inputBinding)
     {
         Sprite selectedSpriteIcon = null;
 
         switch(inputBinding)
         {
             case "Button North":
-                selectedSpriteIcon = targetDeviceSetting.deviceDisplayIconSet.buttonNorthIcon;  
+                selectedSpriteIcon = targetDeviceSet.deviceDisplaySettings.buttonNorthIcon;  
                 break;
 
             case "Button South":
-                selectedSpriteIcon = targetDeviceSetting.deviceDisplayIconSet.buttonSouthIcon;
+                selectedSpriteIcon = targetDeviceSet.deviceDisplaySettings.buttonSouthIcon;
                 break;
 
             case "Button West":
-                selectedSpriteIcon = targetDeviceSetting.deviceDisplayIconSet.buttonWestIcon;
+                selectedSpriteIcon = targetDeviceSet.deviceDisplaySettings.buttonWestIcon;
                 break;
 
             case "Button East":
-                selectedSpriteIcon = targetDeviceSetting.deviceDisplayIconSet.buttonEastIcon;
+                selectedSpriteIcon = targetDeviceSet.deviceDisplaySettings.buttonEastIcon;
                 break;
 
             case "Right Shoulder":
-                selectedSpriteIcon = targetDeviceSetting.deviceDisplayIconSet.triggerRightFrontIcon;
+                selectedSpriteIcon = targetDeviceSet.deviceDisplaySettings.triggerRightFrontIcon;
                 break;
 
             case "Right Trigger":
-                selectedSpriteIcon = targetDeviceSetting.deviceDisplayIconSet.triggerRightBackIcon;
+                selectedSpriteIcon = targetDeviceSet.deviceDisplaySettings.triggerRightBackIcon;
                 break;
 
             case "rightTriggerButton":
-                selectedSpriteIcon = targetDeviceSetting.deviceDisplayIconSet.triggerRightBackIcon;
+                selectedSpriteIcon = targetDeviceSet.deviceDisplaySettings.triggerRightBackIcon;
                 break;
 
             case "Left Shoulder":
-                selectedSpriteIcon = targetDeviceSetting.deviceDisplayIconSet.triggerLeftFrontIcon;
+                selectedSpriteIcon = targetDeviceSet.deviceDisplaySettings.triggerLeftFrontIcon;
                 break;
 
             case "Left Trigger":
-                selectedSpriteIcon = targetDeviceSetting.deviceDisplayIconSet.triggerLeftBackIcon;
+                selectedSpriteIcon = targetDeviceSet.deviceDisplaySettings.triggerLeftBackIcon;
                 break;
 
             case "leftTriggerButton":
-                selectedSpriteIcon = targetDeviceSetting.deviceDisplayIconSet.triggerLeftBackIcon;
+                selectedSpriteIcon = targetDeviceSet.deviceDisplaySettings.triggerLeftBackIcon;
                 break;
 
         }

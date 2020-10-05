@@ -9,9 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d75c723a6e777af4c9ae1c59aa3fc508, type: 3}
-  m_Name: DeviceDisplayIconSet_NintendoSwitchProController
+  m_Script: {fileID: 11500000, guid: e9ea9a11d318323458a19965038cc9a3, type: 3}
+  m_Name: DeviceDisplaySettings_NintendoSwitchProController
   m_EditorClassIdentifier: 
+  deviceDisplayName: Nintendo Switch
+  deviceDisplayColor: {r: 1, g: 0.1254902, b: 0, a: 1}
+  deviceHasContextIcons: 1
   buttonNorthIcon: {fileID: 21300000, guid: e9a7fc567b15a604db3ecd50a7aa1b7c, type: 3}
   buttonSouthIcon: {fileID: 21300000, guid: c6ae2910c99c4c045ba6e2473a9df908, type: 3}
   buttonWestIcon: {fileID: 21300000, guid: 38ad6671fee7da74fa7dae825fba063e, type: 3}

@@ -9,9 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d75c723a6e777af4c9ae1c59aa3fc508, type: 3}
-  m_Name: DeviceDisplayIconSet_Playstation4
+  m_Script: {fileID: 11500000, guid: e9ea9a11d318323458a19965038cc9a3, type: 3}
+  m_Name: DeviceDisplaySettings_PlayStationDualshock4
   m_EditorClassIdentifier: 
+  deviceDisplayName: PlayStation
+  deviceDisplayColor: {r: 0, g: 0.44705886, b: 1, a: 1}
+  deviceHasContextIcons: 1
   buttonNorthIcon: {fileID: 21300000, guid: 72bbdf5c15867b941ac7f79185b77555, type: 3}
   buttonSouthIcon: {fileID: 21300000, guid: 766e476b580fa2342a66ce531482d164, type: 3}
   buttonWestIcon: {fileID: 21300000, guid: 5650772324f737c4692e4ee41e15c9da, type: 3}

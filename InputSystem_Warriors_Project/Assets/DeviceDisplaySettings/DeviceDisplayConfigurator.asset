@@ -12,30 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa6f1fbaea804c34cab896669f1e362b, type: 3}
   m_Name: DeviceDisplayConfigurator
   m_EditorClassIdentifier: 
-  listDeviceSettings:
+  listDeviceSets:
   - deviceRawPath: Keyboard:/Keyboard
-    deviceDisplayName: Keyboard
-    deviceDisplayColor: {r: 1, g: 0.5764706, b: 0, a: 1}
-    deviceDisplayIconSet: {fileID: 0}
+    deviceDisplaySettings: {fileID: 11400000, guid: ac37f2ab60bc829478fd1aa4775349e2,
+      type: 2}
   - deviceRawPath: XInputControllerWindows:/XInputControllerWindows
-    deviceDisplayName: Xbox
-    deviceDisplayColor: {r: 0.5137255, g: 0.9058824, b: 0.3137255, a: 1}
-    deviceDisplayIconSet: {fileID: 11400000, guid: b45b544d7ca119b44886fdb47cc8830f,
+    deviceDisplaySettings: {fileID: 11400000, guid: a5eab36e3f254db458d2b5578c87f0c5,
       type: 2}
   - deviceRawPath: DualShock4GamepadHID:/DualShock4GamepadHID
-    deviceDisplayName: PlayStation
-    deviceDisplayColor: {r: 0, g: 0.44705886, b: 1, a: 1}
-    deviceDisplayIconSet: {fileID: 11400000, guid: 662427c3f91ac2a46bca4fdc5ff9e2d6,
+    deviceDisplaySettings: {fileID: 11400000, guid: f66ca6a37f19cdd428693237266253d6,
       type: 2}
   - deviceRawPath: SwitchProControllerHID:/SwitchProControllerHID
-    deviceDisplayName: Nintendo Switch
-    deviceDisplayColor: {r: 1, g: 0.1254902, b: 0, a: 1}
-    deviceDisplayIconSet: {fileID: 11400000, guid: 080ee8a352b96c945bec6b9e49866152,
+    deviceDisplaySettings: {fileID: 11400000, guid: 89e9fa8d62bd3af498178e24c1290877,
       type: 2}
   - deviceRawPath: Gamepad:/Gamepad
-    deviceDisplayName: Gamepad
-    deviceDisplayColor: {r: 0.5137255, g: 0, b: 1, a: 1}
-    deviceDisplayIconSet: {fileID: 0}
+    deviceDisplaySettings: {fileID: 11400000, guid: 504fb0ee535a2ed4c866e228de2e7f90,
+      type: 2}
   disconnectedDeviceSettings:
     disconnectedDisplayName: Disconnected!
     disconnectedDisplayColor: {r: 0.7075472, g: 0.7075472, b: 0.7075472, a: 1}

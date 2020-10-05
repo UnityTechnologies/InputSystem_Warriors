@@ -9,9 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d75c723a6e777af4c9ae1c59aa3fc508, type: 3}
-  m_Name: DeviceDisplayIconSet_Xbox
+  m_Script: {fileID: 11500000, guid: e9ea9a11d318323458a19965038cc9a3, type: 3}
+  m_Name: DeviceDisplaySettings_XboxController
   m_EditorClassIdentifier: 
+  deviceDisplayName: Xbox
+  deviceDisplayColor: {r: 0.5137255, g: 0.9058824, b: 0.3137255, a: 1}
+  deviceHasContextIcons: 1
   buttonNorthIcon: {fileID: 21300000, guid: 5f68108cbf049074080c98561049c673, type: 3}
   buttonSouthIcon: {fileID: 21300000, guid: cb9bf2c3ad1d5d1488bc46dcde48367e, type: 3}
   buttonWestIcon: {fileID: 21300000, guid: 939f2e271ef1ce349a1542734e808bd4, type: 3}
