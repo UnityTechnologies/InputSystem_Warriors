@@ -11,191 +11,115 @@ public class PlayerController : MonoBehaviour
     private int playerID;
 
     [Header("Sub Behaviours")]
+    public PlayerMovementBehaviour playerMovementBehaviour;
     public PlayerAnimationBehaviour playerAnimationBehaviour;
     public PlayerVisualsBehaviour playerVisualsBehaviour;
 
-    [Header("Physics")]
-    public Rigidbody playerRigidbody;
 
-    [Header("Input")]
-    public bool useOldInputManager = false;
+    [Header("Input Settings")]
     public PlayerInput playerInput;
+    public float movementSmoothingSpeed = 1f;
+    private Vector3 rawInputMovement;
+    private Vector3 smoothInputMovement;
+    
+    //Action Maps
     private string actionMapGameplay = "Player Controls";
     private string actionMapMenu = "Menu Controls";
-    
-    private Vector3 inputDirection;
-    private Vector2 movementInput;
-    private bool currentInput = false;
 
-    //Camera
-    private Camera mainCamera;
 
-    [Header("Movement Settings")]
-    public float movementSpeed = 3;
-    public float smoothingSpeed = 1;
-    private Vector3 currentDirection;
-    private Vector3 rawDirection;
-    private Vector3 smoothDirection;
-    private Vector3 movement;
-
-    //This is called from the GameManager; after the player has been spawned
+    //This is called from the GameManager; when the game is being setup.
     public void SetupPlayer(int newPlayerID)
     {
         playerID = newPlayerID;
+        playerMovementBehaviour.SetupBehaviour();
         playerAnimationBehaviour.SetupBehaviour();
         playerVisualsBehaviour.SetupBehaviour(playerID, playerInput);
-        FindGameplayCamera();
-
-    }
-
-    void FindGameplayCamera()
-    {
-        mainCamera = CameraManager.Instance.GetGameplayCamera();
     }
 
 
-    void Update()
-    {
-        CalculateMovementInput();
-        CalculateAttackInput();
-    }
+    //INPUT SYSTEM ACTION METHODS --------------
 
-    void FixedUpdate()
-    {
-        CalculateDesiredDirection();
-        ConvertDirectionFromRawToSmooth();
-        MoveThePlayer();
-        AnimatePlayerMovement();
-        TurnThePlayer();
-    }
-
-    void CalculateMovementInput()
-    {
-
-        if(useOldInputManager)
-        {
-            var v = Input.GetAxisRaw("Vertical");
-            var h = Input.GetAxisRaw("Horizontal");
-            inputDirection = new Vector3(h, 0, v);
-        }
-        
-        if(inputDirection == Vector3.zero)
-        {
-            currentInput = false;
-        }
-        else if(inputDirection != Vector3.zero)
-        {
-            currentInput = true;
-        }
-    }
-
-    void CalculateAttackInput()
-    {
-        
-        if(useOldInputManager)
-        {
-            if(Input.GetKeyDown(KeyCode.Space))
-            {
-                playerAnimationBehaviour.PlayAttackAnimation();
-            }
-        }
-        
-    }
-
-    void CalculateDesiredDirection()
-    {
-        //Camera Direction
-		var cameraForward = mainCamera.transform.forward;
-		var cameraRight = mainCamera.transform.right;
-
-		cameraForward.y = 0f;
-		cameraRight.y = 0f;
-
-        rawDirection = cameraForward * inputDirection.z + cameraRight * inputDirection.x;
-    }
-
-    void ConvertDirectionFromRawToSmooth()
-    {   
-        if(currentInput == true)
-        {
-            smoothDirection = Vector3.Lerp(smoothDirection, rawDirection, Time.deltaTime * smoothingSpeed);
-        } else if(currentInput == false)
-        {
-            smoothDirection = Vector3.zero;
-        }
-    }
-
-    void MoveThePlayer()
-    {
-        if(currentInput == true)
-        {
-            movement.Set(smoothDirection.x, 0f, smoothDirection.z);
-            movement = movement.normalized * movementSpeed * Time.deltaTime;
-            playerRigidbody.MovePosition(transform.position + movement);
-        }
-    }
-
-    void TurnThePlayer()
-    {
-        if(currentInput == true)
-        {
-            Quaternion newRotation = Quaternion.LookRotation(-smoothDirection);
-            playerRigidbody.MoveRotation(newRotation);
-        }
-    }
-
-    void AnimatePlayerMovement()
-    {
-        playerAnimationBehaviour.UpdateMovementAnimation(inputDirection.sqrMagnitude);
-    }
-
-
-
-
-    //Action Callbacks from the new Input System ----
-
+    //This is called from PlayerInput; when a joystick or arrow keys has been pushed.
+    //It stores the input Vector as a Vector3 to then be used by the smoothing function.
     private void OnMovement(InputValue value)
     {
         Vector2 inputMovement = value.Get<Vector2>();
-        inputDirection = new Vector3(inputMovement.x, 0, inputMovement.y);
+        rawInputMovement = new Vector3(inputMovement.x, 0, inputMovement.y);
     }
 
+    //This is called from PlayerInput, when a button has been pushed, that corresponds with the 'Attack' action
     private void OnAttack(InputValue value)
     {
         playerAnimationBehaviour.PlayAttackAnimation();
     }
 
-
-
-
-
-
+    //This is called from Player Input, when a button has been pushed, that correspons with the 'TogglePause' action
     private void OnTogglePause(InputValue value)
     {
         GameManager.Instance.TogglePauseState(this);
     }
-    
 
+
+
+
+
+    //INPUT SYSTEM AUTOMATIC CALLBACKS --------------
+
+    //This is automatically called from PlayerInput, when the input device has changed
+    //(IE: Keyboard -> Xbox Controller)
     public void OnControlsChanged()
     {
         playerVisualsBehaviour.UpdatePlayerVisuals();
     }
 
+    //This is automatically called from PlayerInput, when the input device has been disconnected and can not be identified
+    //IE: Device unplugged or has run out of batteries
     public void OnDeviceLost()
     {
         playerVisualsBehaviour.SetDisconnectedDeviceVisuals();
     }
 
+    //This is automatically called from PlayerInput, then the input device reconnected
     public void OnDeviceRegained()
     {
         StartCoroutine(WaitForDeviceToBeRegained());
-       
     }
 
     IEnumerator WaitForDeviceToBeRegained()
     {
         yield return new WaitForSeconds(0.1f);
         playerVisualsBehaviour.UpdatePlayerVisuals();
+    }
+
+
+
+
+
+
+    //Update Loop - Used for calculating frame-based data
+    void Update()
+    {
+        CalculateMovementInputSmoothing();
+        UpdatePlayerMovement();
+        UpdatePlayerAnimationMovement();
+    }
+
+    //Input's Axes values are raw
+    void CalculateMovementInputSmoothing()
+    {
+        
+        smoothInputMovement = Vector3.Lerp(smoothInputMovement, rawInputMovement, Time.deltaTime * movementSmoothingSpeed);
+
+    }
+
+    void UpdatePlayerMovement()
+    {
+        playerMovementBehaviour.UpdateMovementData(smoothInputMovement);
+    }
+
+    void UpdatePlayerAnimationMovement()
+    {
+        playerAnimationBehaviour.UpdateMovementAnimation(rawInputMovement.sqrMagnitude);
     }
 
 
@@ -214,8 +138,8 @@ public class PlayerController : MonoBehaviour
     }
 
 
+
     //Switching Action Maps ----
-    
     public void EnableGameplayControls()
     {
         playerInput.SwitchCurrentActionMap(actionMapGameplay);  
@@ -226,8 +150,8 @@ public class PlayerController : MonoBehaviour
         playerInput.SwitchCurrentActionMap(actionMapMenu);
     }
 
-    //Get Data ----
 
+    //Get Data ----
     public int GetPlayerID()
     {
         return playerID;

@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 9e52c160328d68b4799c73e4e5cd0ed7
 ModelImporter:
-  serializedVersion: 19300
+  serializedVersion: 19301
   internalIDToNameTable:
   - first:
       1: 100000
@@ -419,12 +419,12 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: lambert26SG
-    second: {fileID: 2100000, guid: 5d0428d25999efc46b73a6461525785a, type: 2}
+    second: {fileID: 2100000, guid: 731650be44c05f8459778c3726da7e7f, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
     materialSearch: 1
-    materialLocation: 0
+    materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -444,7 +444,8 @@ ModelImporter:
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
-    extraExposedTransformPaths: []
+    extraExposedTransformPaths:
+    - unityHumanoidJoint_grp/Hips/Spine/Chest/UpperChest/RightShoulder/RightUpperArm/RightLowerArm/RightHand
     extraUserProperties: []
     clipAnimations: []
     isReadable: 0
@@ -459,6 +460,7 @@ ModelImporter:
     importBlendShapes: 0
     importCameras: 0
     importLights: 0
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1

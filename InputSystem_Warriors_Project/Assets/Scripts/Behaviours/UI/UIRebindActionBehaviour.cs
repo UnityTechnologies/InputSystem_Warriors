@@ -96,7 +96,7 @@ public class UIRebindActionBehaviour : MonoBehaviour
         ResetBinding();
     }
 
-    void ResetBinding()
+    public void ResetBinding()
     {
         InputActionRebindingExtensions.RemoveAllBindingOverrides(focusedInputAction);
         UpdateBindingDisplayUI();

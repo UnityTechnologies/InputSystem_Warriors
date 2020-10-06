@@ -13,4 +13,12 @@ public class UIPanelRebindBehaviour : MonoBehaviour
             uiRebindActionBehaviours[i].UpdateBehaviour();
         }
     }
+
+    public void ResetAllBindings()
+    {
+        for(int i = 0; i < uiRebindActionBehaviours.Length; i++)
+        {
+            uiRebindActionBehaviours[i].ResetBinding();
+        }
+    }
 }
