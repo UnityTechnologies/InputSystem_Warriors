@@ -71,6 +71,7 @@ public class UIRebindActionBehaviour : MonoBehaviour
             .WithControlsExcluding("<Mouse>/delta")
             .WithControlsExcluding("<Gamepad>/Start")
             .WithControlsExcluding("<Keyboard>/p")
+            .WithControlsExcluding("<Keyboard>/escape")
             .OnMatchWaitForAnother(0.1f)
             .OnComplete(operation => RebindCompleted());
 
@@ -107,8 +108,6 @@ public class UIRebindActionBehaviour : MonoBehaviour
     void UpdateActionDisplayUI()
     {
         actionNameDisplayText.SetText(actionName);
-
-        UpdateBindingDisplayUI();
     }
 
     void UpdateBindingDisplayUI()

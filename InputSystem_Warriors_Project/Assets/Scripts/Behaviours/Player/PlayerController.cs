@@ -26,11 +26,17 @@ public class PlayerController : MonoBehaviour
     private string actionMapGameplay = "Player Controls";
     private string actionMapMenu = "Menu Controls";
 
+    //Current Control Scheme
+    private string currentControlScheme;
+
 
     //This is called from the GameManager; when the game is being setup.
     public void SetupPlayer(int newPlayerID)
     {
         playerID = newPlayerID;
+
+        currentControlScheme = playerInput.currentControlScheme;
+
         playerMovementBehaviour.SetupBehaviour();
         playerAnimationBehaviour.SetupBehaviour();
         playerVisualsBehaviour.SetupBehaviour(playerID, playerInput);
@@ -69,7 +75,14 @@ public class PlayerController : MonoBehaviour
     //(IE: Keyboard -> Xbox Controller)
     public void OnControlsChanged()
     {
-        playerVisualsBehaviour.UpdatePlayerVisuals();
+
+        if(playerInput.currentControlScheme != currentControlScheme)
+        {
+            currentControlScheme = playerInput.currentControlScheme;
+
+            playerVisualsBehaviour.UpdatePlayerVisuals();
+            RemoveAllBindingOverrides();
+        }
     }
 
     //This is automatically called from PlayerInput, when the input device has been disconnected and can not be identified
@@ -90,9 +103,6 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         playerVisualsBehaviour.UpdatePlayerVisuals();
     }
-
-
-
 
 
 
@@ -135,6 +145,11 @@ public class PlayerController : MonoBehaviour
                 playerInput.ActivateInput();
                 break;
         }
+    }
+
+    void RemoveAllBindingOverrides()
+    {
+        InputActionRebindingExtensions.RemoveAllBindingOverrides(playerInput.currentActionMap);
     }
 
 
