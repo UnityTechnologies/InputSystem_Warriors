@@ -113,9 +113,6 @@ public class UIRebindActionBehaviour : MonoBehaviour
     void UpdateBindingDisplayUI()
     {
 
-        PlayerController focusedPlayerController = GameManager.Instance.GetFocusedPlayerController();
-        string currentRawDevicePath = focusedPlayerController.GetPlayerInput().ToString();
-
         int controlBindingIndex = focusedInputAction.GetBindingIndexForControl(focusedInputAction.controls[0]);
         string currentBindingInput = InputControlPath.ToHumanReadableString(focusedInputAction.bindings[controlBindingIndex].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice);
         
