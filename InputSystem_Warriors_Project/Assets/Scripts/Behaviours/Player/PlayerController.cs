@@ -23,8 +23,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 smoothInputMovement;
     
     //Action Maps
-    private string actionMapGameplay = "Player Controls";
-    private string actionMapMenu = "Menu Controls";
+    private string actionMapPlayerControls = "Player Controls";
+    private string actionMapMenuControls = "Menu Controls";
 
     //Current Control Scheme
     private string currentControlScheme;
@@ -47,6 +47,8 @@ public class PlayerController : MonoBehaviour
 
     //This is called from PlayerInput; when a joystick or arrow keys has been pushed.
     //It stores the input Vector as a Vector3 to then be used by the smoothing function.
+
+
     private void OnMovement(InputValue value)
     {
         Vector2 inputMovement = value.Get<Vector2>();
@@ -115,6 +117,8 @@ public class PlayerController : MonoBehaviour
     }
 
     //Input's Axes values are raw
+
+
     void CalculateMovementInputSmoothing()
     {
         
@@ -155,14 +159,17 @@ public class PlayerController : MonoBehaviour
 
 
     //Switching Action Maps ----
+
+
+    
     public void EnableGameplayControls()
     {
-        playerInput.SwitchCurrentActionMap(actionMapGameplay);  
+        playerInput.SwitchCurrentActionMap(actionMapPlayerControls);  
     }
 
     public void EnablePauseMenuControls()
     {
-        playerInput.SwitchCurrentActionMap(actionMapMenu);
+        playerInput.SwitchCurrentActionMap(actionMapMenuControls);
     }
 
 

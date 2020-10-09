@@ -196,7 +196,7 @@ MonoBehaviour:
     FieldOfView: 40
     OrthographicSize: 10
     NearClipPlane: 0.1
-    FarClipPlane: 1000
+    FarClipPlane: 100
     Dutch: 0
     LensShift: {x: 0, y: 0}
   m_Transitions:
@@ -345,7 +345,7 @@ MonoBehaviour:
     FieldOfView: 40
     OrthographicSize: 10
     NearClipPlane: 0.1
-    FarClipPlane: 1000
+    FarClipPlane: 100
     Dutch: 0
     LensShift: {x: 0, y: 0}
   m_Transitions:
@@ -939,7 +939,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &246201655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2397,7 +2397,7 @@ MonoBehaviour:
     FieldOfView: 40
     OrthographicSize: 10
     NearClipPlane: 0.1
-    FarClipPlane: 1000
+    FarClipPlane: 100
     Dutch: 0
     LensShift: {x: 0, y: 0}
   m_Transitions:
@@ -4401,8 +4401,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1833978498}
-  m_LocalRotation: {x: 0.14559379, y: -0.0021589955, z: 0.00031772253, w: 0.98934203}
-  m_LocalPosition: {x: 0.015907818, y: -5.066736, z: -3.6449027}
+  m_LocalRotation: {x: 0.18110336, y: -0.002146068, z: 0.00039519602, w: 0.9834617}
+  m_LocalPosition: {x: 0.016107878, y: -4.5914693, z: -3.690742}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 193751149}
@@ -4440,7 +4440,7 @@ MonoBehaviour:
     FieldOfView: 40
     OrthographicSize: 10
     NearClipPlane: 0.1
-    FarClipPlane: 1000
+    FarClipPlane: 100
     Dutch: 0
     LensShift: {x: 0, y: 0}
   m_Transitions:
@@ -4976,6 +4976,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1743518200311987064, guid: ca9ee4e0ea2b85646be0b08bab27e559,
+        type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1743518200311987069, guid: ca9ee4e0ea2b85646be0b08bab27e559,
         type: 3}

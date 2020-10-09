@@ -178,17 +178,25 @@
             "id": "0914fb5b-51f6-4b26-9ed7-a3e72d065118",
             "actions": [
                 {
-                    "name": "TogglePause",
-                    "type": "Button",
-                    "id": "e773b1f9-ce5b-4fa2-9c1f-d194202c43b7",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "Press"
-                },
-                {
                     "name": "Navigate",
                     "type": "PassThrough",
                     "id": "538ffe95-ba92-4acb-84f7-314f6ac8e0a5",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Left Click",
+                    "type": "PassThrough",
+                    "id": "96c8be88-a7bb-4861-b5e9-956b4208d043",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Point",
+                    "type": "PassThrough",
+                    "id": "d54e5ff5-4f35-4d2f-a745-95d14aef8c43",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
@@ -210,45 +218,15 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Point",
-                    "type": "PassThrough",
-                    "id": "d54e5ff5-4f35-4d2f-a745-95d14aef8c43",
-                    "expectedControlType": "Vector2",
+                    "name": "TogglePause",
+                    "type": "Button",
+                    "id": "e773b1f9-ce5b-4fa2-9c1f-d194202c43b7",
+                    "expectedControlType": "",
                     "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Left Click",
-                    "type": "PassThrough",
-                    "id": "96c8be88-a7bb-4861-b5e9-956b4208d043",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
+                    "interactions": "Press"
                 }
             ],
             "bindings": [
-                {
-                    "name": "",
-                    "id": "dfac3b8e-d348-4a7a-b60b-14745c641340",
-                    "path": "<Keyboard>/p",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard And Mouse",
-                    "action": "TogglePause",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "f509a7b5-e79a-485e-ba2f-da5431d6fe4c",
-                    "path": "<Gamepad>/start",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "TogglePause",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
                 {
                     "name": "Gamepad Right Stick",
                     "id": "c1491510-9d0f-47b0-868e-99575e46d097",
@@ -482,28 +460,6 @@
                 },
                 {
                     "name": "",
-                    "id": "cd72445d-e16d-49c4-8e4a-cd427d0d5fe9",
-                    "path": "*/{Submit}",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Submit",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "6fee8919-99e7-4770-abd4-da1b7d4e4cc4",
-                    "path": "*/{Cancel}",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Cancel",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "b5076a57-fe62-4632-8d6c-da0844960a14",
                     "path": "<Mouse>/position",
                     "interactions": "",
@@ -521,6 +477,50 @@
                     "processors": "",
                     "groups": "Touchscreen",
                     "action": "Point",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dfac3b8e-d348-4a7a-b60b-14745c641340",
+                    "path": "<Keyboard>/p",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard And Mouse",
+                    "action": "TogglePause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f509a7b5-e79a-485e-ba2f-da5431d6fe4c",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "TogglePause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6fee8919-99e7-4770-abd4-da1b7d4e4cc4",
+                    "path": "*/{Cancel}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cd72445d-e16d-49c4-8e4a-cd427d0d5fe9",
+                    "path": "*/{Submit}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Submit",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
