@@ -89,12 +89,15 @@ public class PlayerController : MonoBehaviour
 
     //This is automatically called from PlayerInput, when the input device has been disconnected and can not be identified
     //IE: Device unplugged or has run out of batteries
+
+
+
     public void OnDeviceLost()
     {
         playerVisualsBehaviour.SetDisconnectedDeviceVisuals();
     }
 
-    //This is automatically called from PlayerInput, then the input device reconnected
+
     public void OnDeviceRegained()
     {
         StartCoroutine(WaitForDeviceToBeRegained());
@@ -105,6 +108,9 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         playerVisualsBehaviour.UpdatePlayerVisuals();
     }
+
+
+
 
 
 
@@ -133,7 +139,7 @@ public class PlayerController : MonoBehaviour
 
     void UpdatePlayerAnimationMovement()
     {
-        playerAnimationBehaviour.UpdateMovementAnimation(rawInputMovement.sqrMagnitude);
+        playerAnimationBehaviour.UpdateMovementAnimation(smoothInputMovement.magnitude);
     }
 
 
