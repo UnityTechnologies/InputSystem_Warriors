@@ -36,7 +36,7 @@ You can learn more about the new Input System here: https://unity.com/features/i
 ## Requirements
 
 **Unity Version**
-- Current: [2019.4.6f1](https://unity.com/releases/2019-lts)
+- Current: [2019.4.13f1](https://unity.com/releases/2019-lts)
 
 **Packages**
 - com.unity.inputsystem: 1.0.0
