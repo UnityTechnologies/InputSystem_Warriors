@@ -32,8 +32,14 @@ You can learn more about the new Input System here: https://unity.com/features/i
 - TextMesh Pro for rendering Screen Space and World Space UI Text
 - Scriptable Object for storing Device Display Colors and Display Names
 
+## Project Versions and Branches
+*Important:* The project is in continuous development and improvement! Branches are used as 'time-stamps' for project states for Webinars.
+- [Branch: V1](https://github.com/UnityTechnologies/InputSystem_Warriors/tree/V1) - [Unite Now: Input System - Meet The Devs (April 2020)](https://www.youtube.com/watch?v=gVus9PqfgAM)
+- [Branch: V2](https://github.com/UnityTechnologies/InputSystem_Warriors/tree/V2) - Unite Now: Input System: Workflow Tips & Feature Integrations (November 2020)
+- [Master](https://github.com/UnityTechnologies/InputSystem_Warriors) - Most Recent [Unite Now Webinar](https://github.com/UnityTechnologies/InputSystem_Warriors)
 
-## Requirements
+
+## Tech Info
 
 **Unity Version**
 - Current: [2019.4.13f1](https://unity.com/releases/2019-lts)
