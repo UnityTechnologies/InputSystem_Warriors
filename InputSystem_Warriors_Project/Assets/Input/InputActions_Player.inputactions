@@ -118,11 +118,11 @@
                 },
                 {
                     "name": "",
-                    "id": "7e04bd42-932a-47a3-8864-5ff3db25c21b",
+                    "id": "7bc14fbd-1107-4761-aa6f-b3367d7705e6",
                     "path": "<Gamepad>/start",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad",
+                    "groups": "",
                     "action": "TogglePause",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -515,17 +515,6 @@
                 },
                 {
                     "name": "",
-                    "id": "cd72445d-e16d-49c4-8e4a-cd427d0d5fe9",
-                    "path": "*/{Submit}",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Submit",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "14559c94-e8a7-426b-8687-fa5f1420a0c1",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
@@ -543,6 +532,28 @@
                     "processors": "",
                     "groups": "Touchscreen",
                     "action": "Left Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "40b14102-9017-4522-862f-97d92a0da5f6",
+                    "path": "*/{Submit}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Submit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c88534db-dffe-4245-85c8-f41ba53024a1",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Submit",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

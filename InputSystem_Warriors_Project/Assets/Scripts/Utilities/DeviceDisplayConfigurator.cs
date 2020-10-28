@@ -96,53 +96,69 @@ public class DeviceDisplayConfigurator : ScriptableObject
 
     Sprite FilterForDeviceInputBinding(DeviceSet targetDeviceSet, string inputBinding)
     {
-        Sprite selectedSpriteIcon = null;
+        Sprite spriteIcon = null;
 
         switch(inputBinding)
         {
             case "Button North":
-                selectedSpriteIcon = targetDeviceSet.deviceDisplaySettings.buttonNorthIcon;  
+                spriteIcon = targetDeviceSet.deviceDisplaySettings.buttonNorthIcon;  
                 break;
 
             case "Button South":
-                selectedSpriteIcon = targetDeviceSet.deviceDisplaySettings.buttonSouthIcon;
+                spriteIcon = targetDeviceSet.deviceDisplaySettings.buttonSouthIcon;
                 break;
 
             case "Button West":
-                selectedSpriteIcon = targetDeviceSet.deviceDisplaySettings.buttonWestIcon;
+                spriteIcon = targetDeviceSet.deviceDisplaySettings.buttonWestIcon;
                 break;
 
             case "Button East":
-                selectedSpriteIcon = targetDeviceSet.deviceDisplaySettings.buttonEastIcon;
+                spriteIcon = targetDeviceSet.deviceDisplaySettings.buttonEastIcon;
                 break;
 
             case "Right Shoulder":
-                selectedSpriteIcon = targetDeviceSet.deviceDisplaySettings.triggerRightFrontIcon;
+                spriteIcon = targetDeviceSet.deviceDisplaySettings.triggerRightFrontIcon;
                 break;
 
             case "Right Trigger":
-                selectedSpriteIcon = targetDeviceSet.deviceDisplaySettings.triggerRightBackIcon;
+                spriteIcon = targetDeviceSet.deviceDisplaySettings.triggerRightBackIcon;
                 break;
 
             case "rightTriggerButton":
-                selectedSpriteIcon = targetDeviceSet.deviceDisplaySettings.triggerRightBackIcon;
+                spriteIcon = targetDeviceSet.deviceDisplaySettings.triggerRightBackIcon;
                 break;
 
             case "Left Shoulder":
-                selectedSpriteIcon = targetDeviceSet.deviceDisplaySettings.triggerLeftFrontIcon;
+                spriteIcon = targetDeviceSet.deviceDisplaySettings.triggerLeftFrontIcon;
                 break;
 
             case "Left Trigger":
-                selectedSpriteIcon = targetDeviceSet.deviceDisplaySettings.triggerLeftBackIcon;
+                spriteIcon = targetDeviceSet.deviceDisplaySettings.triggerLeftBackIcon;
                 break;
 
             case "leftTriggerButton":
-                selectedSpriteIcon = targetDeviceSet.deviceDisplaySettings.triggerLeftBackIcon;
+                spriteIcon = targetDeviceSet.deviceDisplaySettings.triggerLeftBackIcon;
+                break;
+
+            default:
+
+                for(int i = 0; i < targetDeviceSet.deviceDisplaySettings.customContextIcons.Count; i++)
+                {
+                    if(targetDeviceSet.deviceDisplaySettings.customContextIcons[i].customInputContextString == inputBinding)
+                    {
+                        if(targetDeviceSet.deviceDisplaySettings.customContextIcons[i].customInputContextIcon != null)
+                        {
+                            spriteIcon = targetDeviceSet.deviceDisplaySettings.customContextIcons[i].customInputContextIcon;
+                        }
+                    }
+                }
+                
+                
                 break;
 
         }
 
-        return selectedSpriteIcon;
+        return spriteIcon;
     }
 
     public string GetDisconnectedName()

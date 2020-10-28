@@ -27,3 +27,13 @@ MonoBehaviour:
     type: 3}
   triggerLeftBackIcon: {fileID: 21300000, guid: 5b3c19f5c4c0ba64e966b8b617c2c26f,
     type: 3}
+  customContextIcons:
+  - customInputContextString: Right Stick Press
+    customInputContextIcon: {fileID: 21300000, guid: 61b18d5b639ac5c4bbce0779a7a6be78,
+      type: 3}
+  - customInputContextString: Left Stick Press
+    customInputContextIcon: {fileID: 21300000, guid: 66adf8b974a2bf04f89f4f4bafd389f7,
+      type: 3}
+  - customInputContextString: Select
+    customInputContextIcon: {fileID: 21300000, guid: 2b26cc0b9a2dce248ba53e059a2db679,
+      type: 3}

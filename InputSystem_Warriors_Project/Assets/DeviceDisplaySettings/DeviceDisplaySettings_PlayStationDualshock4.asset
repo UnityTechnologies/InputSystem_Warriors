@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9ea9a11d318323458a19965038cc9a3, type: 3}
   m_Name: DeviceDisplaySettings_PlayStationDualshock4
   m_EditorClassIdentifier: 
-  deviceDisplayName: PlayStation
+  deviceDisplayName: PlayStation 4
   deviceDisplayColor: {r: 0, g: 0.44705886, b: 1, a: 1}
   deviceHasContextIcons: 1
   buttonNorthIcon: {fileID: 21300000, guid: 72bbdf5c15867b941ac7f79185b77555, type: 3}
@@ -27,3 +27,16 @@ MonoBehaviour:
     type: 3}
   triggerLeftBackIcon: {fileID: 21300000, guid: ac37aede1951f9e41860895428f801b1,
     type: 3}
+  customContextIcons:
+  - customInputContextString: Right Stick Press
+    customInputContextIcon: {fileID: 21300000, guid: 5f16fc2f989c8b740a47647d285d867b,
+      type: 3}
+  - customInputContextString: Left Stick Press
+    customInputContextIcon: {fileID: 21300000, guid: c9f67eb2a39c6104e85ea83d2a617c8f,
+      type: 3}
+  - customInputContextString: touchpadButton
+    customInputContextIcon: {fileID: 21300000, guid: 521d85a426fcfbc46a2a6f970d880bd1,
+      type: 3}
+  - customInputContextString: Select
+    customInputContextIcon: {fileID: 21300000, guid: 04acd82e9b5a4554dab130bbe48818f5,
+      type: 3}
