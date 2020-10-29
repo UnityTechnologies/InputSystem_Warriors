@@ -49,22 +49,28 @@ public class PlayerController : MonoBehaviour
     //It stores the input Vector as a Vector3 to then be used by the smoothing function.
 
 
-    private void OnMovement(InputValue value)
+    public void OnMovement(InputAction.CallbackContext value)
     {
-        Vector2 inputMovement = value.Get<Vector2>();
+        Vector2 inputMovement = value.ReadValue<Vector2>();
         rawInputMovement = new Vector3(inputMovement.x, 0, inputMovement.y);
     }
 
     //This is called from PlayerInput, when a button has been pushed, that corresponds with the 'Attack' action
-    private void OnAttack(InputValue value)
+    public void OnAttack(InputAction.CallbackContext value)
     {
-        playerAnimationBehaviour.PlayAttackAnimation();
+        if(value.started)
+        {
+            playerAnimationBehaviour.PlayAttackAnimation();
+        }
     }
 
     //This is called from Player Input, when a button has been pushed, that correspons with the 'TogglePause' action
-    private void OnTogglePause(InputValue value)
+    public void OnTogglePause(InputAction.CallbackContext value)
     {
-        GameManager.Instance.TogglePauseState(this);
+        if(value.started)
+        {
+            GameManager.Instance.TogglePauseState(this);
+        }
     }
 
 
