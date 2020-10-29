@@ -65,7 +65,7 @@ public class UIRebindActionBehaviour : MonoBehaviour
         ToggleGameObjectState(resetButtonObject, false);
         ToggleGameObjectState(listeningForInputObject, true);
 
-        rebindOperation?.Dispose();
+        
         rebindOperation = focusedInputAction.PerformInteractiveRebinding()
             .WithControlsExcluding("<Mouse>/position")
             .WithControlsExcluding("<Mouse>/delta")
