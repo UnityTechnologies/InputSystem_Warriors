@@ -49,7 +49,7 @@ public class PlayerMovementBehaviour : MonoBehaviour
     {
         if(movementDirection.sqrMagnitude > 0.01f)
         {
-            transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.LookRotation (CameraDirection(-movementDirection)), rotationSpeed);
+            transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.LookRotation (CameraDirection(movementDirection)), rotationSpeed);
         }
     }
 

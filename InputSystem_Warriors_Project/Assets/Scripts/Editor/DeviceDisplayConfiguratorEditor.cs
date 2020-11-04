@@ -69,15 +69,5 @@ public class DeviceDisplayConfiguratorEditor : Editor
         return new Rect(xPosition, rect.y, rect.width / 2 - xWidth, EditorGUIUtility.singleLineHeight);
     }
 
-    /*
-    void CalculateColumnSizes(Rect rect, int extraPadding)
-    {
-
-        rawPathColumn = new Rect(rect.x + extraPadding, rect.y, rect.width / 2 - 10, EditorGUIUtility.singleLineHeight);
-        deviceDisplaySettingsColumn = new Rect(rect.x + rect.width / 2 + extraPadding, rect.y, rect.width/2, EditorGUIUtility.singleLineHeight);
-
-    }
-    */
-
    
 }
