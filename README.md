@@ -7,9 +7,9 @@
 
 **Description**
 
-This Unity example project has been created to demonstrate a variety of tools and functionality with the new Input System.
+This Unity example project has been created to demonstrate a variety of tools and functionality with Unity's Input System.
 
-You can learn more about the new Input System here: https://unity.com/features/input-system
+You can learn more about the Input System here: https://unity.com/features/input-system
 
 
 **Input System Demonstrated Scenarios**
@@ -66,7 +66,7 @@ This example project was developed and tested on Windows 10.
 ## Usage
 
 This example project is publicly available for you to:
-- Use as a learning resource for the new Input System or any other implemented feature & tool
+- Use as a learning resource for the Input System or any other implemented feature & tool
 - Use as a foundation for building your own projects
 - Extract code, assets and information for your own projects
 
@@ -76,7 +76,7 @@ If you do use this example project in some form, please feel free to contact And
 
 This example project is developed by Unity Technologies and has involvement from R&D, Product Management, Product Marketing and Evangelism.
 
-If you have any feedback or questions about the new Input System, you are invited to join us on the forums: https://forum.unity.com/forums/new-input-system.103/
+If you have any feedback or questions about Unity's Input System, you are invited to join us on the forums: https://forum.unity.com/forums/new-input-system.103/
 
 If you have any issues, errors or feedback about the example project; you can open an issue on this repository or send an email to andyt[at]unity3d.com
 
