@@ -1,124 +1,213 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
+using UnityEngine.InputSystem;
+
+public enum GameMode
+{
+    SinglePlayer,
+    LocalMultiplayer
+}
 
 public class GameManager : Singleton<GameManager>
-{
+{   
 
-    [Header("Camera")]
-    public Camera mainCamera;
+    //Game Mode
+    public GameMode currentGameMode;
 
-    [Header("In-Scene Player Settings")]
+    //Single Player
     public GameObject inScenePlayer;
+    public SinglePlayerCameraMode singlePlayerCameraMode;
 
-    [Header("Spawn Player Settings")]
-    public bool spawnMultiplePlayers = false;
+    //Local Multiplayer
     public GameObject playerPrefab;
     public int numberOfPlayers;
 
-    [Header("Spawn Ring Settings")]
     public Transform spawnRingCenter;
     public float spawnRingRadius;
 
     //Spawned Players
     private List<PlayerController> activePlayerControllers;
-
-    [Header("UI")]
-    public GameObject pauseMenu;
+    private bool isPaused;
+    private PlayerController focusedPlayerController;
 
     void Start()
     {
-        SetupUIMenu();
+
+        isPaused = false;
+
+        SetupBasedOnGameState();
+        SetupUI();
+    }
+
+    void SetupBasedOnGameState()
+    {
+        switch(currentGameMode)
+        {
+            case GameMode.SinglePlayer:
+                SetupSinglePlayer();
+                break;
+
+            case GameMode.LocalMultiplayer:
+                SetupLocalMultiplayer();
+                break;
+        }
+    }
+
+    void SetupSinglePlayer()
+    {
+        activePlayerControllers = new List<PlayerController>();
+
+        if(inScenePlayer == true)
+        {
+            AddPlayerToActivePlayerList(inScenePlayer.GetComponent<PlayerController>());
+        }
+
         SetupActivePlayers();
+        SetupSinglePlayerCamera();
     }
 
-    void SetupUIMenu()
-    {
-        UIMenuManager.Instance.ToggleMenu(false);
-    }
+    void SetupLocalMultiplayer()
+    {   
 
-    void SetupActivePlayers()
-    {
-
-        activePlayerControllers = new List<PlayerController>(numberOfPlayers);
-
-        if(spawnMultiplePlayers)
+        if(inScenePlayer == true)
         {
-
             Destroy(inScenePlayer);
-            SpawnPlayers();
-
         }
-        else if(!spawnMultiplePlayers)
-        {
 
-            PlayerController inScenePlayerController = inScenePlayer.GetComponent<PlayerController>();
-            activePlayerControllers.Add(inScenePlayerController);
+        SpawnPlayers();
 
-            SetupUIMenuPlayerList();
-
-        }
+        SetupActivePlayers();
     }
 
     void SpawnPlayers()
     {
 
+        activePlayerControllers = new List<PlayerController>();
+
         for(int i = 0; i < numberOfPlayers; i++)
         {
+            Vector3 spawnPosition = CalculatePositionInRing(i, numberOfPlayers);
+            Quaternion spawnRotation = CalculateRotation();
 
-            GameObject spawnedPlayer = Instantiate(playerPrefab, transform.position, transform.rotation);
-            
-            activePlayerControllers.Insert(i, spawnedPlayer.GetComponent<PlayerController>());
-
-            Vector3 spawnPosition = PositionInRing(i);
-            spawnedPlayer.transform.position = spawnPosition;
-
-            Quaternion randomSpawnRotation = Quaternion.Euler(new Vector3(0, Random.Range(0, 360), 0));
-            spawnedPlayer.transform.rotation = randomSpawnRotation;
-
+            GameObject spawnedPlayer = Instantiate(playerPrefab, spawnPosition, spawnRotation) as GameObject;
+            AddPlayerToActivePlayerList(spawnedPlayer.GetComponent<PlayerController>());
         }
-
-        SetupUIMenuPlayerList();
     }
 
-    void SetupUIMenuPlayerList()
+    void AddPlayerToActivePlayerList(PlayerController newPlayer)
     {
-        UIMenuManager.Instance.SetupUIMenuPlayerPanelList();
+        activePlayerControllers.Add(newPlayer);
     }
 
-
-    public void TogglePauseMenu(bool newState)
+    void SetupActivePlayers()
     {
-
-        
-        UIMenuManager.Instance.ToggleMenu(newState);
-   
         for(int i = 0; i < activePlayerControllers.Count; i++)
         {
-            //Pause Menu Is On -> Switch from Player Controls to Menu Controls
-            if(newState == true)
+            activePlayerControllers[i].SetupPlayer(i);
+        }
+    }
+
+    void SetupUI()
+    {
+        UIManager.Instance.SetupManager();
+    }
+
+    void SetupSinglePlayerCamera()
+    {
+        CameraManager.Instance.SetupSinglePlayerCamera(singlePlayerCameraMode);
+    }
+
+    public void TogglePauseState(PlayerController newFocusedPlayerController)
+    {
+        focusedPlayerController = newFocusedPlayerController;
+
+        isPaused = !isPaused;
+
+        ToggleTimeScale();
+
+        UpdateActivePlayerInputs();
+
+        SwitchFocusedPlayerControlScheme();
+
+        UpdateUIMenu();
+
+    }
+
+    void UpdateActivePlayerInputs()
+    {
+        for(int i = 0; i < activePlayerControllers.Count; i++)
+        {
+            if(activePlayerControllers[i] != focusedPlayerController)
             {
-                activePlayerControllers[i].EnablePauseMenuControls();
-            }
-            //Pause Menu Is Off -> Switch from Menu Controls to Player Controls
-            else if(newState == false)
-            {
-                activePlayerControllers[i].EnableGameplayControls();
+                 activePlayerControllers[i].SetInputActiveState(isPaused);
             }
 
         }
-        
     }
+
+    void SwitchFocusedPlayerControlScheme()
+    {
+        switch(isPaused)
+        {
+            case true:
+                focusedPlayerController.EnablePauseMenuControls();
+                break;
+
+            case false:
+                focusedPlayerController.EnableGameplayControls();
+                break;
+        }
+    }
+
+    void UpdateUIMenu()
+    {
+        UIManager.Instance.UpdateUIMenuState(isPaused);
+    }
+
+    //Get Data ----
 
     public List<PlayerController> GetActivePlayerControllers()
     {
         return activePlayerControllers;
     }
 
-    Vector3 PositionInRing(int positionID)
+    public PlayerController GetFocusedPlayerController()
     {
+        return focusedPlayerController;
+    }
 
+    public int NumberOfConnectedDevices()
+    {
+        return InputSystem.devices.Count;
+    }
+    
+
+    //Pause Utilities ----
+
+    void ToggleTimeScale()
+    {
+        float newTimeScale = 0f;
+
+        switch(isPaused)
+        {
+            case true:
+                newTimeScale = 0f;
+                break;
+
+            case false:
+                newTimeScale = 1f;
+                break;
+        }
+
+        Time.timeScale = newTimeScale;
+    }
+
+
+    //Spawn Utilities
+
+    Vector3 CalculatePositionInRing(int positionID, int numberOfPlayers)
+    {
         if(numberOfPlayers == 1)
             return spawnRingCenter.position;
 
@@ -126,6 +215,11 @@ public class GameManager : Singleton<GameManager>
         float x = Mathf.Cos(angle) * spawnRingRadius;
         float z = Mathf.Sin(angle) * spawnRingRadius;
         return spawnRingCenter.position +  new Vector3(x, 0, z);
+    }
+
+    Quaternion CalculateRotation()
+    {
+        return Quaternion.Euler(new Vector3(0, Random.Range(0, 360), 0));
     }
 
 }

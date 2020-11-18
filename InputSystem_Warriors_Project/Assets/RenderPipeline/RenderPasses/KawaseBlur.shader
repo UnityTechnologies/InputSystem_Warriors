@@ -3,6 +3,7 @@
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
+        _Tint("Color Tint", Color) = (.34, .85, .92, 1)
       //   _offset ("Offset", float) = 0.5
     }
 
@@ -38,7 +39,7 @@
             // sampler2D _CameraOpaqueTexture;
             float4 _MainTex_TexelSize;
             float4 _MainTex_ST;
-            
+            float4 _Tint;
             float _offset;
 
             v2f vert (appdata v)
@@ -61,6 +62,7 @@
                 col.rgb += tex2D( _MainTex, input.uv + float2( -i, i ) * res ).rgb;
                 col.rgb += tex2D( _MainTex, input.uv + float2( -i, -i ) * res ).rgb;
                 col.rgb /= 5.0f;
+                col.rgb *= _Tint.rgb;
                 
                 return col;
             }
