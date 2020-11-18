@@ -35,8 +35,8 @@ You can learn more about the Input System here: https://unity.com/features/input
 ## Project Versions and Branches
 *Important:* The project is in continuous development and improvement! Branches are used as 'time-stamps' for project states for Webinars.
 - [Branch: V1](https://github.com/UnityTechnologies/InputSystem_Warriors/tree/V1) - [Unite Now: Input System - Meet The Devs (April 2020)](https://www.youtube.com/watch?v=gVus9PqfgAM)
-- [Branch: V2](https://github.com/UnityTechnologies/InputSystem_Warriors/tree/V2) - Unite Now: Input System: Workflow Tips & Feature Integrations (November 2020)
-- [Master](https://github.com/UnityTechnologies/InputSystem_Warriors) - Most Recent [Unite Now Webinar](https://github.com/UnityTechnologies/InputSystem_Warriors)
+- [Branch: V2](https://github.com/UnityTechnologies/InputSystem_Warriors/tree/V2) - [Unite Now: Input System: Workflow Tips & Feature Integrations (November 2020)](https://www.youtube.com/watch?v=xF2zUOfPyg8)
+- [Master](https://github.com/UnityTechnologies/InputSystem_Warriors) - Most Recent [Unite Now Webinar](https://www.youtube.com/watch?v=xF2zUOfPyg8)
 
 
 ## Tech Info
