@@ -10,7 +10,7 @@ public class PlayerMovementBehaviour : MonoBehaviour
 
     [Header("Movement Settings")]
     public float movementSpeed = 3f;
-    public float rotationSpeed = 0.1f;
+    public float turnSpeed = 0.1f;
 
 
     //Stored Values
@@ -49,7 +49,13 @@ public class PlayerMovementBehaviour : MonoBehaviour
     {
         if(movementDirection.sqrMagnitude > 0.01f)
         {
-            transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.LookRotation (CameraDirection(movementDirection)), rotationSpeed);
+
+             Quaternion rotation = Quaternion.Slerp(playerRigidbody.rotation,
+                                                  Quaternion.LookRotation (CameraDirection(movementDirection)),
+                                                  turnSpeed);
+
+            playerRigidbody.MoveRotation(rotation);
+
         }
     }
 
