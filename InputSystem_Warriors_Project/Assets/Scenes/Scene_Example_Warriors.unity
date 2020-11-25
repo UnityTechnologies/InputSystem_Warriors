@@ -157,8 +157,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 31590763}
-  m_LocalRotation: {x: 0.08378541, y: -0.0021745048, z: 0.00018283512, w: 0.9964814}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.083785415, y: -0.0021745092, z: 0.00018283547, w: 0.9964815}
+  m_LocalPosition: {x: 0.0009765085, y: -0.65368915, z: -0.22374439}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 773787958}
@@ -231,8 +231,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 124915044}
-  m_LocalRotation: {x: 0.053126216, y: -0.002179075, z: 0.00011593002, w: 0.99858546}
-  m_LocalPosition: {x: 0.0000000037252903, y: 0, z: 0}
+  m_LocalRotation: {x: 0.05312623, y: -0.0021790967, z: 0.00011593117, w: 0.99858546}
+  m_LocalPosition: {x: 0.0009765085, y: -0.65368915, z: -0.22374439}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 218367931}
@@ -2054,7 +2054,7 @@ MonoBehaviour:
   m_ShowCameraFrustum: 1
   m_IgnoreTimeScale: 0
   m_WorldUpOverride: {fileID: 0}
-  m_UpdateMethod: 1
+  m_UpdateMethod: 0
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
     m_Style: 0
@@ -2098,7 +2098,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 979771481}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.025054809, y: 2.188531, z: -8.310723}
+  m_LocalPosition: {x: 0.02407828, y: 2.84222, z: -8.086979}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1833978499}
@@ -2412,7 +2412,7 @@ MonoBehaviour:
   singlePlayerCameraMode: 0
   playerPrefab: {fileID: 1743518200311987069, guid: ca9ee4e0ea2b85646be0b08bab27e559,
     type: 3}
-  numberOfPlayers: 3
+  numberOfPlayers: 2
   spawnRingCenter: {fileID: 1568669756}
   spawnRingRadius: 2
 --- !u!4 &1134540116
@@ -4056,8 +4056,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1833978498}
-  m_LocalRotation: {x: 0.18110338, y: -0.0021460766, z: 0.0003951976, w: 0.9834617}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.58816624, y: -0.0017646853, z: 0.0012833938, w: 0.80873716}
+  m_LocalPosition: {x: -0.014617567, y: 3.8508718, z: 3.3492756}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 193751149}
