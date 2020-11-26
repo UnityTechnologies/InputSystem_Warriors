@@ -19,7 +19,7 @@ You can learn more about the Input System here: https://unity.com/features/input
 - Instancing multiple Player Controllers for a local multiplayer setup
 - UI Input (Virtual Joystick and Virtual Button) for Touchscreen Controls
 - Runtime switching between Player Control and Menu Control Action Maps
-- UI for rebdining action controls to new buttons and joysticks
+- UI for rebinding action controls to new buttons and joysticks
 - Displaying connected device data in both Screen Space and World Space UI
 - Callbacks for an Input Device runtime disconnecting and reconnecting
 
