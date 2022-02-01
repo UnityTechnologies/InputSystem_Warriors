@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour
     //Current Control Scheme
     private string currentControlScheme;
 
+    private bool playerSetupDone = false;
+
 
     //This is called from the GameManager; when the game is being setup.
     public void SetupPlayer(int newPlayerID)
@@ -40,6 +42,8 @@ public class PlayerController : MonoBehaviour
         playerMovementBehaviour.SetupBehaviour();
         playerAnimationBehaviour.SetupBehaviour();
         playerVisualsBehaviour.SetupBehaviour(playerID, playerInput);
+
+        playerSetupDone = true;
     }
 
 
@@ -83,6 +87,7 @@ public class PlayerController : MonoBehaviour
     //(IE: Keyboard -> Xbox Controller)
     public void OnControlsChanged()
     {
+        if (!playerSetupDone) return;
 
         if(playerInput.currentControlScheme != currentControlScheme)
         {
