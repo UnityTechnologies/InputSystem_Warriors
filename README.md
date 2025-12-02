@@ -9,7 +9,7 @@
 
 This Unity example project has been created to demonstrate a variety of tools and functionality with Unity's Input System.
 
-You can learn more about the Input System here: https://unity.com/features/input-system
+You can learn more about the Input System here: https://unity.com/features/input-system.
 
 
 **Input System Demonstrated Scenarios**
