@@ -29,7 +29,6 @@ public class DeviceDisplayConfigurator : ScriptableObject
 
     public string GetDeviceName(PlayerInput playerInput)
     {
-
         string currentDeviceRawPath = playerInput.devices[0].ToString();
 
         string newDisplayName = null;
