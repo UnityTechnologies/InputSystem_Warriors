@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
@@ -46,6 +47,7 @@ public class KawaseBlur : ScriptableRendererFeature
             this.profilerTag = profilerTag;
         }
 
+        [Obsolete]
         public override void Configure(CommandBuffer cmd, RenderTextureDescriptor cameraTextureDescriptor)
         {
             // Allocate temporary RTHandles based on camera size and downsample
@@ -68,6 +70,7 @@ public class KawaseBlur : ScriptableRendererFeature
             ConfigureClear(ClearFlag.None, Color.black);
         }
 
+        [Obsolete]
         public override void Execute(ScriptableRenderContext context, ref RenderingData renderingData)
         {
             CommandBuffer cmd = CommandBufferPool.Get(profilerTag);
@@ -82,9 +85,7 @@ public class KawaseBlur : ScriptableRendererFeature
                 cmd.Blit(rtHandle1, rtHandle2, blurMaterial);
 
                 // ping-pong
-                var tmp = rtHandle1;
-                rtHandle1 = rtHandle2;
-                rtHandle2 = tmp;
+                (rtHandle1, rtHandle2) = (rtHandle2, rtHandle1);
             }
 
             // final pass
@@ -129,7 +130,7 @@ public class KawaseBlur : ScriptableRendererFeature
 
     public override void AddRenderPasses(ScriptableRenderer renderer, ref RenderingData renderingData)
     {
-        scriptablePass.Setup(renderer.cameraColorTargetHandle);
+        //scriptablePass.Setup(renderer.cameraColorTargetHandle);
         renderer.EnqueuePass(scriptablePass);
     }
 }
