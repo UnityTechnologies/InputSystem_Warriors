@@ -108,7 +108,7 @@ public class DeviceDisplayConfigurator : ScriptableObject
                 if (listDeviceSets[i].deviceRawPath == currentDeviceRawPath)
                 {
                     var settings = listDeviceSets[i].deviceDisplaySettings;
-                    if (settings != null && settings.deviceHasContextIcons != null)
+                    if (settings?.deviceHasContextIcons == true)
                     {
                         displaySpriteIcon = FilterForDeviceInputBinding(listDeviceSets[i], playerInputDeviceInputBinding);
                     }
