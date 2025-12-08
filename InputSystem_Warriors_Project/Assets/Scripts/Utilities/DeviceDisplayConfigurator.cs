@@ -29,63 +29,90 @@ public class DeviceDisplayConfigurator : ScriptableObject
 
     public string GetDeviceName(PlayerInput playerInput)
     {
+        if (playerInput == null || playerInput.devices.Count == 0 || playerInput.devices[0] == null)
+        {
+            return string.IsNullOrEmpty(disconnectedDeviceSettings.disconnectedDisplayName) ? "Unknown Device" : disconnectedDeviceSettings.disconnectedDisplayName;
+        }
+
         string currentDeviceRawPath = playerInput.devices[0].ToString();
 
         string newDisplayName = null;
 
-        for(int i = 0; i < listDeviceSets.Count; i++)
+        if (listDeviceSets != null)
         {
-
-            if(listDeviceSets[i].deviceRawPath == currentDeviceRawPath)
-            {   
-                newDisplayName = listDeviceSets[i].deviceDisplaySettings.deviceDisplayName;
+            for (int i = 0; i < listDeviceSets.Count; i++)
+            {
+                if (listDeviceSets[i].deviceRawPath == currentDeviceRawPath)
+                {
+                    newDisplayName = listDeviceSets[i].deviceDisplaySettings != null
+                        ? listDeviceSets[i].deviceDisplaySettings.deviceDisplayName
+                        : null;
+                    break;
+                }
             }
         }
 
-        if(newDisplayName == null)
+        if (string.IsNullOrEmpty(newDisplayName))
         {
             newDisplayName = currentDeviceRawPath;
         }
 
         return newDisplayName;
-
     }
 
-    
+
     public Color GetDeviceColor(PlayerInput playerInput)
-    {  
+    {
+        if (playerInput == null || playerInput.devices.Count == 0 || playerInput.devices[0] == null)
+        {
+            return disconnectedDeviceSettings.disconnectedDisplayColor;
+        }
 
         string currentDeviceRawPath = playerInput.devices[0].ToString();
-        
+
         Color newDisplayColor = fallbackDisplayColor;
 
-        for(int i = 0; i < listDeviceSets.Count; i++)
+        if (listDeviceSets != null)
         {
-
-            if(listDeviceSets[i].deviceRawPath == currentDeviceRawPath)
-            {   
-                newDisplayColor = listDeviceSets[i].deviceDisplaySettings.deviceDisplayColor;
+            for (int i = 0; i < listDeviceSets.Count; i++)
+            {
+                if (listDeviceSets[i].deviceRawPath == currentDeviceRawPath)
+                {
+                    if (listDeviceSets[i].deviceDisplaySettings != null)
+                    {
+                        newDisplayColor = listDeviceSets[i].deviceDisplaySettings.deviceDisplayColor;
+                    }
+                    break;
+                }
             }
         }
 
         return newDisplayColor;
-        
     }
 
     public Sprite GetDeviceBindingIcon(PlayerInput playerInput, string playerInputDeviceInputBinding)
     {
+        if (playerInput == null || playerInput.devices.Count == 0 || playerInput.devices[0] == null)
+        {
+            return null;
+        }
 
         string currentDeviceRawPath = playerInput.devices[0].ToString();
 
         Sprite displaySpriteIcon = null;
 
-        for(int i = 0; i < listDeviceSets.Count; i++)
+        if (listDeviceSets != null)
         {
-            if(listDeviceSets[i].deviceRawPath == currentDeviceRawPath)
+            for (int i = 0; i < listDeviceSets.Count; i++)
             {
-                if(listDeviceSets[i].deviceDisplaySettings.deviceHasContextIcons != null)
+                if (listDeviceSets[i].deviceRawPath == currentDeviceRawPath)
                 {
-                    displaySpriteIcon = FilterForDeviceInputBinding(listDeviceSets[i], playerInputDeviceInputBinding);
+                    var settings = listDeviceSets[i].deviceDisplaySettings;
+                    if (settings != null && settings.deviceHasContextIcons != null)
+                    {
+                        displaySpriteIcon = FilterForDeviceInputBinding(listDeviceSets[i], playerInputDeviceInputBinding);
+                    }
+                    break;
                 }
             }
         }
@@ -95,12 +122,15 @@ public class DeviceDisplayConfigurator : ScriptableObject
 
     Sprite FilterForDeviceInputBinding(DeviceSet targetDeviceSet, string inputBinding)
     {
+        if (targetDeviceSet.deviceDisplaySettings == null)
+            return null;
+
         Sprite spriteIcon = null;
 
-        switch(inputBinding)
+        switch (inputBinding)
         {
             case "Button North":
-                spriteIcon = targetDeviceSet.deviceDisplaySettings.buttonNorthIcon;  
+                spriteIcon = targetDeviceSet.deviceDisplaySettings.buttonNorthIcon;
                 break;
 
             case "Button South":
@@ -120,9 +150,6 @@ public class DeviceDisplayConfigurator : ScriptableObject
                 break;
 
             case "Right Trigger":
-                spriteIcon = targetDeviceSet.deviceDisplaySettings.triggerRightBackIcon;
-                break;
-
             case "rightTriggerButton":
                 spriteIcon = targetDeviceSet.deviceDisplaySettings.triggerRightBackIcon;
                 break;
@@ -132,22 +159,24 @@ public class DeviceDisplayConfigurator : ScriptableObject
                 break;
 
             case "Left Trigger":
-                spriteIcon = targetDeviceSet.deviceDisplaySettings.triggerLeftBackIcon;
-                break;
-
             case "leftTriggerButton":
                 spriteIcon = targetDeviceSet.deviceDisplaySettings.triggerLeftBackIcon;
                 break;
 
             default:
-
-                for(int i = 0; i < targetDeviceSet.deviceDisplaySettings.customContextIcons.Count; i++)
+                var customIcons = targetDeviceSet.deviceDisplaySettings.customContextIcons;
+                if (customIcons != null)
                 {
-                    if(targetDeviceSet.deviceDisplaySettings.customContextIcons[i].customInputContextString == inputBinding)
+                    for (int i = 0; i < customIcons.Count; i++)
                     {
-                        if(targetDeviceSet.deviceDisplaySettings.customContextIcons[i].customInputContextIcon != null)
+                        var entry = customIcons[i];
+                        if (!string.IsNullOrEmpty(entry.customInputContextString) && entry.customInputContextString == inputBinding)
                         {
-                            spriteIcon = targetDeviceSet.deviceDisplaySettings.customContextIcons[i].customInputContextIcon;
+                            if (entry.customInputContextIcon != null)
+                            {
+                                spriteIcon = entry.customInputContextIcon;
+                                break;
+                            }
                         }
                     }
                 }
