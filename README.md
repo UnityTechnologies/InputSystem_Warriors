@@ -15,7 +15,7 @@ You can learn more about the Input System here: https://unity.com/features/input
 **Input System Demonstrated Scenarios**
 - Input Action Control Scheme for basic Player Controls (Directional Axis for Movement, Button press for Attack)
 - Setting up Keyboard and Generic Gamepad bindings to the Control Scheme
-  - Tested with the follwing controllers: PlayStation Dualshock 4, Xbox One and Nintendo Switch Pro
+  - Tested with the following controllers: PlayStation Dualshock 4, Xbox One and Nintendo Switch Pro
 - Instancing multiple Player Controllers for a local multiplayer setup
 - UI Input (Virtual Joystick and Virtual Button) for Touchscreen Controls
 - Runtime switching between Player Control and Menu Control Action Maps
@@ -42,12 +42,11 @@ You can learn more about the Input System here: https://unity.com/features/input
 ## Tech Info
 
 **Unity Version**
-- Current: [2019.4.13f1](https://unity.com/releases/2019-lts)
+- Current: [6000.3.0f1](https://unity.com/releases/unity-6)
 
 **Packages**
-- com.unity.inputsystem: 1.0.0
-- com.unity.textmeshpro: 2.0.1
-- com.unity.render-pipelines.universal: 7.3.1
+- com.unity.inputsystem: 1.16.0
+- com.unity.render-pipelines.universal: 17.3.0
 
 **Hardware**
 
