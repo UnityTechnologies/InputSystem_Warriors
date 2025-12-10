@@ -42,12 +42,12 @@ You can learn more about the Input System here: https://unity.com/features/input
 ## Tech Info
 
 **Unity Version**
-- Current: [2019.4.13f1](https://unity.com/releases/2019-lts)
+- Current: [2022.3.67f2](https://unity.com/releases/2022-lts)
 
 **Packages**
-- com.unity.inputsystem: 1.0.0
-- com.unity.textmeshpro: 2.0.1
-- com.unity.render-pipelines.universal: 7.3.1
+- com.unity.inputsystem: 1.14.0
+- com.unity.textmeshpro: 3.0.7
+- com.unity.render-pipelines.universal: 14.0.12
 
 **Hardware**
 
