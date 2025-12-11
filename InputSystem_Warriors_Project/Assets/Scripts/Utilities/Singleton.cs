@@ -27,9 +27,9 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
             {
                 if (_instance == null)
                 {
-                    _instance = (T)FindObjectOfType(typeof(T));
+                    _instance = FindAnyObjectByType<T>();
 
-                    if (FindObjectsOfType(typeof(T)).Length > 1)
+                    if (FindObjectsByType<T>(FindObjectsSortMode.None).Length > 1)
                     {
                         Debug.LogError("[Singleton] Something went really wrong " +
                             " - there should never be more than 1 singleton!" +

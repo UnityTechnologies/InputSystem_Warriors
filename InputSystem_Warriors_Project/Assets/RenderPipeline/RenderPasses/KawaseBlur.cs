@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
@@ -31,15 +32,13 @@ public class KawaseBlur : ScriptableRendererFeature
         public string targetName;        
         string profilerTag;
 
-        int tmpId1;
-        int tmpId2;
+        private RTHandle rtHandle1;
+        private RTHandle rtHandle2;
 
-        RenderTargetIdentifier tmpRT1;
-        RenderTargetIdentifier tmpRT2;
-        
-        private RenderTargetIdentifier source { get; set; }
+        private RTHandle source;
 
-        public void Setup(RenderTargetIdentifier source) {
+        public void Setup(RTHandle source)
+        {
             this.source = source;
         }
 
@@ -48,52 +47,57 @@ public class KawaseBlur : ScriptableRendererFeature
             this.profilerTag = profilerTag;
         }
 
+        [Obsolete]
         public override void Configure(CommandBuffer cmd, RenderTextureDescriptor cameraTextureDescriptor)
         {
+            // Allocate temporary RTHandles based on camera size and downsample
             var width = cameraTextureDescriptor.width / downsample;
             var height = cameraTextureDescriptor.height / downsample;
 
-            tmpId1 = Shader.PropertyToID("tmpBlurRT1");
-            tmpId2 = Shader.PropertyToID("tmpBlurRT2");
-            cmd.GetTemporaryRT(tmpId1, width, height, 0, FilterMode.Bilinear, RenderTextureFormat.ARGB32);
-            cmd.GetTemporaryRT(tmpId2, width, height, 0, FilterMode.Bilinear, RenderTextureFormat.ARGB32);
+            rtHandle1 = RTHandles.Alloc(
+                width, height,
+                depthBufferBits: DepthBits.None,
+                colorFormat: UnityEngine.Experimental.Rendering.GraphicsFormat.R8G8B8A8_UNorm,
+                name: "tmpBlurRT1");
 
-            tmpRT1 = new RenderTargetIdentifier(tmpId1);
-            tmpRT2 = new RenderTargetIdentifier(tmpId2);
-            
-            ConfigureTarget(tmpRT1);
-            ConfigureTarget(tmpRT2);
+            rtHandle2 = RTHandles.Alloc(
+                width, height,
+                depthBufferBits: DepthBits.None,
+                colorFormat: UnityEngine.Experimental.Rendering.GraphicsFormat.R8G8B8A8_UNorm,
+                name: "tmpBlurRT2");
+
+            ConfigureTarget(rtHandle1);
+            ConfigureClear(ClearFlag.None, Color.black);
         }
 
+        [Obsolete]
         public override void Execute(ScriptableRenderContext context, ref RenderingData renderingData)
         {
             CommandBuffer cmd = CommandBufferPool.Get(profilerTag);
 
-            RenderTextureDescriptor opaqueDesc = renderingData.cameraData.cameraTargetDescriptor;
-            opaqueDesc.depthBufferBits = 0;
-
             // first pass
-            // cmd.GetTemporaryRT(tmpId1, opaqueDesc, FilterMode.Bilinear);
             cmd.SetGlobalFloat("_offset", 1.5f);
-            cmd.Blit(source, tmpRT1, blurMaterial);
+            cmd.Blit(source, rtHandle1, blurMaterial);
 
-            for (var i=1; i<passes-1; i++) {
+            for (int i = 1; i < passes - 1; i++)
+            {
                 cmd.SetGlobalFloat("_offset", 0.5f + i);
-                cmd.Blit(tmpRT1, tmpRT2, blurMaterial);
+                cmd.Blit(rtHandle1, rtHandle2, blurMaterial);
 
-                // pingpong
-                var rttmp = tmpRT1;
-                tmpRT1 = tmpRT2;
-                tmpRT2 = rttmp;
+                // ping-pong
+                (rtHandle1, rtHandle2) = (rtHandle2, rtHandle1);
             }
 
             // final pass
             cmd.SetGlobalFloat("_offset", 0.5f + passes - 1f);
-            if (copyToFramebuffer) {
-                cmd.Blit(tmpRT1, source, blurMaterial);
-            } else {
-                cmd.Blit(tmpRT1, tmpRT2, blurMaterial);
-                cmd.SetGlobalTexture(targetName, tmpRT2);
+            if (copyToFramebuffer)
+            {
+                cmd.Blit(rtHandle1, source, blurMaterial);
+            }
+            else
+            {
+                cmd.Blit(rtHandle1, rtHandle2, blurMaterial);
+                cmd.SetGlobalTexture(targetName, rtHandle2);
             }
 
             context.ExecuteCommandBuffer(cmd);
@@ -104,6 +108,8 @@ public class KawaseBlur : ScriptableRendererFeature
 
         public override void FrameCleanup(CommandBuffer cmd)
         {
+            if (rtHandle1 != null) { rtHandle1.Release(); rtHandle1 = null; }
+            if (rtHandle2 != null) { rtHandle2.Release(); rtHandle2 = null; }
         }
     }
 
@@ -111,20 +117,20 @@ public class KawaseBlur : ScriptableRendererFeature
 
     public override void Create()
     {
-        scriptablePass = new CustomRenderPass("KawaseBlur");
-        scriptablePass.blurMaterial = settings.blurMaterial;
-        scriptablePass.passes = settings.blurPasses;
-        scriptablePass.downsample = settings.downsample;
-        scriptablePass.copyToFramebuffer = settings.copyToFramebuffer;
-        scriptablePass.targetName = settings.targetName;
-
-        scriptablePass.renderPassEvent = settings.renderPassEvent;
+        scriptablePass = new CustomRenderPass("KawaseBlur")
+        {
+            blurMaterial = settings.blurMaterial,
+            passes = settings.blurPasses,
+            downsample = settings.downsample,
+            copyToFramebuffer = settings.copyToFramebuffer,
+            targetName = settings.targetName,
+            renderPassEvent = settings.renderPassEvent
+        };
     }
 
     public override void AddRenderPasses(ScriptableRenderer renderer, ref RenderingData renderingData)
     {
-        var src = renderer.cameraColorTarget;
-        scriptablePass.Setup(src);
+        //scriptablePass.Setup(renderer.cameraColorTargetHandle);
         renderer.EnqueuePass(scriptablePass);
     }
 }
