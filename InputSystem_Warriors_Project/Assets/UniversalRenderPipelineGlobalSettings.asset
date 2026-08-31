@@ -29,7 +29,6 @@ MonoBehaviour:
   m_StripUnusedVariants: 1
   m_StripScreenCoordOverrideVariants: 1
   supportRuntimeDebugDisplay: 0
-  m_EnableRenderGraph: 0
   m_Settings:
     m_SettingsList:
       m_List:
@@ -65,9 +64,12 @@ MonoBehaviour:
       - rid: 465262938296942621
       - rid: 465262938296942622
       - rid: 465262938296942623
+      - rid: 2070847303331348544
+      - rid: 2070847303331348545
+      - rid: 2070847303331348546
     m_RuntimeSettings:
       m_List: []
-  m_AssetVersion: 9
+  m_AssetVersion: 10
   m_ObsoleteDefaultVolumeProfile: {fileID: 0}
   m_RenderingLayerNames:
   - Light Layer default
@@ -156,12 +158,43 @@ MonoBehaviour:
       type: {class: RenderGraphSettings, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.Runtime}
       data:
         m_Version: 0
-        m_EnableRenderCompatibilityMode: 1
     - rid: 465262938296942598
       type: {class: PostProcessData/TextureResources, ns: UnityEngine.Rendering.Universal,
         asm: Unity.RenderPipelines.Universal.Runtime}
       data:
-        blueNoise16LTex: []
+        blueNoise16LTex:
+        - {fileID: 2800000, guid: 81200413a40918d4d8702e94db29911c, type: 3}
+        - {fileID: 2800000, guid: d50c5e07c9911a74982bddf7f3075e7b, type: 3}
+        - {fileID: 2800000, guid: 1134690bf9216164dbc75050e35b7900, type: 3}
+        - {fileID: 2800000, guid: 7ce2118f74614a94aa8a0cdf2e6062c3, type: 3}
+        - {fileID: 2800000, guid: 2ca97df9d1801e84a8a8f2c53cb744f0, type: 3}
+        - {fileID: 2800000, guid: e63eef8f54aa9dc4da9a5ac094b503b5, type: 3}
+        - {fileID: 2800000, guid: 39451254daebd6d40b52899c1f1c0c1b, type: 3}
+        - {fileID: 2800000, guid: c94ad916058dff743b0f1c969ddbe660, type: 3}
+        - {fileID: 2800000, guid: ed5ea7ce59ca8ec4f9f14bf470a30f35, type: 3}
+        - {fileID: 2800000, guid: 071e954febf155243a6c81e48f452644, type: 3}
+        - {fileID: 2800000, guid: 96aaab9cc247d0b4c98132159688c1af, type: 3}
+        - {fileID: 2800000, guid: fc3fa8f108657e14486697c9a84ccfc5, type: 3}
+        - {fileID: 2800000, guid: bfed3e498947fcb4890b7f40f54d85b9, type: 3}
+        - {fileID: 2800000, guid: d512512f4af60a442ab3458489412954, type: 3}
+        - {fileID: 2800000, guid: 47a45908f6db0cb44a0d5e961143afec, type: 3}
+        - {fileID: 2800000, guid: 4dcc0502f8586f941b5c4a66717205e8, type: 3}
+        - {fileID: 2800000, guid: 9d92991794bb5864c8085468b97aa067, type: 3}
+        - {fileID: 2800000, guid: 14381521ff11cb74abe3fe65401c23be, type: 3}
+        - {fileID: 2800000, guid: d36f0fe53425e08499a2333cf423634c, type: 3}
+        - {fileID: 2800000, guid: d4044ea2490d63b43aa1765f8efbf8a9, type: 3}
+        - {fileID: 2800000, guid: c9bd74624d8070f429e3f46d161f9204, type: 3}
+        - {fileID: 2800000, guid: d5c9b274310e5524ebe32a4e4da3df1f, type: 3}
+        - {fileID: 2800000, guid: f69770e54f2823f43badf77916acad83, type: 3}
+        - {fileID: 2800000, guid: 10b6c6d22e73dea46a8ab36b6eebd629, type: 3}
+        - {fileID: 2800000, guid: a2ec5cbf5a9b64345ad3fab0912ddf7b, type: 3}
+        - {fileID: 2800000, guid: 1c3c6d69a645b804fa232004b96b7ad3, type: 3}
+        - {fileID: 2800000, guid: d18a24d7b4ed50f4387993566d9d3ae2, type: 3}
+        - {fileID: 2800000, guid: c989e1ed85cf7154caa922fec53e6af6, type: 3}
+        - {fileID: 2800000, guid: ff47e5a0f105eb34883b973e51f4db62, type: 3}
+        - {fileID: 2800000, guid: fa042edbfc40fbd4bad0ab9d505b1223, type: 3}
+        - {fileID: 2800000, guid: 896d9004736809c4fb5973b7c12eb8b9, type: 3}
+        - {fileID: 2800000, guid: 179f794063d2a66478e6e726f84a65bc, type: 3}
         filmGrainTex:
         - {fileID: 2800000, guid: 654c582f7f8a5a14dbd7d119cbde215d, type: 3}
         - {fileID: 2800000, guid: dd77ffd079630404e879388999033049, type: 3}
@@ -309,12 +342,9 @@ MonoBehaviour:
         m_CoreBlitColorAndDepthPS: {fileID: 4800000, guid: d104b2fc1ca6445babb8e90b0758136b,
           type: 3}
         m_SamplingPS: {fileID: 4800000, guid: 04c410c9937594faa893a11dceb85f7e, type: 3}
-        m_TerrainDetailLit: {fileID: 4800000, guid: f6783ab646d374f94b199774402a5144,
-          type: 3}
-        m_TerrainDetailGrassBillboard: {fileID: 4800000, guid: 29868e73b638e48ca99a19ea58c48d90,
-          type: 3}
-        m_TerrainDetailGrass: {fileID: 4800000, guid: e507fdfead5ca47e8b9a768b51c291a1,
-          type: 3}
+        m_TerrainDetailLit: {fileID: 0}
+        m_TerrainDetailGrassBillboard: {fileID: 0}
+        m_TerrainDetailGrass: {fileID: 0}
     - rid: 465262938296942609
       type: {class: UniversalRendererResources, ns: UnityEngine.Rendering.Universal,
         asm: Unity.RenderPipelines.Universal.Runtime}
@@ -493,4 +523,38 @@ MonoBehaviour:
         probeSamplingDebugMesh: {fileID: -3555484719484374845, guid: 20be25aac4e22ee49a7db76fb3df6de2,
           type: 3}
         numbersDisplayTex: {fileID: 2800000, guid: 73fe53b428c5b3440b7e87ee830b608a,
+          type: 3}
+    - rid: 2070847303331348544
+      type: {class: UniversalRenderPipelineRuntimeTerrainShaders, ns: UnityEngine.Rendering.Universal,
+        asm: Unity.RenderPipelines.Universal.Runtime}
+      data:
+        m_Version: 0
+        m_TerrainDetailLit: {fileID: 4800000, guid: f6783ab646d374f94b199774402a5144,
+          type: 3}
+        m_TerrainDetailGrassBillboard: {fileID: 4800000, guid: 29868e73b638e48ca99a19ea58c48d90,
+          type: 3}
+        m_TerrainDetailGrass: {fileID: 4800000, guid: e507fdfead5ca47e8b9a768b51c291a1,
+          type: 3}
+    - rid: 2070847303331348545
+      type: {class: URPTerrainShaderSetting, ns: UnityEngine.Rendering.Universal,
+        asm: Unity.RenderPipelines.Universal.Runtime}
+      data:
+        m_Version: 0
+        m_IncludeTerrainShaders: 1
+    - rid: 2070847303331348546
+      type: {class: WorldRenderPipelineResources, ns: UnityEngine.PathTracing.Core,
+        asm: Unity.PathTracing.Runtime}
+      data:
+        _version: 3
+        _blitCubemap: {fileID: 7200000, guid: 5a992812cb320d146a66cc600200cce7, type: 3}
+        _blitGrayScaleCookie: {fileID: 7200000, guid: 557fa399e33bf7647bda5697c5c158df,
+          type: 3}
+        _setAlphaChannelShader: {fileID: 7200000, guid: 5efaea0e81c66334aa9d062d6573e6fd,
+          type: 3}
+        _environmentImportanceSamplingBuild: {fileID: 7200000, guid: 5bb2534d2411d344cbc54f880232640f,
+          type: 3}
+        _skyBoxMesh: {fileID: 4300000, guid: 0529e6c5f6dea8c4a8c2835ed7de57cb, type: 2}
+        _sixFaceSkyBoxMesh: {fileID: 4300000, guid: a80925ceebd011741b42509226cefc74,
+          type: 2}
+        _buildLightGridShader: {fileID: 7200000, guid: 16e47c1641bd0104e92b624601457bb0,
           type: 3}

@@ -1,7 +1,8 @@
-﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.Rendering.RenderGraphModule;
+using UnityEngine.Rendering.RenderGraphModule.Util;
 using UnityEngine.Rendering.Universal;
 
 public class KawaseBlur : ScriptableRendererFeature
@@ -25,91 +26,111 @@ public class KawaseBlur : ScriptableRendererFeature
 
     class CustomRenderPass : ScriptableRenderPass
     {
+        static readonly int offsetId = Shader.PropertyToID("_offset");
+
         public Material blurMaterial;
         public int passes;
         public int downsample;
         public bool copyToFramebuffer;
-        public string targetName;        
-        string profilerTag;
+        public string targetName;
 
-        private RTHandle rtHandle1;
-        private RTHandle rtHandle2;
+        // One property block per blit. The render graph executes every pass after all of them have
+        // been recorded, so a single shared block would hand each pass the last _offset written.
+        readonly List<MaterialPropertyBlock> propertyBlocks = new List<MaterialPropertyBlock>();
+        int nextPropertyBlock;
 
-        private RTHandle source;
-
-        public void Setup(RTHandle source)
-        {
-            this.source = source;
-        }
+        string cachedTargetName;
+        int cachedTargetNameId;
 
         public CustomRenderPass(string profilerTag)
         {
-            this.profilerTag = profilerTag;
+            profilingSampler = new ProfilingSampler(profilerTag);
+
+            // The first blit samples the camera colour, which cannot be read back when the camera
+            // renders straight into the back buffer.
+            requiresIntermediateTexture = true;
         }
 
-        [Obsolete]
-        public override void Configure(CommandBuffer cmd, RenderTextureDescriptor cameraTextureDescriptor)
+        public override void RecordRenderGraph(RenderGraph renderGraph, ContextContainer frameData)
         {
-            // Allocate temporary RTHandles based on camera size and downsample
-            var width = cameraTextureDescriptor.width / downsample;
-            var height = cameraTextureDescriptor.height / downsample;
+            if (blurMaterial == null)
+                return;
 
-            rtHandle1 = RTHandles.Alloc(
-                width, height,
-                depthBufferBits: DepthBits.None,
-                colorFormat: UnityEngine.Experimental.Rendering.GraphicsFormat.R8G8B8A8_UNorm,
-                name: "tmpBlurRT1");
+            var resourceData = frameData.Get<UniversalResourceData>();
+            if (resourceData.isActiveTargetBackBuffer)
+                return;
 
-            rtHandle2 = RTHandles.Alloc(
-                width, height,
-                depthBufferBits: DepthBits.None,
-                colorFormat: UnityEngine.Experimental.Rendering.GraphicsFormat.R8G8B8A8_UNorm,
-                name: "tmpBlurRT2");
+            var cameraData = frameData.Get<UniversalCameraData>();
 
-            ConfigureTarget(rtHandle1);
-            ConfigureClear(ClearFlag.None, Color.black);
-        }
+            var descriptor = cameraData.cameraTargetDescriptor;
+            descriptor.depthBufferBits = 0;
+            descriptor.msaaSamples = 1;
+            descriptor.bindMS = false;
+            descriptor.useMipMap = false;
+            descriptor.autoGenerateMips = false;
+            descriptor.width = Mathf.Max(1, descriptor.width / downsample);
+            descriptor.height = Mathf.Max(1, descriptor.height / downsample);
 
-        [Obsolete]
-        public override void Execute(ScriptableRenderContext context, ref RenderingData renderingData)
-        {
-            CommandBuffer cmd = CommandBufferPool.Get(profilerTag);
+            var cameraColor = resourceData.activeColorTexture;
+            var blurA = UniversalRenderer.CreateRenderGraphTexture(renderGraph, descriptor, "_KawaseBlurA", false, FilterMode.Bilinear);
+            var blurB = UniversalRenderer.CreateRenderGraphTexture(renderGraph, descriptor, "_KawaseBlurB", false, FilterMode.Bilinear);
+
+            nextPropertyBlock = 0;
 
             // first pass
-            cmd.SetGlobalFloat("_offset", 1.5f);
-            cmd.Blit(source, rtHandle1, blurMaterial);
+            AddBlurPass(renderGraph, cameraColor, blurA, 1.5f, "KawaseBlur Downsample");
 
             for (int i = 1; i < passes - 1; i++)
             {
-                cmd.SetGlobalFloat("_offset", 0.5f + i);
-                cmd.Blit(rtHandle1, rtHandle2, blurMaterial);
+                AddBlurPass(renderGraph, blurA, blurB, 0.5f + i, "KawaseBlur Iteration");
 
                 // ping-pong
-                (rtHandle1, rtHandle2) = (rtHandle2, rtHandle1);
+                (blurA, blurB) = (blurB, blurA);
             }
 
             // final pass
-            cmd.SetGlobalFloat("_offset", 0.5f + passes - 1f);
+            var finalOffset = 0.5f + passes - 1f;
             if (copyToFramebuffer)
             {
-                cmd.Blit(rtHandle1, source, blurMaterial);
+                AddBlurPass(renderGraph, blurA, cameraColor, finalOffset, "KawaseBlur To Camera");
             }
             else
             {
-                cmd.Blit(rtHandle1, rtHandle2, blurMaterial);
-                cmd.SetGlobalTexture(targetName, rtHandle2);
+                using (var builder = AddBlurPass(renderGraph, blurA, blurB, finalOffset, "KawaseBlur Final", true))
+                    builder.SetGlobalTextureAfterPass(blurB, GetTargetNameId());
             }
-
-            context.ExecuteCommandBuffer(cmd);
-            cmd.Clear();
-
-            CommandBufferPool.Release(cmd);
         }
 
-        public override void FrameCleanup(CommandBuffer cmd)
+        IBaseRenderGraphBuilder AddBlurPass(RenderGraph renderGraph, TextureHandle source, TextureHandle destination,
+            float offset, string passName, bool returnBuilder = false)
         {
-            if (rtHandle1 != null) { rtHandle1.Release(); rtHandle1 = null; }
-            if (rtHandle2 != null) { rtHandle2.Release(); rtHandle2 = null; }
+            var propertyBlock = GetPropertyBlock();
+            propertyBlock.SetFloat(offsetId, offset);
+
+            var parameters = new RenderGraphUtils.BlitMaterialParameters(
+                source, destination, blurMaterial, 0, propertyBlock,
+                RenderGraphUtils.FullScreenGeometryType.ProceduralTriangle);
+
+            return renderGraph.AddBlitPass(parameters, passName, returnBuilder);
+        }
+
+        MaterialPropertyBlock GetPropertyBlock()
+        {
+            if (nextPropertyBlock == propertyBlocks.Count)
+                propertyBlocks.Add(new MaterialPropertyBlock());
+
+            return propertyBlocks[nextPropertyBlock++];
+        }
+
+        int GetTargetNameId()
+        {
+            if (cachedTargetName != targetName)
+            {
+                cachedTargetName = targetName;
+                cachedTargetNameId = Shader.PropertyToID(targetName);
+            }
+
+            return cachedTargetNameId;
         }
     }
 
@@ -117,22 +138,21 @@ public class KawaseBlur : ScriptableRendererFeature
 
     public override void Create()
     {
-        scriptablePass = new CustomRenderPass("KawaseBlur")
-        {
-            blurMaterial = settings.blurMaterial,
-            passes = settings.blurPasses,
-            downsample = settings.downsample,
-            copyToFramebuffer = settings.copyToFramebuffer,
-            targetName = settings.targetName,
-            renderPassEvent = settings.renderPassEvent
-        };
+        scriptablePass = new CustomRenderPass("KawaseBlur");
     }
 
     public override void AddRenderPasses(ScriptableRenderer renderer, ref RenderingData renderingData)
     {
-        //scriptablePass.Setup(renderer.cameraColorTargetHandle);
+        if (settings.blurMaterial == null)
+            return;
+
+        scriptablePass.blurMaterial = settings.blurMaterial;
+        scriptablePass.passes = settings.blurPasses;
+        scriptablePass.downsample = settings.downsample;
+        scriptablePass.copyToFramebuffer = settings.copyToFramebuffer;
+        scriptablePass.targetName = settings.targetName;
+        scriptablePass.renderPassEvent = settings.renderPassEvent;
+
         renderer.EnqueuePass(scriptablePass);
     }
 }
-
-

@@ -76,9 +76,10 @@ logIndexingPerformanceReport = false
 expandedQueries = [
 ]
 queryBuilder = true
-ignoredProperties = "id;name;classname;imagecontentshash"
+ignoredProperties = "addedobjectfileids;classname;correspondingsourceobject;editorclassidentifier;editorhideflags;fileid;gameobject;id;imagecontentshash;isprefabvariant;name;objecthideflags;pathid;prefabasset;prefabinstance;script"
 helperWidgetCurrentArea = "all"
 disabledIndexers = ""
 minIndexVariations = 2
 findProviderIndexHelper = true
 itemIconSize = 32
+version = 1
