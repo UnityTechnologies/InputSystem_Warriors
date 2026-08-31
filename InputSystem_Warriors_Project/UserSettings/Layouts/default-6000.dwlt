@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 112}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 119
+  controlID: 587
   draggingID: 0
 --- !u!114 &3
 MonoBehaviour:
@@ -224,7 +224,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 112}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 92
+  controlID: 588
   draggingID: 0
 --- !u!114 &10
 MonoBehaviour:
@@ -250,7 +250,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 56}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 93
+  controlID: 589
   draggingID: 0
 --- !u!114 &11
 MonoBehaviour:
@@ -586,7 +586,9 @@ MonoBehaviour:
       scrollOffset: 0
     m_DynamicPanelContainerData: []
     m_OverlaysVisible: 1
+    m_PresetDirty: 0
     m_DynamicPanelBehavior: 0
+    m_DynamicPanelBehaviorModified: 0
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -625,7 +627,9 @@ MonoBehaviour:
     m_ContainerData: []
     m_DynamicPanelContainerData: []
     m_OverlaysVisible: 1
+    m_PresetDirty: 0
     m_DynamicPanelBehavior: 0
+    m_DynamicPanelBehaviorModified: 0
   m_SearchFilter:
     m_NameFilter: 
     m_ClassNames: []
@@ -637,7 +641,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Assets/Scenes
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -647,22 +651,21 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets
+  - Assets/Scenes
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: U:\layout
+  m_LastProjectPath: /Users/josep.pujol/Desktop/GitHub/InputSystem_Warriors/InputSystem_Warriors_Project
   m_LockTracker:
     m_IsLocked: 0
   m_LastLocalAssetsSearchArea: 1
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: []
+    scrollPos: {x: 0, y: 44}
+    m_SelectedIDs:
+    - m_rawData: 0
     m_LastClickedID:
-      m_Data: 0
+      m_rawData: 0
     m_ExpandedIDs:
-    - m_Data: 0
-    - m_Data: 44306
-    - m_Data: 1000000000
-    - m_Data: 2147483647
+    - m_rawData: 0
+    - m_rawData: 568105584918846352
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -674,7 +677,7 @@ MonoBehaviour:
         width: 0
         height: 0
       m_UserData:
-        m_Data: 0
+        m_rawData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
       m_OriginalEventType: 11
@@ -685,7 +688,7 @@ MonoBehaviour:
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_EntityId:
-        m_Data: 0
+        m_rawData: 0
       m_Path: 
       m_Icon: {fileID: 0}
       m_ResourceFile: 
@@ -693,12 +696,10 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: []
     m_LastClickedID:
-      m_Data: 0
+      m_rawData: 0
     m_ExpandedIDs:
-    - m_Data: 0
-    - m_Data: 44306
-    - m_Data: 1000000000
-    - m_Data: 2147483647
+    - m_rawData: 0
+    - m_rawData: 568105584918846352
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -710,7 +711,7 @@ MonoBehaviour:
         width: 0
         height: 0
       m_UserData:
-        m_Data: 0
+        m_rawData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
       m_OriginalEventType: 11
@@ -721,14 +722,15 @@ MonoBehaviour:
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_EntityId:
-        m_Data: 0
+        m_rawData: 0
       m_Path: 
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: []
+    m_SelectedInstanceIDs:
+    - m_rawData: 0
     m_LastClickedEntityId:
-      m_Data: 0
+      m_rawData: 0
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: []
     m_RenameOverlay:
@@ -742,7 +744,7 @@ MonoBehaviour:
         width: 0
         height: 0
       m_UserData:
-        m_Data: 0
+        m_rawData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
       m_OriginalEventType: 11
@@ -752,7 +754,7 @@ MonoBehaviour:
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_EntityId:
-        m_Data: 0
+        m_rawData: 0
       m_Path: 
       m_Icon: {fileID: 0}
       m_ResourceFile: 
@@ -799,7 +801,9 @@ MonoBehaviour:
     m_ContainerData: []
     m_DynamicPanelContainerData: []
     m_OverlaysVisible: 1
+    m_PresetDirty: 0
     m_DynamicPanelBehavior: 0
+    m_DynamicPanelBehaviorModified: 0
   m_ObjectsLockedBeforeSerialization: []
   m_EntityIdsLockedBeforeSerialization: []
   m_PreviewResizer:
@@ -807,7 +811,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectEntityId:
-    m_Data: 0
+    m_rawData: 0
   m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
@@ -852,14 +856,15 @@ MonoBehaviour:
     m_ContainerData: []
     m_DynamicPanelContainerData: []
     m_OverlaysVisible: 1
+    m_PresetDirty: 0
     m_DynamicPanelBehavior: 0
+    m_DynamicPanelBehaviorModified: 0
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs:
-      - m_Data: 49956
+      m_SelectedIDs: []
       m_LastClickedID:
-        m_Data: 0
+        m_rawData: 0
       m_ExpandedIDs: []
       m_RenameOverlay:
         m_UserAcceptedRename: 0
@@ -872,7 +877,7 @@ MonoBehaviour:
           width: 0
           height: 0
         m_UserData:
-          m_Data: 0
+          m_rawData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
         m_OriginalEventType: 11
@@ -882,7 +887,7 @@ MonoBehaviour:
       m_SearchString: 
     m_ExpandedScenes: []
     m_CurrenRootEntityId:
-      m_Data: 0
+      m_rawData: 0
     m_LockTracker:
       m_IsLocked: 0
     m_CurrentSortingName: TransformSorting
@@ -1384,6 +1389,20 @@ MonoBehaviour:
       layout: 4
       size: {x: 0, y: 0}
       sizeOverridden: 0
+    - dockPosition: 1
+      containerId: overlay-container--right
+      displayed: 0
+      id: ProBuilder/ActionsOverlay
+      index: 12
+      contents: '{"m_Layout":4,"m_Collapsed":false,"m_Folded":false,"m_Floating":false,"m_FloatingSnapOffset":{"x":0.0,"y":0.0},"m_SnapOffsetDelta":{"x":0.0,"y":0.0},"m_FloatingSnapCorner":0,"m_Size":{"x":0.0,"y":0.0},"m_SizeOverridden":false}'
+      floating: 0
+      collapsed: 0
+      snapOffset: {x: 0, y: 0}
+      snapOffsetDelta: {x: 0, y: 0}
+      snapCorner: 0
+      layout: 4
+      size: {x: 0, y: 0}
+      sizeOverridden: 0
     m_ContainerData:
     - containerId: overlay-toolbar__top
       scrollOffset: 0
@@ -1415,7 +1434,9 @@ MonoBehaviour:
         state: 0
         overlayData: []
     m_OverlaysVisible: 1
+    m_PresetDirty: 0
     m_DynamicPanelBehavior: 0
+    m_DynamicPanelBehaviorModified: 0
   m_WindowGUID: cc27987af1a868c49b0894db9c0f5429
   m_Gizmos: 1
   m_OverrideSceneCullingMask: 6917529027641081856
@@ -1495,6 +1516,8 @@ MonoBehaviour:
     m_EasingEnabled: 1
     m_EasingDuration: 0.4
     m_AccelerationEnabled: 1
+    m_AccelerationSpeed: 0.8
+    m_SpeedModifier: 5
     m_FieldOfViewHorizontalOrVertical: 60
     m_NearClip: 0.03
     m_FarClip: 10000
@@ -1554,7 +1577,9 @@ MonoBehaviour:
     m_ContainerData: []
     m_DynamicPanelContainerData: []
     m_OverlaysVisible: 1
+    m_PresetDirty: 0
     m_DynamicPanelBehavior: 0
+    m_DynamicPanelBehaviorModified: 0
   m_SerializedViewNames: []
   m_SerializedViewValues: []
   m_PlayModeViewName: GameView
@@ -1658,4 +1683,6 @@ MonoBehaviour:
     m_ContainerData: []
     m_DynamicPanelContainerData: []
     m_OverlaysVisible: 1
+    m_PresetDirty: 0
     m_DynamicPanelBehavior: 0
+    m_DynamicPanelBehaviorModified: 0
