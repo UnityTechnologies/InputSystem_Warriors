@@ -71,9 +71,14 @@ MonoBehaviour:
       - rid: 49595704231854080
       - rid: 49595704231854081
       - rid: 49595704231854082
+      - rid: 49595704875941888
+      - rid: 49595704875941889
+      - rid: 49595704875941890
+      - rid: 49595704875941891
+      - rid: 49595704875941892
     m_RuntimeSettings:
       m_List: []
-  m_AssetVersion: 11
+  m_AssetVersion: 13
   m_ObsoleteDefaultVolumeProfile: {fileID: 0}
   m_RenderingLayerNames:
   - Light Layer default
@@ -130,6 +135,49 @@ MonoBehaviour:
         - {fileID: 2800000, guid: fd2fd78b392986e42a12df2177d3b89c, type: 3}
         - {fileID: 2800000, guid: 5cdee82a77d13994f83b8fdabed7c301, type: 3}
         m_Version: 0
+    - rid: 49595704875941888
+      type: {class: URPExposureSettings, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.Runtime}
+      data:
+        version: 1
+        m_UseExposure: 0
+    - rid: 49595704875941889
+      type: {class: URPShadowBiasSettings, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.Runtime}
+      data:
+        m_Version: 1
+        m_DepthBiasMode: 0
+    - rid: 49595704875941890
+      type: {class: SurfaceCacheRenderPipelineResourceSet, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.Runtime}
+      data:
+        m_Version: 7
+        m_FallbackMaterial: {fileID: 2100000, guid: 8a239b3da89050c4e89ac06b168fc684, type: 2}
+        m_AllocationShader: {fileID: 7200000, guid: 3d9fc4c0ae8e22f49a8ebefad82718d9, type: 3}
+        m_ScreenResolveLookupShader: {fileID: 7200000, guid: 4d271c06564c6784392d81f949558e5c, type: 3}
+        m_ScreenResolveUpsamplingShader: {fileID: 7200000, guid: 7c302ee1d7410a6458981a5f329520b4, type: 3}
+        m_DebugShader: {fileID: 7200000, guid: 4d40202dfa5473d44bcdc97e00d74703, type: 3}
+        m_FlatNormalResolutionShader: {fileID: 7200000, guid: 134e9451a58aaba43ba713adbd103d92, type: 3}
+        m_ScreenResolveDenoisingShader: {fileID: 7200000, guid: 9aaca22ca1855764983a8f22970677a9, type: 3}
+    - rid: 49595704875941891
+      type: {class: RenderingCapabilitiesSettings, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.Runtime}
+      data:
+        m_Version: 0
+        m_UsePersistentConstantBuffers: 0
+    - rid: 49595704875941892
+      type: {class: SurfaceCacheRenderPipelineResourceSet, ns: UnityEngine.Rendering, asm: Unity.SurfaceCache.Runtime}
+      data:
+        m_Version: 4
+        m_TemporalFilteringShader: {fileID: 7200000, guid: c23523f04780d754f927b9daf4f975b9, type: 3}
+        m_SpatialFilteringShader: {fileID: 7200000, guid: 63e59de460463bb4c9d64bc58051d12c, type: 3}
+        m_ScrollingShader: {fileID: 7200000, guid: 47bbc3edf61978b498603cc2a1b87eea, type: 3}
+        m_GlobalProbeShader: {fileID: 7200000, guid: 4dccb71ac6af46018e56b6ccc3974c80, type: 3}
+        m_DefragShader: {fileID: 7200000, guid: a183a2d0b1da4904fb3bd71c6111ebb1, type: 3}
+        m_EvictionShader: {fileID: 7200000, guid: c9f2aeed6ef396f4d9134e4da1edfe19, type: 3}
+        m_PatchAllocationShader: {fileID: 7200000, guid: b271ec1ddd8048458fa529e8e7cfe960, type: 3}
+        m_PunctualLightSamplingComputeShader: {fileID: -6772857160820960102, guid: f32463968f29423cad25aee15a14b9f1, type: 3}
+        m_PunctualLightSamplingRayTracingShader: {fileID: -5126288278712620388, guid: f32463968f29423cad25aee15a14b9f1, type: 3}
+        m_EmissiveTriangleAdditionComputeShader: {fileID: 7200000, guid: 2e583cebf11e4785b8a5b0d8f7b20ab6, type: 3}
+        m_EmissiveTriangleRemovalComputeShader: {fileID: 7200000, guid: 3d386645a85b4e758a7b7eb1bf87fa24, type: 3}
+        m_EstimationComputeShader: {fileID: -6772857160820960102, guid: 94a39d12848d8d64ca962a72b74e7c50, type: 3}
+        m_EstimationRayTracingShader: {fileID: -5126288278712620388, guid: 94a39d12848d8d64ca962a72b74e7c50, type: 3}
     - rid: 465262938296942592
       type: {class: RayTracingRenderPipelineResources, ns: UnityEngine.Rendering.UnifiedRayTracing, asm: Unity.UnifiedRayTracing.Runtime}
       data:
@@ -171,6 +219,7 @@ MonoBehaviour:
         m_DebugReplacementPS: {fileID: 4800000, guid: cf852408f2e174538bcd9b7fda1c5ae7, type: 3}
         m_HdrDebugViewPS: {fileID: 4800000, guid: 573620ae32aec764abd4d728906d2587, type: 3}
         m_ProbeVolumeSamplingDebugComputeShader: {fileID: 7200000, guid: 53626a513ea68ce47b59dc1299fe3959, type: 3}
+        m_BatchingTypeDebugPS: {fileID: 4800000, guid: b7ae02663a8f4b48b2b31fc48f7acfbe, type: 3}
     - rid: 465262938296942597
       type: {class: RenderGraphSettings, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.Runtime}
       data:
@@ -250,6 +299,7 @@ MonoBehaviour:
         easuPS: {fileID: 4800000, guid: 562b7ae4f629f144aa97780546fce7c6, type: 3}
         uberPostPS: {fileID: 4800000, guid: e7857e9d0c934dc4f83f270f8447b006, type: 3}
         finalPostPassPS: {fileID: 4800000, guid: c49e63ed1bbcb334780a3bd19dfed403, type: 3}
+        reactiveMaskPS: {fileID: 4800000, guid: a32e79e9a0e86a14894684c864a169a3, type: 3}
         m_ShaderResourcesVersion: 0
     - rid: 465262938296942601
       type: {class: URPShaderStrippingSetting, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.Runtime}
@@ -298,9 +348,7 @@ MonoBehaviour:
         m_RenderingLayerMaskShader: {fileID: 4800000, guid: 9ac9bae9f40d7dc4a80dbf809b9544aa, type: 3}
         m_ProjectedShadowShader: {fileID: 4800000, guid: ce09d4a80b88c5a4eb9768fab4f1ee00, type: 3}
         m_SpriteShadowShader: {fileID: 4800000, guid: 44fc62292b65ab04eabcf310e799ccf6, type: 3}
-        m_SpriteUnshadowShader: {fileID: 4800000, guid: de02b375720b5c445afe83cd483bedf3, type: 3}
         m_GeometryShadowShader: {fileID: 4800000, guid: 19349a0f9a7ed4c48a27445bcf92e5e1, type: 3}
-        m_GeometryUnshadowShader: {fileID: 4800000, guid: 77774d9009bb81447b048c907d4c6273, type: 3}
         m_CopyDepthPS: {fileID: 4800000, guid: d6dae50ee9e1bfa4db75f19f99355220, type: 3}
         m_DefaultLitMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
         m_DefaultUnlitMaterial: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
