@@ -18,13 +18,19 @@
         {
             "ColumnId": "HierarchyViewColumn Name",
             "Visible": true,
-            "Width": 300.0,
+            "Width": 267.5,
             "Index": 2
         },
         {
             "ColumnId": "GameObject/Active",
             "Visible": false,
             "Width": 50.0,
+            "Index": 3
+        },
+        {
+            "ColumnId": "HierarchyViewColumn Navigate",
+            "Visible": true,
+            "Width": 18.0,
             "Index": 3
         },
         {
